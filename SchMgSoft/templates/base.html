@@ -1,0 +1,30 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
+    />
+    <title>{% block title %} {% endblock %}</title>
+
+    <!-- Remix Icon CDN -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+
+    <!-- CSS Styles -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+
+    <!-- HTML heads of different pages other than base.html -->
+    {% block htmlhead %} {% endblock htmlhead %}
+  </head>
+  <body>
+    <!-- SIDEBAR -->
+    {% include "sidebar.html" %}
+    <!-- Main Content -->
+    <div id="main-content">{% block content %} {% endblock %}</div>
+  </body>
+</html>
