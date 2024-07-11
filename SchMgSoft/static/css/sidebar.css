@@ -1,8 +1,8 @@
 /* Sidebar Styles */
 #sidebar {
-    position: relative;
-    /*   top: 0;
-    left: 0; */
+    position: absolute;
+      top: 0;
+    left: 0;
     /*   left: -100%; */
     /*   padding: 0.5rem; */
     width: 185px;
@@ -10,10 +10,10 @@
     display: flex;
     flex-direction: column;
     /*   gap: 1.5rem; */
-    border-right: 1px solid var(--hover-clr);
+    border-right: 1px solid var(--text-clr-50);
     /*   overflow-x: auto; */
     /*   overflow-y: hidden; */
-    background: var(--background-clr);
+    background: var(--bg-clr);
     user-select: none;
     /*   transform: translateX(-100%);
     transition: transform 0.16s ease-out; */
@@ -28,7 +28,7 @@
     gap: 10px;
     align-items: center;
     justify-content: center;
-    border-bottom: 1px solid var(--hover-clr);
+    border-bottom: 1px solid var(--text-clr-50);
   }
   
   #sidebar #logo #logo-image {
@@ -55,14 +55,14 @@
   #sidebar #logo #logo-name h3 {
     font-size: 0.793rem;
     font-weight: 600;
-    color: var(--primary-txt-clr);
+    color: var(--text-clr-950);
     line-height: 0.531rem;
   }
   
   #sidebar #logo #logo-name p {
     font-size: 0.593rem;
     font-weight: 400;
-    color: var(--primary-txt-clr);
+    color: var(--text-clr-950);
     line-height: 0.531rem;
   }
   
@@ -99,28 +99,29 @@
   }
   
   #sidebar #navbar .group .title {
-    padding-left: 0.573rem;
+    /* padding-left: 0.573rem; */
+    padding-left: 0.5rem;
     font-size: 0.531rem;
     font-weight: 400;
-    color: var(--secondary-txt-clr);
+    color: var(--text-clr-300);
   }
   
   #sidebar #navbar .group a,
   #sidebar #navbar .group .menu .menu-item {
-    padding: 0.5rem;
+    padding: 0.35rem 0.5rem;
     width: 100%;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
     text-decoration: none;
-    color: var(--primary-txt-clr);
-    border-radius: 7px;
+    color: var(--text-clr-950);
+    border-radius: var(--round-md);
   }
   
   #sidebar #navbar .group a:hover,
   #sidebar #navbar .group .menu .menu-item:hover {
-    background: var(--hover-clr);
+    background: var(--text-clr-50);
     color: var(--accent-clr-500);
     cursor: pointer;
   }
@@ -133,11 +134,25 @@
     gap: 5px;
     align-items: center;
   }
+
+  #sidebar #navbar .group a .left,
+  #sidebar #navbar .group .menu .menu-item .left {
+    justify-content: left;
+  }
+
+  #sidebar #navbar .group .menu .menu-item .right {
+    justify-content: right;
+  }
   
   #sidebar #navbar .group a .left p,
   #sidebar #navbar .group .menu .menu-item .left p {
     font-size: 0.713rem;
     font-weight: 400;
+    text-align: left;
+  }
+
+  #sidebar #navbar .group a .left i,
+  #sidebar #navbar .group .menu .menu-item .left i {
     text-align: left;
   }
   
@@ -163,14 +178,14 @@
     position: absolute;
     top: 50%;
     left: 50%;
-    background: var(--primary-txt-clr);
+    background-color: var(--text-clr-950);
     border-radius: 2px;
     transform: translate(-50%, -50%);
     transition: transform 0.15s ease-out;
   }
   
   #sidebar #navbar .group .menu .menu-item:hover .right .dropdown .line {
-    background: var(--accent-clr-500);
+    background-color: var(--accent-clr-500);
   }
   
   #sidebar #navbar .group .menu .menu-item .right .dropdown .horizontal {
@@ -223,8 +238,8 @@
     content: "";
     width: 5px;
     height: 5px;
-    background: var(--primary-txt-clr);
-    border-radius: 50%;
+    background: var(--text-clr-950);
+    border-radius: var(--round-full);
     transform: translate(-50%, -50%);
   }
   
@@ -248,8 +263,8 @@
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    border: 1px solid var(--hover-clr);
-    border-radius: 0.5rem;
+    border: 1px solid var(--text-clr-100);
+    border-radius: var(--round-lg);
     transform: translateX(-50%);
     overflow: hidden;
   }
@@ -263,20 +278,20 @@
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    color: var(--secondary-txt-clr);
-    border-radius: 0.45rem;
+    color: var(--text-clr-200);
+    border-radius: var(--round-md);
   }
   
   #sidebar #mode-toggler #light-mode:hover,
   #sidebar #mode-toggler #system-default-mode:hover,
   #sidebar #mode-toggler #dark-mode:hover {
-    color: var(--primary-txt-clr);
+    color: var(--text-clr-950);
     cursor: pointer;
   }
   
   #sidebar #mode-toggler #light-mode.active,
   #sidebar #mode-toggler #system-default-mode.active,
   #sidebar #mode-toggler #dark-mode.active {
-    background: var(--hover-clr);
-    color: var(--primary-txt-clr);
+    background: var(--text-clr-100);
+    color: var(--text-clr-950);
   }

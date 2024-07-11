@@ -10,25 +10,27 @@
     <title>{% block title %} {% endblock %}</title>
 
     <!-- Remix Icon CDN -->
-    <link
-      href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css"
-      rel="stylesheet"
-    />
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" rel="stylesheet" media="all" onload="this.media='all'">
+
 
     <!-- CSS Styles -->
-    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static 'css/style.css' %}"
+    />
 
     <!-- HTML heads of different pages other than base.html -->
     {% block htmlhead %} {% endblock htmlhead %}
   </head>
-  <body>
+  <body class="light-mode">
     <!-- HEADER -->
-    {% block HEADER %} {% include "header.html" %} {% endblock %}
+    {% include "header.html" %}
 
     <!-- SIDEBAR -->
     {% include "sidebar.html" %}
 
     <!-- Main Content -->
-    <div id="main-content">{% block content %} {% endblock %}</div>
+    <main id="main-content">{% block content %} {% endblock %}</main>
   </body>
 </html>

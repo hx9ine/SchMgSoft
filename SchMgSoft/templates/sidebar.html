@@ -1,12 +1,4 @@
 {% load static %}
-
-<!-- HTML HEAD CONTENTS -->
-{% block htmlhead %}
-
-<link rel="stylesheet" href="{% static 'css/sidebar.css' %}" />
-
-{% endblock htmlhead %}
-
 <!-- SIDEBAR -->
 {% block content %}
 <aside id="sidebar">
@@ -257,4 +249,9 @@
 
 <!-- JAVASCRIPT -->
 <script src="{% static 'js/sidebar.js' %}" type="text/javascript"></script>
+{% endblock %}
+
+<!-- CSS -->
+{% block extracss %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/sidebar.css' %}" />
 {% endblock %}
