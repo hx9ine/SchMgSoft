@@ -22,8 +22,12 @@
     {% block htmlhead %} {% endblock htmlhead %}
   </head>
   <body>
+    <!-- HEADER -->
+    {% block HEADER %} {% include "header.html" %} {% endblock %}
+
     <!-- SIDEBAR -->
     {% include "sidebar.html" %}
+
     <!-- Main Content -->
     <div id="main-content">{% block content %} {% endblock %}</div>
   </body>

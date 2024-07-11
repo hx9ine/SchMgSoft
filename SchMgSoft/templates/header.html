@@ -1,0 +1,25 @@
+{% load static %}
+
+<!-- HTML HEAD CONTENTS -->
+{% block htmlhead %}
+
+<link rel="stylesheet" href="{% static 'css/header.css' %}" />
+
+{% endblock htmlhead %}
+
+<!-- HEADER -->
+{% block content %}
+ <header>
+    <div class="left">
+    <h3>Dashboard</h3>
+</div>
+<div class="right">
+    <div id="profile">
+        <img src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?crop=entropy&cs=srgb&fm=jpg&ixid=M3wzMjM4NDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE3MjA2ODA4NTB8&ixlib=rb-4.0.3&q=85" alt="Profile Photo.">
+    </div>
+    <div id="notification-icon">
+        <i class="ri-notification-2-line"></i>
+    </div>
+</div>
+ </header>
+ {% endblock %}

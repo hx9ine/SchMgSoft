@@ -76,7 +76,7 @@ body.light-mode {
   --text-clr-950: #000000;
 
   /* Background Colors */
-  --bg-white:#ffffff;
+  --bg-clr:#ffffff;
 }
 
 body.dark-mode {
@@ -95,7 +95,7 @@ body.dark-mode {
   --text-clr-950: #ffffff;
 
   /* Background Colors */
-  --bg-black:#000000;
+  --bg-clr:#000000;
 }
 
 a,
@@ -108,3 +108,11 @@ p {
 
 
 /* MAIN CONTENT */
+#main-content {
+  position: relative;
+  top: 50px;
+  right: 0;
+  width: calc(100% - 185px);
+  height: calc(100% - 50px);
+  background-color: var(--accent-clr-300);
+}

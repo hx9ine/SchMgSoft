@@ -1,0 +1,59 @@
+/* Header Styles */
+header {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 5px 16px;
+    width: calc(100% - 185px);
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: var(--bg-clr);
+}
+
+header .left, header .right {
+    display: flex;
+    align-items: center;
+}
+
+header .left {
+    justify-content: left;
+}
+
+header .left h3 {
+    font-size: 1.131rem;
+    font-weight: 500;
+    text-align: left;
+    color: var(--text-clr-950);
+}
+
+header .right {
+    justify-content: right;
+}
+
+header .right #profile,
+header .right #notification-icon {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--text-clr-50);
+    cursor: pointer;
+    overflow: hidden;
+}
+
+
+header .right #profile img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+header .right #notification-icon i {
+    font-size: 1.131rem;
+    font-weight: 500;
+    text-align: center;
+    color: var(--text-clr-950);
+}
