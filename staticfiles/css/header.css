@@ -3,13 +3,14 @@ header {
     position: absolute;
     top: 0;
     right: 0;
-    padding: 7px 16px;
+    padding: 9px 16px;
     width: calc(100% - 185px);
     height: 50px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background-color: var(--bg-clr);
+    background-color: var(--bg-component);
+    border-bottom: 1px solid var(--text-clr-50);
 }
 
 header .left, header .right {
@@ -29,19 +30,25 @@ header .left h3 {
 }
 
 header .right {
+    gap: 8px;
     justify-content: right;
 }
 
 header .right #profile,
 header .right #notification-icon {
-    width: 36px;
-    height: 36px;
+    width: 32px;
+    height: 32px;
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: var(--text-clr-50);
+    background-color: var(--bg-icon);
+    border-radius: var(--round-md);
     cursor: pointer;
     overflow: hidden;
+}
+
+header .right #profile {
+    border: 2px solid var(--bg-icon);
 }
 
 
@@ -51,9 +58,9 @@ header .right #profile img {
     object-fit: cover;
 }
 
-header .right #notification-icon i {
-    font-size: 1.131rem;
-    font-weight: 500;
-    text-align: center;
-    color: var(--text-clr-950);
+header .right #notification-icon svg {
+    width: 16px;
+    height: 16px;
+    object-fit: contain;
+    color: var(--text-clr-700);
 }

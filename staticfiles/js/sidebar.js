@@ -26,6 +26,7 @@ menus.forEach((menu) => {
   });
 });
 
+// Light Mode || Dark Mode
 const body = document.body;
 const lightModeIcon = document.querySelector("#light-mode");
 const systemDefaultModeIcon = document.querySelector("#system-default-mode");

@@ -77,7 +77,13 @@ body.light-mode {
   --text-clr-950: #000000;
 
   /* Background Colors */
-  --bg-clr:#ffffff;
+  --bg-clr:#eaeaea;
+
+  /* Component Background Color */
+  --bg-component:#ffffff;
+
+  /* Icon Background Color */
+  --bg-icon:#e0e0e0;
 }
 
 body.dark-mode {
@@ -95,8 +101,14 @@ body.dark-mode {
   --text-clr-900: #efefef;
   --text-clr-950: #ffffff;
 
-  /* Background Colors */
-  --bg-clr:#000000;
+  /* Background Color */
+  --bg-clr:#171717;
+
+  /* Component Background Color */
+  --bg-component:#000000;
+
+  /* Icon Background Color */
+  --bg-icon:#1f1f1f;
 }
 
 a,

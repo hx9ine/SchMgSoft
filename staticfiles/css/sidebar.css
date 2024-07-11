@@ -10,10 +10,10 @@
     display: flex;
     flex-direction: column;
     /*   gap: 1.5rem; */
-    border-right: 1px solid var(--text-clr-200);
+    border-right: 1px solid var(--text-clr-50);
     /*   overflow-x: auto; */
     /*   overflow-y: hidden; */
-    background: var(--bg-clr);
+    background: var(--bg-component);
     user-select: none;
     /*   transform: translateX(-100%);
     transition: transform 0.16s ease-out; */
@@ -28,7 +28,7 @@
     gap: 10px;
     align-items: center;
     justify-content: center;
-    border-bottom: 1px solid var(--text-clr-200);
+    border-bottom: 1px solid var(--text-clr-50);
   }
   
   #sidebar #logo #logo-image {
@@ -48,28 +48,37 @@
     height: 100%;
     display: flex;
     flex-direction: column;
+    gap: 2px;
     align-items: start;
     justify-content: center;
   }
   
   #sidebar #logo #logo-name h3 {
     font-size: 0.793rem;
-    font-weight: 600;
+    font-weight: 700;
+    text-align: left;
     color: var(--text-clr-950);
-    line-height: 0.531rem;
+    line-height: 0.537rem;
   }
   
   #sidebar #logo #logo-name p {
-    font-size: 0.593rem;
-    font-weight: 400;
+    font-size: 0.493rem;
+    font-weight: 500;
+    text-align: left;
     color: var(--text-clr-950);
-    line-height: 0.531rem;
+    line-height: 0.537rem;
   }
   
   #sidebar #logo #logo-name p a,
-  #sidebar #logo #logo-name p i {
+  #sidebar #logo #logo-name p a svg {
     text-decoration: none;
     color: var(--accent-clr-500);
+  }
+
+  #sidebar #logo #logo-name p a svg {
+    width: 8px;
+    height: 8px;
+    object-fit: contain;
   }
   
   #sidebar #sidebar-hide-btn {
@@ -82,7 +91,7 @@
     height: calc(100% - 90px);
     display: flex;
     flex-direction: column;
-    gap: 0.9rem;
+    gap: 16px;
     overflow-x: hidden;
     overflow-y: auto;
   }
@@ -96,10 +105,11 @@
     width: 100%;
     display: flex;
     flex-direction: column;
+    gap:2px;
   }
   
   #sidebar #navbar .group .title {
-    padding-left: 0.573rem;
+    /* padding-left: 0.573rem; */
     padding-left: 0.5rem;
     font-size: 0.531rem;
     font-weight: 400;
@@ -110,20 +120,25 @@
   #sidebar #navbar .group .menu .menu-item {
     padding: 0.35rem 0.5rem;
     width: 100%;
+    height: 32px;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
     text-decoration: none;
     color: var(--text-clr-950);
-    border-radius: 7px;
+    border-radius: var(--round-md);
   }
   
   #sidebar #navbar .group a:hover,
   #sidebar #navbar .group .menu .menu-item:hover {
-    background: var(--text-clr-50);
-    color: var(--accent-clr-500);
+    background: var(--accent-clr-500);
     cursor: pointer;
+  }
+
+  #sidebar #navbar .group a:active,
+  #sidebar #navbar .group .menu .menu-item:active {
+    background: var(--accent-clr-700);
   }
   
   #sidebar #navbar .group a .left,
@@ -131,7 +146,7 @@
   #sidebar #navbar .group .menu .menu-item .right {
     display: flex;
     flex-direction: row;
-    gap: 5px;
+    gap: 8px;
     align-items: center;
   }
 
@@ -147,13 +162,39 @@
   #sidebar #navbar .group a .left p,
   #sidebar #navbar .group .menu .menu-item .left p {
     font-size: 0.713rem;
-    font-weight: 400;
+    font-weight: 600;
     text-align: left;
+    line-height: 32px;
+    color: var(--text-clr-700);
   }
 
-  #sidebar #navbar .group a .left i,
+  #sidebar #navbar .group a:hover .left p,
+  #sidebar #navbar .group .menu .menu-item:hover .left p,
+  #sidebar #navbar .group a:active .left p,
+  #sidebar #navbar .group .menu .menu-item:active .left p {
+    color: var(--text-clr-950);
+  }
+
+  /* #sidebar #navbar .group a .left i,
   #sidebar #navbar .group .menu .menu-item .left i {
     text-align: left;
+    font-size: 0.813rem;
+    line-height: 32px;
+  } */
+
+  #sidebar #navbar .group a .left svg,
+  #sidebar #navbar .group .menu .menu-item .left svg {
+    width: 16px;
+    height: 16px;
+    object-fit: contain;
+    color: var(--text-clr-700);
+  }
+
+  #sidebar #navbar .group a:hover .left svg,
+  #sidebar #navbar .group .menu .menu-item:hover .left svg, 
+  #sidebar #navbar .group a:active .left svg,
+  #sidebar #navbar .group .menu .menu-item:active .left svg{
+    color: var(--text-clr-950);
   }
   
   #sidebar #navbar .group .menu {
@@ -178,14 +219,15 @@
     position: absolute;
     top: 50%;
     left: 50%;
-    background-color: var(--text-clr-950);
+    background-color: var(--text-clr-700);
     border-radius: 2px;
     transform: translate(-50%, -50%);
     transition: transform 0.15s ease-out;
   }
   
-  #sidebar #navbar .group .menu .menu-item:hover .right .dropdown .line {
-    background-color: var(--accent-clr-500);
+  #sidebar #navbar .group .menu .menu-item:hover .right .dropdown .line,
+  #sidebar #navbar .group .menu .menu-item:active .right .dropdown .line  {
+    background-color: var(--text-clr-950);
   }
   
   #sidebar #navbar .group .menu .menu-item .right .dropdown .horizontal {
@@ -223,9 +265,9 @@
   
   #sidebar #navbar .group .menu .submenu ul li a {
     position: relative;
-    padding: 0.5rem 0.5rem 0.5rem 1.85rem;
+    padding: 0.5rem 0.5rem 0.5rem 2rem;
     font-size: 0.651rem;
-    font-weight: 400;
+    font-weight: 500;
     text-align: left;
     text-decoration: none;
     background: none;
@@ -239,17 +281,17 @@
     width: 5px;
     height: 5px;
     background: var(--text-clr-950);
-    border-radius: 50%;
+    border-radius: var(--round-full);
     transform: translate(-50%, -50%);
   }
   
   #sidebar #navbar .group .menu .submenu ul li a:hover {
-    color: var(--accent-clr-700);
+    color: var(--accent-clr-500);
     cursor: pointer;
   }
   
   #sidebar #navbar .group .menu .submenu ul li a:hover::before {
-    background: var(--accent-clr-700);
+    background: var(--accent-clr-500);
   }
   
   #sidebar #mode-toggler {
@@ -263,8 +305,8 @@
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    border: 1px solid var(--text-clr-100);
-    border-radius: 0.5rem;
+    border: 1px solid var(--text-clr-50);
+    border-radius: var(--round-lg);
     transform: translateX(-50%);
     overflow: hidden;
   }
@@ -278,20 +320,39 @@
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    color: var(--text-clr-200);
-    border-radius: 0.45rem;
+    border-radius: var(--round-md);
+  }
+
+  
+  #sidebar #mode-toggler #light-mode svg,
+  #sidebar #mode-toggler #system-default-mode svg,
+  #sidebar #mode-toggler #dark-mode svg {
+    width: 16px;
+    height: 16px;
+    object-fit: contain;
+    color: var(--text-clr-700);
   }
   
   #sidebar #mode-toggler #light-mode:hover,
   #sidebar #mode-toggler #system-default-mode:hover,
   #sidebar #mode-toggler #dark-mode:hover {
-    color: var(--text-clr-950);
     cursor: pointer;
+  }
+
+  #sidebar #mode-toggler #light-mode:hover svg,
+  #sidebar #mode-toggler #system-default-mode:hover svg,
+  #sidebar #mode-toggler #dark-mode:hover svg {
+    color: var(--text-clr-950);
   }
   
   #sidebar #mode-toggler #light-mode.active,
   #sidebar #mode-toggler #system-default-mode.active,
   #sidebar #mode-toggler #dark-mode.active {
-    background: var(--text-clr-100);
+    background: var(--text-clr-50);
+  }
+
+  #sidebar #mode-toggler #light-mode.active svg,
+  #sidebar #mode-toggler #system-default-mode.active svg,
+  #sidebar #mode-toggler #dark-mode.active svg {
     color: var(--text-clr-950);
   }

@@ -9,7 +9,8 @@ header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background-color: var(--bg-clr);
+    background-color: var(--bg-component);
+    border-bottom: 1px solid var(--text-clr-50);
 }
 
 header .left, header .right {
@@ -40,10 +41,14 @@ header .right #notification-icon {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: var(--text-clr-100);
+    background-color: var(--bg-icon);
     border-radius: var(--round-md);
     cursor: pointer;
     overflow: hidden;
+}
+
+header .right #profile {
+    border: 2px solid var(--bg-icon);
 }
 
 
@@ -53,9 +58,9 @@ header .right #profile img {
     object-fit: cover;
 }
 
-header .right #notification-icon i {
-    font-size: 1.131rem;
-    font-weight: 500;
-    text-align: center;
+header .right #notification-icon svg {
+    width: 16px;
+    height: 16px;
+    object-fit: contain;
     color: var(--text-clr-950);
 }
