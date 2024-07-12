@@ -1,45 +1,47 @@
 /* Card Container */
 #card-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 5px;
+  height: 105px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 5px;
 }
 
 #card-container .card {
-    padding: 0.75rem;
-    display: flex;
-    flex-direction: column;
-    gap: 3px;
-    background: var(--bg-component);
-    border-radius: var(--round-md);
-    /* transition: transform 0.3s; */
+  padding: 0.75rem;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  background: var(--bg-component);
+  border-radius: var(--round-md);
+  /* transition: transform 0.3s; */
 }
 
 #card-container .card .top {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 #card-container .card .top .icon {
-    width: 30px;
-    height: 30px;
-    background: var(--accent-clr-50);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 0.4rem;
+  width: 30px;
+  height: 30px;
+  background: var(--accent-clr-50);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.4rem;
 }
 
 #card-container .card .top .icon svg {
-    width: 16px;
+  width: 16px;
   height: 16px;
   object-fit: contain;
   color: var(--accent-clr-500);
 }
 
-#card-container .card .top button {
-    width: 24px;
+#card-container .card .top .btn {
+  width: 24px;
   height: 24px;
   display: flex;
   align-items: center;
@@ -48,31 +50,32 @@
   outline: none;
   border: none;
   cursor: pointer;
-  background: none;
+  background: none !important;
+  background-color: rgba(0, 0, 0, 0);
 }
 
-#card-container .card .top button svg {
-    width: 16px;
+#card-container .card .top .btn svg {
+  width: 16px;
   height: 16px;
   object-fit: contain;
 }
 
 #card-container .card .middle p {
-    font-size: 0.791rem;
+  font-size: 0.791rem;
   font-weight: 500;
   color: var(--text-clr-950);
   text-align: left;
 }
 
 #card-container .card .bottom p {
-    font-size: 1.131rem;
+  font-size: 1.131rem;
   font-weight: 700;
   color: var(--accent-clr-500);
   text-align: left;
 }
 
 @media (max-width: 600px) {
-    #card-container .card {
-        padding: 10px;
-    }
+  #card-container .card {
+    padding: 10px;
+  }
 }

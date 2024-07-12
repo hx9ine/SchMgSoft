@@ -14,16 +14,29 @@ header {
 }
 
 header .left, header .right {
+    height: 100%;
     display: flex;
-    align-items: center;
 }
 
 header .left {
+    flex-direction: column;
+    align-items: start;
     justify-content: left;
 }
 
 header .left h3 {
-    font-size: 1.131rem;
+    font-size: 0.731rem;
+    font-weight: 500;
+    text-align: left;
+    color: var(--text-clr-950);
+}
+
+header .left .breadcrumb {
+    display: flex;
+}
+
+header .left .breadcrumb p {
+    font-size: 0.531rem;
     font-weight: 500;
     text-align: left;
     color: var(--text-clr-950);
@@ -31,6 +44,7 @@ header .left h3 {
 
 header .right {
     gap: 8px;
+    align-items: center;
     justify-content: right;
 }
 

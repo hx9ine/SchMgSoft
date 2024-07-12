@@ -1,5 +1,4 @@
 // Bar Chart
-
 const barChart = document.getElementById('barChart');
 
 // Create a linear gradient
@@ -14,10 +13,12 @@ new Chart(barChart, {
     datasets: [
       {
         label: 'No. of Students',
-        data: [12, 19, 13, 11, 12, 9],
+        data: [12, 19, 13, 11, 17, 9],
         borderWidth: 0,
         fill: true,
         backgroundColor: gradient,
+        borderRadius: 7, // Apply a uniform border radius to all corners
+        borderSkipped: 'bottom', // Skip the bottom border to create a rounded top effect
       },
     ],
   },
@@ -26,16 +27,25 @@ new Chart(barChart, {
       legend: {
         display: false,
       },
+      datalabels: {
+        display: true,
+        color: '#2bc542',
+        align: 'bottom',
+      },
     },
     scales: {
       x: {
-        display: true, // Hide the x-axis labels
+        display: true,
         grid: {
           display: false,
         },
+        ticks: {
+          display: true,
+          color: '#2bc542',
+        },
       },
       y: {
-        display: false, // Hide the y-axis labels
+        display: false,
         beginAtZero: true,
         grid: {
           display: false,
@@ -43,4 +53,5 @@ new Chart(barChart, {
       },
     },
   },
+  plugins: [ChartDataLabels],
 });

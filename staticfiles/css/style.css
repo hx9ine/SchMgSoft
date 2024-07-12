@@ -77,13 +77,13 @@ body.light-mode {
   --text-clr-950: #000000;
 
   /* Background Colors */
-  --bg-clr:#eaeaea;
+  --bg-clr:#ffffff;
 
   /* Component Background Color */
-  --bg-component:#ffffff;
+  --bg-component:#eaeaea;
 
   /* Icon Background Color */
-  --bg-icon:#e1e1e1;
+  --bg-icon:#ffffff;
 }
 
 body.dark-mode {
@@ -102,10 +102,10 @@ body.dark-mode {
   --text-clr-950: #ffffff;
 
   /* Background Color */
-  --bg-clr:#171717;
+  --bg-clr:#000000;
 
   /* Component Background Color */
-  --bg-component:#000000;
+  --bg-component:#171717;
 
   /* Icon Background Color */
   --bg-icon:#3a3a3a;
@@ -125,7 +125,7 @@ p {
   position: absolute;
   top: 50px;
   right: 0;
-  padding: 5px 16px;
+  padding: 5px;
   width: calc(100% - 185px);
   height: calc(100% - 50px);
   background-color: var(--bg-clr);

@@ -2,7 +2,7 @@
 #mini-calendar {
   padding: 7px 15px;
   width: 100%;
-  height: fit-content;
+  height: 105px;
   display: flex;
   flex-direction: column;
   gap: 4px;

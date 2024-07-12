@@ -46,7 +46,7 @@ new Chart(lineChart, {
     },
     scales: {
       x: {
-        display: false,
+        display: true,
         grid: {
           display: false,
         },
