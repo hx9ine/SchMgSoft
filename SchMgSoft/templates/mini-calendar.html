@@ -1,0 +1,50 @@
+{% load static %}
+{% block content %}
+<div id="mini-calendar">
+  <div id="months-year">
+    <p id="month"></p>
+    <p id="year"></p>
+  </div>
+  <span></span>
+  <div id="days">
+    <div class="day">
+      <p style="color: #ff3358">S</p>
+    </div>
+    <div class="day">
+      <p>M</p>
+    </div>
+    <div class="day">
+      <p>T</p>
+    </div>
+    <div class="day">
+      <p>W</p>
+    </div>
+    <div class="day">
+      <p>T</p>
+    </div>
+    <div class="day">
+      <p>F</p>
+    </div>
+    <div class="day">
+      <p>S</p>
+    </div>
+  </div>
+  <div id="dates"></div>
+</div>
+
+<!-- JAVASCRIPT -->
+<script
+  src="{% static 'js/mini-calendar.js' %}"
+  type="text/javascript"
+></script>
+
+{% endblock %}
+
+<!-- CSS -->
+{% block extracss %}
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="{% static 'css/mini-calendar.css' %}"
+/>
+{% endblock %}

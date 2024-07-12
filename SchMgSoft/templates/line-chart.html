@@ -1,0 +1,17 @@
+{% load static %}
+{% block content %}
+<div id="line-chart">
+    <p>Admission trends</p>
+    <canvas id="lineChart" style="width: 100%; height: 270px"></canvas>
+</div>
+<!-- JAVASCRIPT -->
+ <!-- Chart.JS - JAVASCRIPT CDN LINK -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
+<script src="{% static 'js/line-chart.js' %}" type="text/javascript"></script>
+{% endblock %}
+
+<!-- CSS -->
+{% block extracss %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/line-chart.css' %}" />
+{% endblock %}

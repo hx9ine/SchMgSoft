@@ -1,0 +1,19 @@
+/* Bar Chart Styles */
+#bar-chart {
+    padding: 0.75rem;
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: start;
+    background-color: var(--bg-component);
+    border-radius: var(--round-md);
+}
+
+#bar-chart p {
+    font-size: 1.031rem;
+    font-weight: 500;
+    text-align: left;
+    color: var(--text-clr-950);
+}

@@ -62,5 +62,5 @@ header .right #notification-icon svg {
     width: 16px;
     height: 16px;
     object-fit: contain;
-    color: var(--text-clr-700);
+    color: var(--text-clr-950);
 }

@@ -172,7 +172,8 @@
   #sidebar #navbar .group .menu .menu-item:hover .left p,
   #sidebar #navbar .group a:active .left p,
   #sidebar #navbar .group .menu .menu-item:active .left p {
-    color: var(--text-clr-950);
+    /* color: var(--text-clr-950); */
+    color: #fff;
   }
 
   /* #sidebar #navbar .group a .left i,
@@ -194,7 +195,8 @@
   #sidebar #navbar .group .menu .menu-item:hover .left svg, 
   #sidebar #navbar .group a:active .left svg,
   #sidebar #navbar .group .menu .menu-item:active .left svg{
-    color: var(--text-clr-950);
+    /* color: var(--text-clr-950); */
+    color: #fff;
   }
   
   #sidebar #navbar .group .menu {
@@ -227,7 +229,8 @@
   
   #sidebar #navbar .group .menu .menu-item:hover .right .dropdown .line,
   #sidebar #navbar .group .menu .menu-item:active .right .dropdown .line  {
-    background-color: var(--text-clr-950);
+    /* background-color: var(--text-clr-950); */
+    background-color: #fff;
   }
   
   #sidebar #navbar .group .menu .menu-item .right .dropdown .horizontal {
