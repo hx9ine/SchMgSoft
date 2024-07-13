@@ -1,5 +1,8 @@
 body {
-  background-image: radial-gradient(var(--accent-clr-500) 1px, #fff 1px);
+  background-image: radial-gradient(
+    var(--accent-clr-500) 1px,
+    var(--bg-clr) 1px
+  );
   background-size: 40px 40px;
 }
 /* Login Page Styles */
@@ -151,7 +154,7 @@ body {
   background: none;
   font-size: 0.731rem;
   font-weight: 500;
-  /* color: var(--text-clr-300); */
+  color: var(--text-clr-950);
   text-align: left;
   border-left: 1px solid var(--text-clr-100);
 }
@@ -258,7 +261,8 @@ body {
   .form-container
   form
   .input-group
-  #password-view-toggler svg#eye-open {
+  #password-view-toggler
+  svg#eye-open {
   display: block;
 }
 
@@ -269,7 +273,8 @@ body {
   .form-container
   form
   .input-group
-  #password-view-toggler svg#eye-closed {
+  #password-view-toggler
+  svg#eye-closed {
   display: none;
 }
 
@@ -280,7 +285,8 @@ body {
   .form-container
   form
   .input-group
-  #password-view-toggler.show svg#eye-open {
+  #password-view-toggler.show
+  svg#eye-open {
   display: none;
 }
 
@@ -291,7 +297,8 @@ body {
   .form-container
   form
   .input-group
-  #password-view-toggler.show svg#eye-closed {
+  #password-view-toggler.show
+  svg#eye-closed {
   display: block;
 }
 

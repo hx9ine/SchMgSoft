@@ -13,3 +13,28 @@ function togglePasswordView() {
     password.textContent = 'Show';
   }
 }
+
+// Light Mode || Dark Mode
+const body = document.body;
+
+let isSystemDefault = true;
+
+const updateMode = (mode, isSystemDefault) => {
+  body.classList.toggle('dark-mode', mode === 'dark-mode');
+};
+
+const toggleMode = (mode, isSystemDefault) => {
+  if (mode === 'system-default') {
+    const isDarkMode =
+      window.matchMedia &&
+      window.matchMedia('(prefers-color-scheme: dark)').matches;
+    mode = isDarkMode ? 'dark-mode' : 'light-mode';
+  }
+  updateMode(mode, isSystemDefault);
+};
+
+// Initial mode setup
+const isDarkMode =
+  window.matchMedia &&
+  window.matchMedia('(prefers-color-scheme: dark)').matches;
+toggleMode(isDarkMode ? 'dark-mode' : 'light-mode', true);
