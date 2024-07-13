@@ -1,0 +1,326 @@
+body {
+    background-image: radial-gradient(var(--accent-clr-500) 1px, #fff 1px);
+  background-size: 40px 40px;
+}
+/* Login Page Styles */
+#login-signup-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 60%;
+    height: 55%;
+    display: block;
+    transform: translate(-50%, -50%);
+    border-radius: var(--round-2xl);
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 50px;
+    overflow: hidden;
+  }
+  
+  #login-signup-container .wrapper {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    background: var(--bg-component);
+  }
+  
+  #login-signup-container .wrapper .image-section {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  #login-signup-container .wrapper .image-section img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  #login-signup-container .wrapper .form-section {
+    padding: 5% 10%;
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  #login-signup-container .wrapper .form-section .top h3 {
+    font-size: 1.151rem;
+    font-weight: 700;
+    text-align: center;
+    color: var(--accent-clr-500);
+  }
+  
+  #login-signup-container .wrapper .form-section .bottom {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  #login-signup-container .wrapper .form-section .bottom h3 {
+    font-size: 0.971rem;
+    font-weight: 500;
+    text-align: center;
+    color: var(--text-clr-950);
+  }
+  
+  #login-signup-container .wrapper .form-section .bottom p {
+    font-size: 0.651rem;
+    font-weight: 300;
+    text-align: center;
+    color: var(--text-clr-700);
+    pointer-events: none;
+  }
+  
+  #login-signup-container .wrapper .form-section .bottom .form-container {
+    width: 100%;
+    display: block;
+  }
+  
+  #login-signup-container .wrapper .form-section .bottom .form-container form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    gap: 1rem;
+  }
+  
+  #login-signup-container
+    .wrapper
+    .form-section
+    .bottom
+    .form-container
+    form
+    .input-group {
+    position: relative;
+    padding: 5px;
+    width: 100%;
+    height: 36px;
+    display: inline-flex;
+    border: 1px solid var(--text-clr-100);
+    border-radius: var(--round-md);
+  }
+  
+  #login-signup-container
+    .wrapper
+    .form-section
+    .bottom
+    .form-container
+    form
+    .input-group
+    .icon {
+    width: 12%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  #login-signup-container
+    .wrapper
+    .form-section
+    .bottom
+    .form-container
+    form
+    .input-group
+    .icon
+    svg {
+    width: 16px;
+    height: 16px;
+    object-fit: contain;
+    color: var(--text-clr-300);
+  }
+  
+  #login-signup-container
+    .wrapper
+    .form-section
+    .bottom
+    .form-container
+    form
+    .input-group
+    input {
+    padding: 0 9px;
+    width: 76%;
+    border: none;
+    outline: none;
+    background: none;
+    border-left: 1px solid var(--text-clr-100);
+  }
+  
+  #login-signup-container
+    .wrapper
+    .form-section
+    .bottom
+    .form-container
+    form
+    .input-group
+    .placeholder {
+    position: absolute;
+    top: 50%;
+    left: 15%;
+    padding: 2px 5px;
+    width: fit-content;
+    height: fit-content;
+    font-size: 0.631rem;
+    font-weight: 500;
+    color: var(--text-clr-300);
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: translateY(-50%);
+    transition: var(--transition-time) ease-out;
+    pointer-events: none;
+  }
+
+  #login-signup-container
+    .wrapper
+    .form-section
+    .bottom
+    .form-container
+    form
+    .input-group
+    input:focus {
+        caret-color: var(--accent-clr-500);
+    }
+  
+  #login-signup-container
+    .wrapper
+    .form-section
+    .bottom
+    .form-container
+    form
+    .input-group
+    input:focus
+    + .placeholder,
+  #login-signup-container
+    .wrapper
+    .form-section
+    .bottom
+    .form-container
+    form
+    .input-group
+    input:not(:placeholder-shown)
+    + .placeholder {
+    top: 0%;
+    background: var(--bg-component);
+    font-size: 0.531rem;
+    color: var(--accent-clr-500);
+  }
+  
+  #login-signup-container
+    .wrapper
+    .form-section
+    .bottom
+    .form-container
+    form
+    .input-group
+    button {
+    width: 12%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    outline: none;
+    border: none;
+    background: none;
+    cursor: pointer;
+  }
+
+  #login-signup-container
+    .wrapper
+    .form-section
+    .bottom
+    .form-container
+    form
+    .input-group
+    button svg {
+        width: 16px;
+        height: 16px;
+        object-fit: contain;
+        color: var(--text-clr-300);
+    }
+
+    #login-signup-container
+    .wrapper
+    .form-section
+    .bottom
+    .form-container
+    form
+    .input-group
+    button #eye-closed {
+        display: block;
+    }
+
+    #login-signup-container
+    .wrapper
+    .form-section
+    .bottom
+    .form-container
+    form
+    .input-group
+    button #eye-open {
+        display: none;
+    }
+  
+  #login-signup-container
+    .wrapper
+    .form-section
+    .bottom
+    .form-container
+    form
+    button[type="submit"] {
+    width: 100%;
+    height: 36px;
+    background: var(--accent-clr-500);
+    color: var(--text-clr-50);
+    text-align: center;
+    font-size: 0.751rem;
+    font-weight: 600;
+    outline: none;
+    border: none;
+    border-radius: var(--round-md);
+    transition: background var(--transition-time) ease-out;
+    cursor: pointer;
+  }
+
+  #login-signup-container
+    .wrapper
+    .form-section
+    .bottom
+    .form-container
+    form
+    button[type="submit"]:hover {
+        background: var(--accent-clr-600);
+    }
+  
+  #login-signup-container
+    .wrapper
+    .form-section
+    .bottom
+    .form-container
+    form
+    span {
+    font-size: 0.691rem;
+    font-weight: 400;
+    text-align: center;
+    color: var(--text-clr-950);
+  }
+  
+  #login-signup-container
+    .wrapper
+    .form-section
+    .bottom
+    .form-container
+    form
+    span
+    a {
+    text-decoration: none;
+    color: var(--accent-clr-500);
+  }
+  

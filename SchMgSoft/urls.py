@@ -24,4 +24,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('base/', views.base, name='base'),
     path('', include('apps.home.urls')),
+
+    path('login/', views.login, name='login'),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

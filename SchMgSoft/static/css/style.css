@@ -80,13 +80,13 @@ body.light-mode {
   --text-clr-950: #000000;
 
   /* Background Colors */
-  --bg-clr: #ffffff;
+  --bg-clr: #f4f4f4;
 
   /* Component Background Color */
-  --bg-component: #eaeaea;
+  --bg-component: #ffffff;
 
   /* Icon Background Color */
-  --bg-icon: #ffffff;
+  --bg-icon: #f3f3f3;
 
   /* Blurred Component Background Color */
   --bg-blur: rgba(255, 255, 255, 0.3);
@@ -108,10 +108,10 @@ body.dark-mode {
   --text-clr-950: #ffffff;
 
   /* Background Color */
-  --bg-clr: #000000;
+  --bg-clr: #171717;
 
   /* Component Background Color */
-  --bg-component: #171717;
+  --bg-component: #000000;
 
   /* Icon Background Color */
   --bg-icon: #3a3a3a;

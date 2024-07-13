@@ -27,7 +27,7 @@ new Chart(lineChart, {
         data: [2, 3, 5, 3, 6, 4, 5, 2, 4, 7],
         borderWidth: 2,
         borderColor: '#2bc542',
-        tension: 0.3,
+        tension: 0,
         fill: true,
         backgroundColor: gradient,
       },
