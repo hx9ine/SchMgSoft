@@ -1,80 +1,241 @@
 /* Header Styles */
 header {
-    position: absolute;
-    top: 0;
-    right: 0;
-    padding: 9px 16px;
-    width: calc(100% - 185px);
-    height: 50px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background-color: var(--bg-component);
-    border-bottom: 1px solid var(--text-clr-50);
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 9px 16px;
+  width: calc(100% - 185px);
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--bg-component);
+  border-bottom: 1px solid var(--text-clr-50);
 }
 
-header .left, header .right {
-    height: 100%;
-    display: flex;
+header #profile-modal {
+  position: absolute;
+  top: 50px;
+  right: 16px;
+  padding: 16px;
+  min-width: 250px;
+  height: fit-content;
+  display: none;
+  /* background: var(--bg-clr); */
+  background: var(--bg-blur);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-radius: var(--round-md);
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px,
+    rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+  /* transition: display var(--transition-time) ease-out; */
+  z-index: 999;
+}
+
+header #profile-modal.active {
+  display: block;
+  animation: modal-appear var(--animation-time) linear forwards;
+}
+
+header #profile-modal #info {
+  padding-bottom: 16px;
+  /* position: absolute;
+  top: -16px;
+  left: 50%; */
+  /* padding: 16px; */
+  width: 100%;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: left;
+  /* background: var(--bg-clr);
+  border-radius: var(--round-md);
+  transform: translateX(-50%); */
+  border-bottom: 1px solid var(--text-clr-100);
+}
+
+header #profile-modal #info #profile-photo {
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--round-md);
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 8px 24px;
+  overflow: hidden;
+}
+
+header #profile-modal #info #profile-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+header #profile-modal #info #desc {
+  display: flex;
+  flex-direction: column;
+  /*   align-items: center; */
+  justify-content: center;
+}
+
+header #profile-modal #info #desc h3 {
+  font-size: 0.731rem;
+  font-weight: 600;
+  text-align: left;
+  color: var(--text-clr-950);
+}
+
+header #profile-modal #info #desc p {
+  font-size: 0.531rem;
+  font-weight: 500;
+  text-align: left;
+  color: var(--accent-clr-500);
+}
+
+header #profile-modal #links {
+  padding-top: 16px;
+  width: 100%;
+}
+
+header #profile-modal #links ul {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: start;
+  justify-content: center;
+  list-style-type: none;
+}
+
+header #profile-modal #links ul li {
+  text-decoration: none;
+}
+
+header #profile-modal #links ul li a {
+  text-decoration: none;
+  width: 100%;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: left;
+  color: var(--text-clr-950);
+}
+
+header #profile-modal #links ul li a:hover {
+  color: var(--accent-clr-500);
+  transition: var(--transition-time) ease-in;
+  cursor: pointer;
+}
+
+header #profile-modal #links ul li:last-child a {
+  color: #f00;
+}
+
+header #profile-modal #links ul li a svg {
+  width: 16px;
+  height: 16px;
+  object-fit: contain;
+}
+
+header #profile-modal #links ul li a p {
+  font-size: 0.731rem;
+  font-weight: 500;
+  text-align: left;
+}
+
+header #profile-modal #links ul span {
+  /*   margin: 8px auto; */
+  width: 100%;
+  height: 1px;
+  background: var(--text-clr-100);
+}
+
+header .left,
+header .right {
+  height: 100%;
+  display: flex;
 }
 
 header .left {
-    flex-direction: column;
-    align-items: start;
-    justify-content: left;
+  flex-direction: column;
+  align-items: start;
+  justify-content: left;
 }
 
 header .left h3 {
-    font-size: 0.731rem;
-    font-weight: 500;
-    text-align: left;
-    color: var(--text-clr-950);
+  font-size: 0.731rem;
+  font-weight: 500;
+  text-align: left;
+  color: var(--text-clr-950);
 }
 
 header .left .breadcrumb {
-    display: flex;
+  display: flex;
 }
 
 header .left .breadcrumb p {
-    font-size: 0.531rem;
-    font-weight: 500;
-    text-align: left;
-    color: var(--text-clr-950);
+  font-size: 0.531rem;
+  font-weight: 500;
+  text-align: left;
+  color: var(--text-clr-950);
 }
 
 header .right {
-    gap: 8px;
-    align-items: center;
-    justify-content: right;
+  gap: 8px;
+  align-items: center;
+  justify-content: right;
 }
 
 header .right #profile,
 header .right #notification-icon {
-    width: 32px;
-    height: 32px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: var(--bg-icon);
-    border-radius: var(--round-md);
-    cursor: pointer;
-    overflow: hidden;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--bg-icon);
+  border-radius: var(--round-md);
+  cursor: pointer;
+  overflow: hidden;
 }
 
 header .right #profile {
-    border: 2px solid var(--bg-icon);
+  /* position: relative; */
+  border: 2px solid var(--bg-icon);
 }
 
-
 header .right #profile img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 header .right #notification-icon svg {
-    width: 16px;
-    height: 16px;
-    object-fit: contain;
-    color: var(--text-clr-950);
+  width: 16px;
+  height: 16px;
+  object-fit: contain;
+  color: var(--text-clr-950);
+}
+
+/* Animation */
+@keyframes modal-appear {
+  from {
+    top: 40px;
+    opacity: 0;
+  }
+  to {
+    top: 50px;
+    opacity: 1;
+  }
+}
+
+@keyframes modal-disappear {
+  from {
+    top: 50px;
+    opacity: 1;
+  }
+  to {
+    top: 45px;
+    opacity: 0;
+  }
 }

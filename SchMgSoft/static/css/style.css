@@ -28,6 +28,9 @@
 
   /* Transition Time */
   --transition-time: 0.15s;
+
+  /* Animation Time */
+  --animation-time: 0.3s;
 }
 
 /* Resetting Default HTML */
@@ -37,7 +40,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Open Sans", sans-serif;
+  font-family: 'Open Sans', sans-serif;
   font-synthesis: none;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -53,7 +56,7 @@ body {
   padding: 0;
   min-width: 100%;
   min-height: 100vh;
-  font-family: "Open Sans", sans-serif;
+  font-family: 'Open Sans', sans-serif;
   font-synthesis: none;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -77,13 +80,16 @@ body.light-mode {
   --text-clr-950: #000000;
 
   /* Background Colors */
-  --bg-clr:#ffffff;
+  --bg-clr: #ffffff;
 
   /* Component Background Color */
-  --bg-component:#eaeaea;
+  --bg-component: #eaeaea;
 
   /* Icon Background Color */
-  --bg-icon:#ffffff;
+  --bg-icon: #ffffff;
+
+  /* Blurred Component Background Color */
+  --bg-blur: rgba(255, 255, 255, 0.3);
 }
 
 body.dark-mode {
@@ -102,13 +108,16 @@ body.dark-mode {
   --text-clr-950: #ffffff;
 
   /* Background Color */
-  --bg-clr:#000000;
+  --bg-clr: #000000;
 
   /* Component Background Color */
-  --bg-component:#171717;
+  --bg-component: #171717;
 
   /* Icon Background Color */
-  --bg-icon:#3a3a3a;
+  --bg-icon: #3a3a3a;
+
+  /* Blurred Component Background Color */
+  --bg-blur: rgba(0, 0, 0, 0.3);
 }
 
 a,
@@ -118,7 +127,6 @@ p {
   text-decoration: none;
   cursor: pointer;
 }
-
 
 /* MAIN CONTENT */
 #main-content {

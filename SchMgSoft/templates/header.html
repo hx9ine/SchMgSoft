@@ -5,7 +5,7 @@
   <div class="left">
     <h3>Dashboard</h3>
     <div class="breadcrumb">
-        <p>Home &#10095; Dashboard</p>
+      <p>Home &#10095; Dashboard</p>
     </div>
   </div>
   <div class="right">
@@ -36,7 +36,109 @@
       />
     </div>
   </div>
+
+  <!-- Profile Modal -->
+  <div id="profile-modal">
+    <div id="info">
+      <div id="profile-photo">
+        <img
+          src="https://images.unsplash.com/photo-1718785461588-4b0b4b4ef37e?crop=entropy&cs=srgb&fm=jpg&ixid=M3wzMjM4NDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE3MjA4NjEyMjd8&ixlib=rb-4.0.3&q=85"
+          alt="Profile Photo."
+        />
+      </div>
+      <div id="desc">
+        <h3>Hasan Al Saeed</h3>
+        <p>Admin</p>
+      </div>
+    </div>
+    <div id="links">
+      <ul>
+        <li>
+          <a href="#">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="icon icon-tabler icons-tabler-outline icon-tabler-user-edit"
+            >
+              <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+              <path d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0" />
+              <path d="M6 21v-2a4 4 0 0 1 4 -4h3.5" />
+              <path
+                d="M18.42 15.61a2.1 2.1 0 0 1 2.97 2.97l-3.39 3.42h-3v-3l3.42 -3.39z"
+              />
+            </svg>
+            <p>Edit profile</p>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="icon icon-tabler icons-tabler-outline icon-tabler-brand-wechat"
+            >
+              <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+              <path
+                d="M16.5 10c3.038 0 5.5 2.015 5.5 4.5c0 1.397 -.778 2.645 -2 3.47l0 2.03l-1.964 -1.178a6.649 6.649 0 0 1 -1.536 .178c-3.038 0 -5.5 -2.015 -5.5 -4.5s2.462 -4.5 5.5 -4.5z"
+              />
+              <path
+                d="M11.197 15.698c-.69 .196 -1.43 .302 -2.197 .302a8.008 8.008 0 0 1 -2.612 -.432l-2.388 1.432v-2.801c-1.237 -1.082 -2 -2.564 -2 -4.199c0 -3.314 3.134 -6 7 -6c3.782 0 6.863 2.57 7 5.785l0 .233"
+              />
+              <path d="M10 8h.01" />
+              <path d="M7 8h.01" />
+              <path d="M15 14h.01" />
+              <path d="M18 14h.01" />
+            </svg>
+            <p>Support</p>
+          </a>
+        </li>
+        <span></span>
+        <li>
+          <a href="#">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="icon icon-tabler icons-tabler-outline icon-tabler-logout"
+            >
+              <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+              <path
+                d="M14 8v-2a2 2 0 0 0 -2 -2h-7a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h7a2 2 0 0 0 2 -2v-2"
+              />
+              <path d="M9 12h12l-3 -3" />
+              <path d="M18 15l3 -3" />
+            </svg>
+            <p>Logout</p>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
 </header>
+
+
+<!-- JAVASCRIPT -->
+<script src="{% static 'js/header.js' %}" type="text/javascript"></script>
 {% endblock %}
 
 <!-- CSS -->
