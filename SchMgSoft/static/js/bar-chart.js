@@ -3,7 +3,7 @@ const barChart = document.getElementById('barChart');
 
 // Create a linear gradient
 var gradient = barChart.getContext('2d').createLinearGradient(0, 0, 0, 400);
-gradient.addColorStop(0, '#8bea98');
+gradient.addColorStop(0, '#2470ff');
 gradient.addColorStop(0.7, 'rgba(255, 255, 255, 0)');
 
 new Chart(barChart, {
@@ -29,7 +29,7 @@ new Chart(barChart, {
       },
       datalabels: {
         display: true,
-        color: '#2bc542',
+        color: '#2470ff',
         align: 'bottom',
       },
     },
@@ -41,7 +41,7 @@ new Chart(barChart, {
         },
         ticks: {
           display: true,
-          color: '#2bc542',
+          color: '#2470ff',
         },
       },
       y: {

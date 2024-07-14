@@ -4,17 +4,17 @@
 /* GLOBAL VARIABLES */
 :root {
   /* Colors */
-  --accent-clr-50: #f1fcf2;
-  --accent-clr-100: #ddfbe0;
-  --accent-clr-200: #bef4c5;
-  --accent-clr-300: #8bea98;
-  --accent-clr-400: #51d765;
-  --accent-clr-500: #2bc542;
-  --accent-clr-600: #1c9d30;
-  --accent-clr-700: #1a7b29;
-  --accent-clr-800: #1a6125;
-  --accent-clr-900: #175022;
-  --accent-clr-950: #072c0e;
+  --accent-clr-50: #eef5ff;
+  --accent-clr-100: #d9e9ff;
+  --accent-clr-200: #bcd9ff;
+  --accent-clr-300: #8ec1ff;
+  --accent-clr-400: #599fff;
+  --accent-clr-500: #2470ff;
+  --accent-clr-600: #1b58f5;
+  --accent-clr-700: #1443e1;
+  --accent-clr-800: #1737b6;
+  --accent-clr-900: #19338f;
+  --accent-clr-950: #142157;
 
   /* Border Radius */
   --round-sm: 0.125rem;
@@ -120,12 +120,22 @@ body.dark-mode {
   --bg-blur: rgba(0, 0, 0, 0.3);
 }
 
-a,
-p {
+a {
   padding: 0;
   margin: 0;
   text-decoration: none;
   cursor: pointer;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  padding: 0;
+  margin: 0;
 }
 
 /* MAIN CONTENT */

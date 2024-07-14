@@ -30,10 +30,14 @@
       </svg>
     </div>
     <div id="profile">
+      {% if user.profile_pic == "" %}
       <img
         src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?crop=entropy&cs=srgb&fm=jpg&ixid=M3wzMjM4NDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE3MjA2ODA4NTB8&ixlib=rb-4.0.3&q=85"
         alt="Profile Photo."
       />
+      {% else %}
+      <img src="{{ user.profile_pic.url }}" alt="Profile Photo." />
+      {% endif %}
     </div>
   </div>
 
@@ -41,20 +45,30 @@
   <div id="profile-modal">
     <div id="info">
       <div id="profile-photo">
+        {% if not user.profile_pic %}
         <img
           src="https://images.unsplash.com/photo-1718785461588-4b0b4b4ef37e?crop=entropy&cs=srgb&fm=jpg&ixid=M3wzMjM4NDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE3MjA4NjEyMjd8&ixlib=rb-4.0.3&q=85"
           alt="Profile Photo."
         />
+        {% else %}
+        <img src="{{ user.profile_pic.url }}" alt="Profile Photo." />
+        {% endif %}
       </div>
       <div id="desc">
-        <h3>Hasan Al Saeed</h3>
+        <h3>{{ user.first_name }} {{ user.last_name }}</h3>
+        {% if user.user_type == '1' %}
         <p>Admin</p>
+        {% elif user.user_type == '2' %}
+        <p>Teacher</p>
+        {% else %}
+        <p>Student</p>
+        {% endif %}
       </div>
     </div>
     <div id="links">
       <ul>
         <li>
-          <a href="#">
+          <a href="{% url 'profile' %}">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="24"
@@ -108,7 +122,7 @@
         </li>
         <span></span>
         <li>
-          <a href="#">
+          <a href="{% url 'logout' %}">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="24"
@@ -135,7 +149,6 @@
     </div>
   </div>
 </header>
-
 
 <!-- JAVASCRIPT -->
 <script src="{% static 'js/header.js' %}" type="text/javascript"></script>

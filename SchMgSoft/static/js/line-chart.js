@@ -3,7 +3,7 @@ const lineChart = document.getElementById('lineChart');
 
 // Create a linear gradient
 var gradient = lineChart.getContext('2d').createLinearGradient(0, 0, 0, 400);
-gradient.addColorStop(0, '#8bea98');
+gradient.addColorStop(0, '#2470ff');
 gradient.addColorStop(0.7, 'rgba(255, 255, 255, 0)');
 
 new Chart(lineChart, {
@@ -26,7 +26,7 @@ new Chart(lineChart, {
         label: 'Total Students',
         data: [2, 3, 5, 3, 6, 4, 5, 2, 4, 7],
         borderWidth: 2,
-        borderColor: '#2bc542',
+        borderColor: '#2470ff',
         tension: 0,
         fill: true,
         backgroundColor: gradient,
@@ -40,7 +40,7 @@ new Chart(lineChart, {
       },
       datalabels: {
         display: true,
-        color: '#2bc542',
+        color: '#2470ff',
         align: 'top',
       },
     },
@@ -52,7 +52,7 @@ new Chart(lineChart, {
         },
         ticks: {
           display: true,
-          color: '#2bc542',
+          color: '#2470ff',
         },
       },
       y: {

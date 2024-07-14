@@ -3,6 +3,7 @@
 <link rel="stylesheet" href="{% static 'css/home/home.css' %}" />
 {% endblock htmlhead %} {% block content %}
 <div id="dashboard">
+  {% if user.user_type == '1' %}
   <div id="dynamic">
     <!-- Cards Container -->
     {% include "cards.html" %}
@@ -15,5 +16,10 @@
     <!-- Bar Chart -->
     {% include "bar-chart.html" %}
   </div>
+  {% elif user.user_type == '2' %}
+  <h1>This is Teacher's Home page.</h1>
+  {% else %}
+  <h1>This is Student's Home page.</h1>
+  {% endif %}
 </div>
 {% endblock %}

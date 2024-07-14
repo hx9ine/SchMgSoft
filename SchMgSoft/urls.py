@@ -23,7 +23,21 @@ from . import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('base/', views.base, name='base'),
-    path('', include('apps.home.urls')),
 
-    path('login/', views.login, name='login'),
+    # Login Path
+    path('', views.LOGIN, name='login'),
+    path('logged-in/', views.logged_in, name='logged-in'),
+
+    # Logout Path
+    path('logout/', views.LOGOUT, name='logout'),
+
+    # Home App Paths
+    path('home/', include('apps.home.urls')),
+
+    # Users App Paths
+    path('profile/', include('apps.users.urls')),
+
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

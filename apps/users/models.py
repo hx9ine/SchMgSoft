@@ -10,6 +10,6 @@ class CustomUser(AbstractUser):
     )
 
     user_type = models.CharField(choices=USER, max_length=20, default=1)
-    profile_pic = models.ImageField(upload_to='media/profile_pic')
+    profile_pic = models.ImageField(upload_to='profile_pic/', null=True, blank=True)
     city = models.CharField(max_length=200, blank=True)
     country = models.CharField(max_length=200, blank=True)
