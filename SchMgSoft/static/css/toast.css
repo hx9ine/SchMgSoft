@@ -10,6 +10,8 @@
     rgba(0, 0, 0, 0.05),
     rgba(0, 0, 0, 0.5)
   );
+  backdrop-filter: blur(24px);
+  --webkit-backdrop-filter: blur(24px);
   display: block;
 }
 
@@ -18,14 +20,14 @@
   top: 50%;
   left: 50%;
   padding: 16px;
-  width: 300px;
+  width: 350px;
   height: 200px;
   display: flex;
   flex-direction: column;
   gap: 24px;
   align-items: center;
   justify-content: center;
-  background: rgba(255, 255, 255, 0.15);
+  background: var(--bg-blur);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border-radius: var(--round-lg);

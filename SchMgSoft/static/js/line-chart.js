@@ -40,7 +40,7 @@ const createLineChart = () => {
           data: [2, 3, 5, 3, 6, 4, 5, 2, 4, 7],
           borderWidth: 2,
           borderColor: '#7063ff',
-          tension: 0,
+          tension: 0.3,
           fill: true,
           backgroundColor: gradient,
         },
