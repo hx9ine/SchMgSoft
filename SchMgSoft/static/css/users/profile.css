@@ -49,7 +49,7 @@
   padding: 0.5rem 1.5rem;
   width: 70px;
   height: 70px;
-  background-color: var(--accent-clr-500);
+  background-color: var(--accent-clr-700);
   border-radius: var(--round-full);
   filter: blur(24px);
   opacity: 0.45;
@@ -157,15 +157,15 @@
 }
 
 #profile form #form-content .form-group input:focus {
-  border-color: var(--accent-clr-500);
-  caret-color: var(--accent-clr-500);
+  border-color: var(--accent-clr-700);
+  caret-color: var(--accent-clr-700);
 }
 
 #profile form button[type='submit'] {
   padding: 10px 20px;
   outline: none;
   border: none;
-  background: var(--accent-clr-500);
+  background: var(--accent-clr-700);
   font-size: 0.731rem;
   font-weight: 600;
   text-align: center;

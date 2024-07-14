@@ -89,7 +89,7 @@ header #profile-modal #info #desc p {
   font-size: 0.531rem;
   font-weight: 500;
   text-align: left;
-  color: var(--accent-clr-500);
+  color: var(--accent-clr-700);
 }
 
 header #profile-modal #links {
@@ -122,7 +122,7 @@ header #profile-modal #links ul li a {
 }
 
 header #profile-modal #links ul li a:hover {
-  color: var(--accent-clr-500);
+  color: var(--accent-clr-700);
   transition: var(--transition-time) ease-in;
   cursor: pointer;
 }
@@ -193,16 +193,16 @@ header .right #notification-icon {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: var(--bg-icon);
-  border-radius: var(--round-md);
+  /* background-color: var(--bg-icon); */
+  border: 1px solid var(--text-clr-100);
+  border-radius: var(--round-lg);
   cursor: pointer;
   overflow: hidden;
 }
 
-header .right #profile {
-  /* position: relative; */
+/* header .right #profile {
   border: 2px solid var(--bg-icon);
-}
+} */
 
 header .right #profile img {
   width: 100%;

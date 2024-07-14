@@ -1,74 +1,79 @@
-const menus = document.querySelectorAll(".menu");
+const menus = document.querySelectorAll('.menu');
 
-menus.forEach((menu) => {
-  const menuItem = menu.querySelector(".menu-item");
-  const submenu = menu.querySelector(".submenu");
-  const dropdown = menu.querySelector(".dropdown");
-  menuItem.addEventListener("click", () => {
+menus.forEach(menu => {
+  const menuItem = menu.querySelector('.menu-item');
+  const submenu = menu.querySelector('.submenu');
+  const dropdown = menu.querySelector('.dropdown');
+  menuItem.addEventListener('click', () => {
     // Collapse all submenus except the one inside the clicked menu
-    menus.forEach((otherMenu) => {
-      const otherSubmenu = otherMenu.querySelector(".submenu");
-      const otherDropdown = otherMenu.querySelector(".dropdown");
+    menus.forEach(otherMenu => {
+      const otherSubmenu = otherMenu.querySelector('.submenu');
+      const otherDropdown = otherMenu.querySelector('.dropdown');
       if (otherSubmenu !== submenu) {
         otherSubmenu.style.maxHeight = null;
-        otherDropdown.classList.remove("expand");
+        otherDropdown.classList.remove('expand');
       }
     });
 
     // Toggle expand/collapse for the clicked menu
     if (submenu.style.maxHeight) {
       submenu.style.maxHeight = null;
-      dropdown.classList.remove("expand");
+      dropdown.classList.remove('expand');
     } else {
-      submenu.style.maxHeight = submenu.scrollHeight + "px";
-      dropdown.classList.add("expand");
+      submenu.style.maxHeight = submenu.scrollHeight + 'px';
+      dropdown.classList.add('expand');
     }
   });
 });
 
 // Light Mode || Dark Mode
 const body = document.body;
-const lightModeIcon = document.querySelector("#light-mode");
-const systemDefaultModeIcon = document.querySelector("#system-default-mode");
-const darkModeIcon = document.querySelector("#dark-mode");
+const lightModeIcon = document.querySelector('#light-mode');
+const systemDefaultModeIcon = document.querySelector('#system-default-mode');
+const darkModeIcon = document.querySelector('#dark-mode');
 
 let isSystemDefault = true;
 
 const updateMode = (mode, isSystemDefault) => {
-  body.classList.toggle("dark-mode", mode === "dark-mode");
+  body.classList.toggle('dark-mode', mode === 'dark-mode');
   lightModeIcon.classList.toggle(
-    "active",
-    mode === "light-mode" && !isSystemDefault
+    'active',
+    mode === 'light-mode' && !isSystemDefault
   );
-  darkModeIcon.classList.toggle("active", mode === "dark-mode" && !isSystemDefault);
+  darkModeIcon.classList.toggle(
+    'active',
+    mode === 'dark-mode' && !isSystemDefault
+  );
   systemDefaultModeIcon.classList.toggle(
-    "active",
-    mode === "system-default" || isSystemDefault
+    'active',
+    mode === 'system-default' || isSystemDefault
   );
+  updateLineChartGradient();
+  updateBarChartGradient(); // Update the chart gradient when mode changes
 };
 
 const toggleMode = (mode, isSystemDefault) => {
-  if (mode === "system-default") {
+  if (mode === 'system-default') {
     const isDarkMode =
       window.matchMedia &&
-      window.matchMedia("(prefers-color-scheme: dark)").matches;
-    mode = isDarkMode ? "dark-mode" : "light-mode";
+      window.matchMedia('(prefers-color-scheme: dark)').matches;
+    mode = isDarkMode ? 'dark-mode' : 'light-mode';
   }
   updateMode(mode, isSystemDefault);
 };
 
-lightModeIcon.addEventListener("click", () => toggleMode("light-mode", false));
-systemDefaultModeIcon.addEventListener("click", () => {
+lightModeIcon.addEventListener('click', () => toggleMode('light-mode', false));
+systemDefaultModeIcon.addEventListener('click', () => {
   const isDarkMode =
     window.matchMedia &&
-    window.matchMedia("(prefers-color-scheme: dark)").matches;
+    window.matchMedia('(prefers-color-scheme: dark)').matches;
   isSystemDefault = true;
-  toggleMode(isDarkMode ? "dark-mode" : "light-mode", isSystemDefault);
+  toggleMode(isDarkMode ? 'dark-mode' : 'light-mode', isSystemDefault);
 });
-darkModeIcon.addEventListener("click", () => toggleMode("dark-mode", false));
+darkModeIcon.addEventListener('click', () => toggleMode('dark-mode', false));
 
 // Initial mode setup
 const isDarkMode =
   window.matchMedia &&
-  window.matchMedia("(prefers-color-scheme: dark)").matches;
-toggleMode(isDarkMode ? "dark-mode" : "light-mode", true);
+  window.matchMedia('(prefers-color-scheme: dark)').matches;
+toggleMode(isDarkMode ? 'dark-mode' : 'light-mode', true);
