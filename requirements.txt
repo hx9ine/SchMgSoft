@@ -1,5 +1,6 @@
 asgiref==3.8.1
 Django==5.0.7
+django-active-link==0.2.2
 pillow==10.4.0
 sqlparse==0.5.0
 whitenoise==6.7.0
