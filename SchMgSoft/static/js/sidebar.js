@@ -59,6 +59,7 @@ const toggleMode = (mode, isSystemDefault) => {
       window.matchMedia('(prefers-color-scheme: dark)').matches;
     mode = isDarkMode ? 'dark-mode' : 'light-mode';
   }
+  localStorage.setItem('theme', mode); // Save the user's preference
   updateMode(mode, isSystemDefault);
 };
 
@@ -73,7 +74,12 @@ systemDefaultModeIcon.addEventListener('click', () => {
 darkModeIcon.addEventListener('click', () => toggleMode('dark-mode', false));
 
 // Initial mode setup
-const isDarkMode =
-  window.matchMedia &&
-  window.matchMedia('(prefers-color-scheme: dark)').matches;
-toggleMode(isDarkMode ? 'dark-mode' : 'light-mode', true);
+const savedTheme = localStorage.getItem('theme');
+if (savedTheme) {
+  toggleMode(savedTheme, false);
+} else {
+  const isDarkMode =
+    window.matchMedia &&
+    window.matchMedia('(prefers-color-scheme: dark)').matches;
+  toggleMode(isDarkMode ? 'dark-mode' : 'light-mode', true);
+}
