@@ -1,0 +1,71 @@
+/* Toast Notification Styles */
+#toast-notification {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.05),
+    rgba(0, 0, 0, 0.5)
+  );
+  backdrop-filter: blur(24px);
+  --webkit-backdrop-filter: blur(24px);
+  display: block;
+}
+
+#toast-notification #toast {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  padding: 16px;
+  width: 350px;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-blur);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-radius: var(--round-lg);
+  transform: translate(-50%, -50%);
+}
+
+#toast-notification #toast button {
+  position: inherit;
+  right: 7px;
+  top: 7px;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  outline: none;
+  border: none;
+  cursor: pointer;
+}
+
+#toast-notification #toast button svg {
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
+  color: #fff;
+}
+
+#toast-notification #toast svg {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+  color: var(--accent-clr-400);
+}
+
+#toast-notification #toast p {
+  font-size: 0.731rem;
+  font-weight: 300;
+  text-align: center;
+  color: var(--text-clr-950);
+}

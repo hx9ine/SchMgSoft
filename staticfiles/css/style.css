@@ -4,17 +4,17 @@
 /* GLOBAL VARIABLES */
 :root {
   /* Colors */
-  --accent-clr-50: #f1fcf2;
-  --accent-clr-100: #ddfbe0;
-  --accent-clr-200: #bef4c5;
-  --accent-clr-300: #8bea98;
-  --accent-clr-400: #51d765;
-  --accent-clr-500: #2bc542;
-  --accent-clr-600: #1c9d30;
-  --accent-clr-700: #1a7b29;
-  --accent-clr-800: #1a6125;
-  --accent-clr-900: #175022;
-  --accent-clr-950: #072c0e;
+  --accent-clr-50: #edfaff;
+  --accent-clr-100: #d6f1ff;
+  --accent-clr-200: #b5e9ff;
+  --accent-clr-300: #83ddff;
+  --accent-clr-400: #48c7ff;
+  --accent-clr-500: #1ea8ff;
+  --accent-clr-600: #0689ff;
+  --accent-clr-700: #0075fe;
+  --accent-clr-800: #085ac5;
+  --accent-clr-900: #0d4e9b;
+  --accent-clr-950: #0e305d;
 
   /* Border Radius */
   --round-sm: 0.125rem;
@@ -80,7 +80,7 @@ body.light-mode {
   --text-clr-950: #000000;
 
   /* Background Colors */
-  --bg-clr: #f4f4f4;
+  --bg-clr: #f3f3f3;
 
   /* Component Background Color */
   --bg-component: #ffffff;
@@ -108,13 +108,13 @@ body.dark-mode {
   --text-clr-950: #ffffff;
 
   /* Background Color */
-  --bg-clr: #171717;
+  --bg-clr: #141414;
 
   /* Component Background Color */
   --bg-component: #000000;
 
   /* Icon Background Color */
-  --bg-icon: #3a3a3a;
+  --bg-icon: #ff0303;
 
   /* Blurred Component Background Color */
   --bg-blur: rgba(0, 0, 0, 0.3);
@@ -126,7 +126,6 @@ a {
   text-decoration: none;
   cursor: pointer;
 }
-
 
 p,
 h1,

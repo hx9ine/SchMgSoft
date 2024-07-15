@@ -17,6 +17,26 @@
   /* transition: transform 0.3s; */
 }
 
+#card-container .card:nth-child(1) .top .icon {
+  background: #edfaff;
+  color: #009fdd;
+}
+
+#card-container .card:nth-child(2) .top .icon {
+  background: #fff7ed;
+  color: #ea8100;
+}
+
+#card-container .card:nth-child(3) .top .icon {
+  background: #ecfff1;
+  color: #00ad31;
+}
+
+#card-container .card:nth-child(4) .top .icon {
+  background: #fff3f6;
+  color: #ff003c;
+}
+
 #card-container .card .top {
   display: flex;
   justify-content: space-between;
@@ -26,7 +46,7 @@
 #card-container .card .top .icon {
   width: 30px;
   height: 30px;
-  background: var(--accent-clr-50);
+  /* background: var(--accent-clr-50); */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -37,7 +57,7 @@
   width: 16px;
   height: 16px;
   object-fit: contain;
-  color: var(--accent-clr-500);
+  /* color: var(--accent-clr-700); */
 }
 
 #card-container .card .top .btn {
@@ -69,9 +89,25 @@
 
 #card-container .card .bottom p {
   font-size: 1.131rem;
-  font-weight: 700;
-  color: var(--accent-clr-500);
+  font-weight: 600;
+  /* color: var(--accent-clr-700); */
   text-align: left;
+}
+
+#card-container .card:nth-child(1) .bottom p {
+  color: #009fdd;
+}
+
+#card-container .card:nth-child(2) .bottom p {
+  color: #ea8100;
+}
+
+#card-container .card:nth-child(3) .bottom p {
+  color: #00ad31;
+}
+
+#card-container .card:nth-child(4) .bottom p {
+  color: #ff003c;
 }
 
 @media (max-width: 600px) {

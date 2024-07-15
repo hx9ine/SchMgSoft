@@ -37,6 +37,9 @@ urlpatterns = [
     # Users App Paths
     path('profile/', include('apps.users.urls')),
 
+    # Academics App Paths
+    path('students/', include('apps.academics.urls')),
+
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 if settings.DEBUG:

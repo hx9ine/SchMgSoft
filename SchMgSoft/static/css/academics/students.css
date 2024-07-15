@@ -1,0 +1,115 @@
+/* Students Styles */
+#students {
+  padding: 11px;
+  width: 100%;
+  background: var(--bg-component);
+  border-radius: var(--round-md);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: start;
+  justify-content: left;
+}
+
+#students h3 {
+  font-size: 0.931rem;
+  font-weight: 500;
+  text-align: left;
+  color: var(--text-clr-950);
+}
+
+#students .header {
+  width: 100%;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+#students .header .search-filter {
+  width: 333px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+#students .header .search-filter input {
+  padding: 7px;
+  width: calc(100% - 40px);
+  height: 100%;
+  outline: none;
+  background: none;
+  border: 1px solid var(--text-clr-100);
+  border-radius: var(--round-md);
+  font-size: 0.731rem;
+  font-weight: 500;
+  text-align: left;
+  color: var(--text-clr-950);
+  transition: var(--transition-time) ease-out;
+}
+
+#students .header .search-filter input:focus {
+  border-color: var(--accent-clr-700);
+  caret-color: var(--accent-clr-700);
+}
+
+#students .header .search-filter button {
+  width: 32px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  outline: none;
+  background: var(--accent-clr-600);
+  border: none;
+  border-radius: var(--round-md);
+  transition: var(--transition-time) ease-out;
+}
+
+#students .header .search-filter button:hover {
+  background: var(--accent-clr-700);
+  cursor: pointer;
+}
+
+#students .header .search-filter button svg {
+  width: 16px;
+  height: 16px;
+  object-fit: contain;
+  color: #fff;
+}
+
+#students .header span {
+  padding: 7px 15px;
+  width: fit-content;
+  height: 32px;
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  justify-content: center;
+  background: var(--accent-clr-600);
+  border-radius: var(--round-md);
+  transition: var(--transition-time) ease-out;
+}
+
+#students .header span:hover {
+  background: var(--accent-clr-700);
+  cursor: pointer;
+}
+
+#students .header span svg {
+  width: 16px;
+  height: 16px;
+  object-fit: contain;
+  color: #fff;
+}
+
+#students .header span p {
+  font-size: 0.731rem;
+  font-weight: 500;
+  text-align: center;
+  color: #fff;
+  line-height: 32px;
+}
+
+

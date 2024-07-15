@@ -90,6 +90,10 @@ body.light-mode {
 
   /* Blurred Component Background Color */
   --bg-blur: rgba(255, 255, 255, 0.3);
+
+  /* Border Color */
+  /* --border-clr: rgba(255, 255, 255, 0.45); */
+  --border-clr: rgba(0, 0, 0, 0.05);
 }
 
 body.dark-mode {
@@ -114,10 +118,13 @@ body.dark-mode {
   --bg-component: #000000;
 
   /* Icon Background Color */
-  --bg-icon: #3a3a3a;
+  --bg-icon: #191919;
 
   /* Blurred Component Background Color */
   --bg-blur: rgba(0, 0, 0, 0.3);
+
+  /* Border Color */
+  --border-clr: rgba(255, 255, 255, 0.05);
 }
 
 a {

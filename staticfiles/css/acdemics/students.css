@@ -1,0 +1,64 @@
+/* Students Styles */
+#students {
+  padding: 11px;
+  width: 100%;
+  background: var(--bg-component);
+  border-radius: var(--round-md);
+}
+
+#students h3 {
+  font-size: 0.931rem;
+  font-weight: 500;
+  text-align: left;
+  color: var(--text-clr-950);
+}
+
+#students .header {
+  width: 100%;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+#students .header .search-filter {
+  width: 300px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+#students .header .search-filter input {
+  padding: 7px;
+  width: calc(100% - 36px);
+  height: 100%;
+  outline: none;
+  background: none;
+  border: 1px solid var(--text-clr-100);
+  border-radius: var(--round-md);
+  font-size: 0.731rem;
+  font-weight: 500;
+  text-align: left;
+  color: var(--text-clr-950);
+}
+
+#students .header .search-filter button {
+    width: 32px;
+    height: 100%;
+    display: flex;
+  align-items: center;
+  justify-content: center;
+  outline: none;
+  background: var(--accent-clr-700);
+  border: none;
+  border-radius: var(--round-md);
+  cursor: pointer;
+}
+
+#students .header .search-filter button svg {
+    width: 16px;
+    height: 16px;
+    object-fit: contain;
+    color: #fff;
+}

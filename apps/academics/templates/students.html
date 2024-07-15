@@ -1,0 +1,78 @@
+{% extends "base.html" %} {% load static %} {% block htmlhead %}
+<!-- CSS -->
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="{% static 'css/academics/students.css' %}"
+/>
+{% endblock htmlhead %} {% block content %}
+<!-- Students -->
+<div id="students">
+  <h3>Students</h3>
+  <div class="header">
+    <div class="search-filter">
+      <input
+        type="text"
+        name="student"
+        id="student"
+        placeholder="Search student"
+      />
+      <button>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="icon icon-tabler icons-tabler-outline icon-tabler-adjustments-horizontal"
+        >
+          <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+          <path d="M14 6m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" />
+          <path d="M4 6l8 0" />
+          <path d="M16 6l4 0" />
+          <path d="M8 12m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" />
+          <path d="M4 12l2 0" />
+          <path d="M10 12l10 0" />
+          <path d="M17 18m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" />
+          <path d="M4 18l11 0" />
+          <path d="M19 18l1 0" />
+        </svg>
+      </button>
+    </div>
+
+    <span id="add-student-form-btn">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="icon icon-tabler icons-tabler-outline icon-tabler-plus"
+      >
+        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+        <path d="M12 5l0 14" />
+        <path d="M5 12l14 0" />
+      </svg>
+      <p>Add Student</p>
+    </span>
+  </div>
+</div>
+
+<!-- Multi-Step-Form -->
+{% include "multi-step-form.html" %}
+
+{% if messages %}
+<!-- Toast Notification -->
+{% include "toast.html" %} {% endif %} 
+
+<!-- JAVASCRIPT -->
+<script src="{% static 'js/academics/students.js' %}" type="text/javascript"></script>
+{% endblock %}
