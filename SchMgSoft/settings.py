@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'active_link',
     'apps.home',
     'apps.users',
+    'apps.academics',
 ]
 
 MIDDLEWARE = [
