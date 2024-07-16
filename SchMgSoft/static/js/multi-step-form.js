@@ -1,70 +1,109 @@
 document.addEventListener('DOMContentLoaded', function () {
   const modalContainer = document.querySelector('.modal-container');
-  const modal = modalContainer.querySelector('.modal');
+  const modalHideBtn = document.getElementById('modal-hide-btn');
+  const steps = Array.from(document.querySelectorAll('.step'));
+  const nextBtns = document.querySelectorAll('.next-btn');
+  const prevBtns = document.querySelectorAll('.prev-btn');
+  const form = document.querySelector('#multi-step-form');
+  const fileInputs = document.querySelectorAll("input[type='file']");
+  const maxFileSize = 150 * 1024; // 150 KB
+  const minFileSize = 50 * 1024; // 50 KB
 
-  modalContainer.addEventListener('click', e => {
-    if (!modal.contains(e.target)) {
-      modalContainer.classList.remove('active');
-    }
-  });
+  // Hide modal
+  const hideModal = () => modalContainer.classList.remove('active');
 
-  const initializeMultiStepForm = () => {
-    const multiStepForm = document.getElementById('multi-step-form');
-    const steps = Array.from(multiStepForm.querySelectorAll('.step'));
+  // Initialize first step
+  let currentStep = 0;
+  steps[currentStep].classList.add('active');
 
-    const nextButtons = multiStepForm.querySelectorAll('.next-btn');
-    const prevButtons = multiStepForm.querySelectorAll('.prev-btn');
-      const points = document.querySelectorAll('.points');
-      const spans = document.querySelectorAll('.points span');
-      const paras = document.querySelectorAll('.points p');
-
-    let currentStep = 0;
-
-    nextButtons.forEach(button => {
-      button.addEventListener('click', () => {
-        if (currentStep < steps.length - 1) {
-          steps[currentStep].classList.add('hidden');
-          points[currentStep].classList.add('filled');
-        //   spans[currentStep].classList.add('filled');
-        //   paras[currentStep].classList.add('filled');
-          // indicators[currentStep].classList.remove('ri-checkbox-circle-fill');
-          // indicators[currentStep].classList.add('ri-checkbox-circle-line');
-          currentStep++;
-          steps[currentStep].classList.remove('hidden');
-          points[currentStep].classList.add('filled');
-        //   spans[currentStep].classList.add('filled');
-        //   paras[currentStep].classList.add('filled');
-          // indicators[currentStep].classList.add('ri-checkbox-circle-fill');
-          // indicators[currentStep].classList.remove('ri-checkbox-circle-line');
-        }
-      });
+  // Show the current step
+  const showStep = step => {
+    steps.forEach((stepElement, index) => {
+      stepElement.classList.toggle('hidden', index !== currentStep);
     });
+    updateStepInfo();
+    updateIndicatorPoints();
+  };
 
-    prevButtons.forEach(button => {
-      button.addEventListener('click', () => {
-        if (currentStep > 0) {
-          steps[currentStep].classList.add('hidden');
-          // indicators[currentStep].classList.remove('ri-checkbox-circle-fill');
-          // indicators[currentStep].classList.add('ri-checkbox-circle-line');
-          currentStep--;
-          steps[currentStep].classList.remove('hidden');
-          // indicators[currentStep].classList.add('ri-checkbox-circle-fill');
-          // indicators[currentStep].classList.remove('ri-checkbox-circle-line');
-        }
-      });
+  // Update Step Info
+  const updateStepInfo = () => {
+    const infos = document.querySelectorAll('.step-info .info');
+    infos.forEach((info, index) => {
+      info.classList.toggle('active', index === currentStep);
     });
   };
 
-  // Event listener to initialize multi-step form when modal is shown
-  const observer = new MutationObserver(mutations => {
-    mutations.forEach(mutation => {
-      if (mutation.attributeName === 'class') {
-        if (modalContainer.classList.contains('active')) {
-          initializeMultiStepForm();
-        }
+  // Update step indicator points
+  const updateIndicatorPoints = () => {
+    const indicatorPoints = document.querySelectorAll('.indicator .points');
+    indicatorPoints.forEach((point, index) => {
+      point.classList.toggle('filled', index <= currentStep);
+    });
+  };
+
+  // Handle next button click
+  nextBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      if (validateStep(currentStep)) {
+        currentStep = Math.min(currentStep + 1, steps.length - 1);
+        showStep(currentStep);
       }
     });
   });
 
-  observer.observe(modalContainer, { attributes: true });
+  // Handle previous button click
+  prevBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      currentStep = Math.max(currentStep - 1, 0);
+      showStep(currentStep);
+    });
+  });
+
+  // Validate current step
+  const validateStep = step => {
+    const inputs = steps[step].querySelectorAll('input, select');
+    for (const input of inputs) {
+      if (!input.checkValidity()) {
+        input.reportValidity();
+        return false;
+      }
+    }
+    return true;
+  };
+
+  // Hide Modal on clicking Modal-Hide-Btn
+  modalHideBtn.addEventListener('click', () => {
+    form.reset();
+    currentStep = 0;
+    showStep(currentStep);
+    hideModal();
+  });
+
+  // Handle form submit
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+    if (validateStep(currentStep)) {
+      alert('Form submitted successfully!');
+      form.reset();
+      currentStep = 0;
+      showStep(currentStep);
+      hideModal();
+    }
+  });
+
+  // Handle file input changes
+  fileInputs.forEach(input => {
+    input.addEventListener('change', event => {
+      const file = event.target.files[0];
+      if (file) {
+        if (file.size > maxFileSize) {
+          alert('File is too large. Maximum size is 150KB.');
+          event.target.value = '';
+        } else if (file.size < minFileSize) {
+          alert('File is too small. Minimum size is 50KB.');
+          event.target.value = '';
+        }
+      }
+    });
+  });
 });

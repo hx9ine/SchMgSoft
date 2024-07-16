@@ -5,11 +5,15 @@
   left: 0;
   width: 100%;
   height: 100%;
-  /* background: linear-gradient(
+  background: linear-gradient(
     to bottom,
     rgba(0, 0, 0, 0.1),
-    rgba(0, 0, 0, 0.5)
-  ); */
+    rgba(0, 0, 0, 0.3)
+  );
+  /* background: rgba(0, 0, 0, 0.3);
+  background: var(--bg-blur); */
+  /* backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px); */
   display: none;
   /* display: flex;
   align-items: center;
@@ -24,6 +28,7 @@
 }
 
 .modal-container .modal {
+  position: relative;
   padding: 0.5rem;
   min-width: 70%;
   max-width: fit-content;
@@ -36,6 +41,34 @@
   border-radius: var(--round-2xl);
   /* box-shadow: rgba(1, 0, 0, 0.1) 0px 10px 50px; */
   overflow: hidden;
+}
+
+.modal-container .modal #modal-hide-btn {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+}
+
+.modal-container .modal #modal-hide-btn svg {
+  width: 26px;
+  height: 26px;
+  object-fit: contain;
+  color: var(--text-clr-500);
+  transition: color var(--transition-time) ease-out;
+}
+
+.modal-container .modal #modal-hide-btn:hover {
+  cursor: pointer;
+}
+
+.modal-container .modal #modal-hide-btn:hover svg {
+  color: var(--accent-clr-700);
 }
 
 .modal-container .modal .step-indicator {
@@ -64,10 +97,11 @@
   top: 50%;
   left: 50%;
   padding: 64px 32px;
-  width: 80%;
-  height: 80%;
+  width: 90%;
+  height: 90%;
   display: flex;
   flex-direction: column;
+  gap: 32px;
   align-items: center;
   justify-content: center;
   /* background: var(--bg-blur);
@@ -77,12 +111,43 @@
   /* border-radius: var(--round-xl); */
 }
 
+.modal-container .modal .step-indicator .content .step-info {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-container .modal .step-indicator .content .step-info .info {
+  width: 100%;
+  display: none;
+}
+
+.modal-container .modal .step-indicator .content .step-info .info.active {
+  display: block;
+}
+
+.modal-container .modal .step-indicator .content .step-info .info h3 {
+  font-size: 0.831rem;
+  font-weight: 600;
+  text-align: left;
+  color: var(--text-clr-700);
+}
+
+.modal-container .modal .step-indicator .content .step-info .info p {
+  margin: 16px 0;
+  font-size: 0.631rem;
+  font-weight: 400;
+  text-align: left;
+  color: var(--text-clr-500);
+}
+
 .modal-container .modal .step-indicator .content .indicator {
   width: 100%;
   height: fit-content;
   display: flex;
   flex-direction: column;
-  gap: 32px;
+  gap: 30px;
   align-items: center;
   justify-content: center;
   /*   justify-content: right; */
@@ -136,7 +201,7 @@
 }
 
 .modal-container .modal .step-indicator .content .indicator .points.filled p {
-    color: var(--text-clr-950);
+  color: var(--text-clr-950);
 }
 
 .modal-container .modal .form-container {
@@ -229,7 +294,7 @@
   font-size: 0.731rem;
   font-weight: 500;
   text-align: left;
-  color: var(--text-clr-950);
+  color: var(--text-clr-700);
   transition: var(--transition-time);
 }
 
@@ -316,27 +381,27 @@ input[type='date']::-webkit-calendar-picker-indicator {
   outline: none;
   cursor: pointer;
   font-size: 0.731rem;
-  font-weight: 500;
+  font-weight: 600;
   text-align: center;
   border-radius: var(--round-md);
 }
 
 .modal-container .modal .form-container .step .footer button.primary {
-  background: var(--accent-clr-600);
-  border: 1px solid var(--accent-clr-600);
+  background: var(--accent-clr-700);
+  border: 1px solid var(--accent-clr-700);
   color: #fff;
   transition: background var(--transition-time) ease-out;
 }
 
 .modal-container .modal .form-container .step .footer button.primary:hover {
-  background: var(--accent-clr-700);
-  border: 1px solid var(--accent-clr-700);
+  background: var(--accent-clr-800);
+  border: 1px solid var(--accent-clr-800);
 }
 
 .modal-container .modal .form-container .step .footer button.secondary {
   /* background: var(--accent-clr-100);
   border: 1px solid var(--accent-clr-100); */
-  color: var(--accent-clr-600);
+  color: var(--text-clr-700);
   transition: color var(--transition-time) ease-out;
 }
 
