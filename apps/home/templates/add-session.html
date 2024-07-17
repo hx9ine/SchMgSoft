@@ -3,19 +3,19 @@
 <link
   rel="stylesheet"
   type="text/css"
-  href="{% static 'css/academics/students.css' %}"
+  href="{% static 'css/home/add-session.css' %}"
 />
 {% endblock htmlhead %} {% block content %}
-<!-- Students -->
-<div id="students">
-  <h3>Students</h3>
+<!-- Session -->
+<div id="add-session-container">
+  <h3>Add Session</h3>
   <div class="header">
     <div class="search-filter">
       <input
         type="text"
         name="search-input"
         id="search-input"
-        placeholder="Search for student..."
+        placeholder="Search for session..."
       />
       <button>
         <svg
@@ -44,7 +44,7 @@
       </button>
     </div>
 
-    <span id="add-student-form-btn">
+    <span id="add-new-btn">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="24"
@@ -61,32 +61,29 @@
         <path d="M12 5l0 14" />
         <path d="M5 12l14 0" />
       </svg>
-      <p>Add Student</p>
+      <p>Add New</p>
     </span>
   </div>
-  <!-- Students List Table -->
+
+  <!-- Sessions Table -->
   <div id="table-container">
-    <table id="student-table">
+    <table id="session-table">
       <thead>
         <tr>
-          <th>REG. NO.</th>
-          <th>STUDENT'S NAME</th>
-          <th>FATHER'S NAME</th>
-          <th>EMAIL ID</th>
-          <th style="text-align: center">SEX</th>
-          <th style="text-align: center">CLASS</th>
+          <th>SL. NO.</th>
+          <th>SESSION</th>
+          <th>CREATED AT</th>
+          <th>UPDATED AT</th>
           <th style="text-align: center">ACTION</th>
         </tr>
       </thead>
       <tbody>
-        {% for i in students %}
+        {% for i in sessions %}
         <tr>
-          <td>001</td>
-          <td>{{ i.admin.first_name }}&nbsp;{{ i.admin.last_name }}</td>
-          <td>{{ i.father_name }}</td>
-          <td>{{ i.admin.email }}</td>
-          <td style="text-align: center">{{ i.gender }}</td>
-          <td style="text-align: center">{{ i.class_id.class_name }}</td>
+          <td>{{ forloop.counter }}</td>
+          <td>{{ i.start_session }} - {{ i.end_session }}</td>
+          <td>{{ i.created_at }}</td>
+          <td>{{ i.updated_at }}</td>
           <td
             style="
               text-align: center;
@@ -225,19 +222,17 @@
   </div>
 </div>
 
-<!-- Add Student Form -->
-{% include "add-student-form.html" %} {% if messages %}
+<!-- Add Session Form -->
+{% include "add-session-form.html" %} {% if messages %}
 <!-- Toast Notification -->
 {% include "toast.html" %} {% endif %}
 
 <!-- JAVASCRIPT -->
-<script
-  src="{% static 'js/academics/students.js' %}"
-  type="text/javascript"
-></script>
+<script>
+  const addNewBtn = document.getElementById('add-new-btn');
 
-<script
-  src="{% static 'js/search-filter.js' %}"
-  type="text/javascript"
-></script>
+  addNewBtn.addEventListener('click', () => {
+    document.querySelector('.modal-container').classList.add('active');
+  });
+</script>
 {% endblock %}

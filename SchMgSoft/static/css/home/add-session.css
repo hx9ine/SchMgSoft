@@ -1,5 +1,4 @@
-/* Students Styles */
-#students {
+#add-session-container {
   padding: 11px;
   width: 100%;
   background: var(--bg-component);
@@ -11,14 +10,14 @@
   justify-content: left;
 }
 
-#students h3 {
+#add-session-container h3 {
   font-size: 0.931rem;
   font-weight: 500;
   text-align: left;
   color: var(--text-clr-950);
 }
 
-#students .header {
+#add-session-container .header {
   width: 100%;
   height: 32px;
   display: flex;
@@ -26,15 +25,15 @@
   justify-content: space-between;
 }
 
-#students .header .search-filter {
-  width: 333px;
+#add-session-container .header .search-filter {
+  width: 300px;
   height: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
-#students .header .search-filter input {
+#add-session-container .header .search-filter input {
   padding: 7px;
   width: calc(100% - 40px);
   height: 100%;
@@ -49,12 +48,12 @@
   transition: var(--transition-time) ease-out;
 }
 
-#students .header .search-filter input:focus {
+#add-session-container .header .search-filter input:focus {
   border-color: var(--accent-clr-700);
   caret-color: var(--accent-clr-700);
 }
 
-#students .header .search-filter button {
+#add-session-container .header .search-filter button {
   width: 32px;
   height: 100%;
   display: flex;
@@ -67,19 +66,19 @@
   transition: var(--transition-time) ease-out;
 }
 
-#students .header .search-filter button:hover {
+#add-session-container .header .search-filter button:hover {
   background: var(--accent-clr-700);
   cursor: pointer;
 }
 
-#students .header .search-filter button svg {
+#add-session-container .header .search-filter button svg {
   width: 16px;
   height: 16px;
   object-fit: contain;
   color: #fff;
 }
 
-#students .header span {
+#add-session-container .header span {
   padding: 7px 15px;
   width: fit-content;
   height: 32px;
@@ -92,19 +91,19 @@
   transition: var(--transition-time) ease-out;
 }
 
-#students .header span:hover {
+#add-session-container .header span:hover {
   background: var(--accent-clr-700);
   cursor: pointer;
 }
 
-#students .header span svg {
+#add-session-container .header span svg {
   width: 16px;
   height: 16px;
   object-fit: contain;
   color: #fff;
 }
 
-#students .header span p {
+#add-session-container .header span p {
   font-size: 0.731rem;
   font-weight: 500;
   text-align: center;
@@ -112,11 +111,9 @@
   line-height: 32px;
 }
 
-/* Students List Table Styles */
+/* Sessions Table Styles */
 #table-container {
   width: 100%;
-  /* padding: 16px; */
-  /*   overflow-x: auto; */
 }
 
 table {
@@ -165,8 +162,8 @@ table td {
 }
 
 /* table tr {
-  border: 1px solid var(--text-clr-100);
-} */
+    border: 1px solid var(--text-clr-100);
+  } */
 
 /* Action button */
 .action-btn {
