@@ -96,7 +96,7 @@ def teachers(request):
     if request.method == "POST":
         first_name = request.POST.get("fname")
         last_name = request.POST.get("lname")
-        email = request.POST.get("student-email")
+        email = request.POST.get("teacher-email")
         username = request.POST.get("username")
         password = request.POST.get("password")
         gender = request.POST.get("gender")
@@ -141,7 +141,7 @@ def teachers(request):
                 admin=user,
                 gender=gender,
                 dob=dob,
-                mobile_no=mobile_number,
+                mobile_number=mobile_number,
                 pan_number=pan_number,
                 aadhaar_number=aadhaar_number,
                 vill_town=vill_town,
