@@ -60,3 +60,35 @@ def add_class(request):
         'classes': classes
     }
     return render(request, 'add-class.html', context)
+
+
+
+@login_required(login_url='/')
+def add_subject(request):
+    if request.method == 'POST':
+        class_id = request.POST.get("class")
+        subject = request.POST.get("subject")
+
+        try:
+            class_id = Class.objects.get(id=class_id)
+        except Class.DoesNotExist:
+            messages.error(request, "Selected class does not exist.")
+            return redirect('add-subject')
+        
+        new_subject = Subject (
+            class_id = class_id,
+            subject_name = subject
+        )
+
+        new_subject.save()
+        messages.success(request, f"{new_subject.subject_name} is added successfully!")
+        return redirect('add-subject')
+    
+    subjects = Subject.objects.all()
+    classes = Class.objects.all()
+
+    context = {
+        'subjects':subjects,
+        'classes':classes
+    }
+    return render(request, 'add-subject.html', context)

@@ -1,0 +1,538 @@
+{% load static %} {% block content %}
+<!-- Multi Step Form -->
+<div class="modal-container">
+  <div class="modal">
+    <!-- Hide Modal Btn -->
+    <span id="modal-hide-btn">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="currentColor"
+        class="icon icon-tabler icons-tabler-filled icon-tabler-square-rounded-x"
+      >
+        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+        <path
+          d="M12 2l.324 .001l.318 .004l.616 .017l.299 .013l.579 .034l.553 .046c4.785 .464 6.732 2.411 7.196 7.196l.046 .553l.034 .579c.005 .098 .01 .198 .013 .299l.017 .616l.005 .642l-.005 .642l-.017 .616l-.013 .299l-.034 .579l-.046 .553c-.464 4.785 -2.411 6.732 -7.196 7.196l-.553 .046l-.579 .034c-.098 .005 -.198 .01 -.299 .013l-.616 .017l-.642 .005l-.642 -.005l-.616 -.017l-.299 -.013l-.579 -.034l-.553 -.046c-4.785 -.464 -6.732 -2.411 -7.196 -7.196l-.046 -.553l-.034 -.579a28.058 28.058 0 0 1 -.013 -.299l-.017 -.616c-.003 -.21 -.005 -.424 -.005 -.642l.001 -.324l.004 -.318l.017 -.616l.013 -.299l.034 -.579l.046 -.553c.464 -4.785 2.411 -6.732 7.196 -7.196l.553 -.046l.579 -.034c.098 -.005 .198 -.01 .299 -.013l.616 -.017c.21 -.003 .424 -.005 .642 -.005zm-1.489 7.14a1 1 0 0 0 -1.218 1.567l1.292 1.293l-1.292 1.293l-.083 .094a1 1 0 0 0 1.497 1.32l1.293 -1.292l1.293 1.292l.094 .083a1 1 0 0 0 1.32 -1.497l-1.292 -1.293l1.292 -1.293l.083 -.094a1 1 0 0 0 -1.497 -1.32l-1.293 1.292l-1.293 -1.292l-.094 -.083z"
+          fill="currentColor"
+          stroke-width="0"
+        />
+      </svg>
+    </span>
+    <div class="step-indicator">
+      <!-- <img
+        src="https://images.unsplash.com/photo-1719786217500-6dbab76b77fa?crop=entropy&cs=srgb&fm=jpg&ixid=M3wzMjM4NDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE3MjA0NDkxNjh8&ixlib=rb-4.0.3&q=85"
+        alt="Background Image"
+        id="bg-img"
+      /> -->
+      <div class="content">
+        <div class="step-info">
+          <div class="info active">
+            <h3>Step 1</h3>
+            <p>Enter teacher's personal information to appoint new teacher.</p>
+          </div>
+
+          <div class="info">
+            <h3>Step 2</h3>
+            <p>Enter teacher's contact details to appoint new teacher.</p>
+          </div>
+
+          <div class="info">
+            <h3>Step 3</h3>
+            <p>Enter teacher's professional details to appoint new teacher.</p>
+          </div>
+
+          <div class="info">
+            <h3>Step 4</h3>
+            <p>Enter teacher's bank details to appoint new teacher.</p>
+          </div>
+
+          <div class="info">
+            <h3>Step 5</h3>
+            <p>Upload teacher's photo to appoint new teacher.</p>
+          </div>
+
+          <div class="info">
+            <h3>Step 6</h3>
+            <p>
+              Upload teacher's CV/Resume to appoint new teacher.
+            </p>
+          </div>
+        </div>
+        <div class="indicator">
+          <div class="points filled">
+            <span>1</span>
+            <p>Personal Information</p>
+          </div>
+          <div class="points">
+            <span>2</span>
+            <p>Contact Details</p>
+          </div>
+          <div class="points">
+            <span>3</span>
+            <p>Professional Details</p>
+          </div>
+          <div class="points">
+            <span>4</span>
+            <p>Bank Details</p>
+          </div>
+          <div class="points">
+            <span>5</span>
+            <p>Upload Photo</p>
+          </div>
+          <div class="points">
+            <span>6</span>
+            <p>Upload CV/Resume</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="form-container">
+      <form
+        id="multi-step-form"
+        action="{% url 'teachers' %}"
+        method="post"
+        enctype="multipart/form-data"
+      >
+        {% csrf_token %}
+        <!--       Personal Information -->
+        <div class="step">
+          <div class="header">
+            <h5>Personal Information</h5>
+            <p>Required fields *</p>
+          </div>
+          <div class="form-content">
+            <div class="form-group">
+              <input
+                type="text"
+                name="fname"
+                id="fname"
+                class="input"
+                autocapitalize="on"
+                autocomplete="off"
+                placeholder=" "
+                required
+              />
+              <label for="fname" class="placeholder">Firstname *</label>
+            </div>
+            <div class="form-group">
+              <input
+                type="text"
+                name="lname"
+                id="lname"
+                class="input"
+                autocapitalize="on"
+                autocomplete="off"
+                placeholder=" "
+                required
+              />
+              <label for="lname" class="placeholder">Lastname *</label>
+            </div>
+            <div class="form-group">
+              <input
+                type="email"
+                name="teacher-email"
+                id="teacher-email"
+                class="input"
+                autocomplete="off"
+                placeholder=" "
+                required
+              />
+              <label for="teacher-email" class="placeholder"
+                >Email Address *</label
+              >
+            </div>
+            <div class="form-group">
+              <input
+                type="text"
+                name="username"
+                id="username"
+                class="input"
+                autocomplete="off"
+                placeholder=" "
+                required
+              />
+              <label for="username" class="placeholder">Username *</label>
+            </div>
+            <div class="form-group">
+              <input
+                type="password"
+                name="password"
+                id="password"
+                class="input"
+                autocomplete="off"
+                placeholder=" "
+                required
+              />
+              <label for="password" class="placeholder">Password *</label>
+            </div>
+            <div class="form-group">
+              <select
+                name="gender"
+                id="gender"
+                class="input"
+                autocomplete="off"
+                placeholder=" "
+                required
+              >
+                <option value="hidden" selected disabled hidden>
+                  Choose gender
+                </option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+                <option value="None">Prefer not to say</option>
+              </select>
+              <label for="gender" class="placeholder">Gender *</label>
+            </div>
+            <div class="form-group">
+              <input
+                type="date"
+                name="dob"
+                id="dob"
+                class="input"
+                autocomplete="off"
+                placeholder=" "
+                required
+              />
+              <label for="dob" class="placeholder">Date of Birth *</label>
+            </div>
+            <div class="form-group">
+              <input
+                type="number"
+                name="mobilenumber"
+                id="mobilenumber"
+                autocomplete="off"
+                class="input"
+                placeholder=" "
+                required
+              />
+              <label for="mobilenumber" class="placeholder"
+                >Mobile Number *</label
+              >
+            </div>
+            <div class="form-group">
+              <input
+                type="text"
+                name="pan-number"
+                id="pan-number"
+                autocomplete="off"
+                autocapitalize="characters"
+                class="input"
+                placeholder=" "
+                required
+              />
+              <label for="pan-number" class="placeholder"
+                >PAN Number *</label
+              >
+            </div>
+            <div class="form-group">
+              <input
+                type="number"
+                name="aadhaar-number"
+                id="aadhaar-number"
+                autocomplete="off"
+                class="input"
+                placeholder=" "
+                required
+              />
+              <label for="aadhaar-number" class="placeholder"
+                >AADHAAR Number *</label
+              >
+            </div>
+          </div>
+
+          <div class="footer">
+            <button type="button" class="primary next-btn">
+              Save & Continue
+            </button>
+          </div>
+        </div>
+        <!--       Contact Details -->
+        <div class="step hidden">
+          <div class="header">
+            <h5>Contact Details</h5>
+            <p>Required fields *</p>
+          </div>
+          <div class="form-content">
+            <div class="form-group">
+              <input
+                type="text"
+                name="vill-town"
+                id="vill-town"
+                class="input"
+                autocapitalize="on"
+                autocomplete="off"
+                placeholder=" "
+                required
+              />
+              <label for="vill-town" class="placeholder">Vill/Town *</label>
+            </div>
+            <div class="form-group">
+              <input
+                type="text"
+                name="post-office"
+                id="post-office"
+                class="input"
+                autocapitalize="on"
+                autocomplete="off"
+                placeholder=" "
+                required
+              />
+              <label for="post-office" class="placeholder">Post Office *</label>
+            </div>
+            <div class="form-group">
+              <input
+                type="text"
+                name="police-station"
+                id="police-station"
+                class="input"
+                autocapitalize="on"
+                autocomplete="off"
+                placeholder=" "
+                required
+              />
+              <label for="police-station" class="placeholder"
+                >Police Station *</label
+              >
+            </div>
+            <div class="form-group">
+              <input
+                type="text"
+                name="district"
+                id="district"
+                class="input"
+                autocapitalize="on"
+                autocomplete="off"
+                placeholder=" "
+                required
+              />
+              <label for="district" class="placeholder">District *</label>
+            </div>
+            <div class="form-group full-width">
+              <input
+                type="text"
+                name="p-address"
+                id="p-address"
+                class="input"
+                autocapitalize="on"
+                autocomplete="off"
+                placeholder=" "
+                required
+              />
+              <label for="p-address" class="placeholder"
+                >Permanent Address *</label
+              >
+            </div>
+            <div class="form-group">
+              <input
+                type="text"
+                name="state"
+                id="state"
+                class="input"
+                autocapitalize="on"
+                autocomplete="off"
+                placeholder=" "
+                required
+              />
+              <label for="state" class="placeholder">State *</label>
+            </div>
+            <div class="form-group">
+              <input
+                type="number"
+                name="pin-code"
+                id="pin-code"
+                class="input"
+                autocomplete="off"
+                placeholder=" "
+                required
+              />
+              <label for="pin-code" class="placeholder">PIN Code *</label>
+            </div>
+          </div>
+          <div class="footer">
+            <button type="button" class="secondary prev-btn">Previous</button>
+            <button type="button" class="primary next-btn">
+              Save & Continue
+            </button>
+          </div>
+        </div>
+        <!--       Professional Details -->
+        <div class="step hidden">
+          <div class="header">
+            <h5>Professional Details</h5>
+            <p>Required fields *</p>
+          </div>
+          <div class="form-content">
+            <div class="form-group">
+              <input type="number" name="tenth-pc" id="tenth-pc" class="input" step="0.01" min="0" oninput="validity.valid||(value='');" placeholder=" " required>
+              <label for="tenth-pc" class="placeholder">10th Percentage *</label>
+            </div>
+            <div class="form-group">
+              <input type="number" name="twelfth-pc" id="twelfth-pc" class="input" step="0.01" min="0" oninput="validity.valid||(value='');" placeholder=" " required>
+              <label for="twelfth-pc" class="placeholder">12th Percentage *</label>
+            </div>
+            <div class="form-group full-width">
+              <input type="text" name="qualification" id="qualification" class="input" autocapitalize="on" placeholder=" " required>
+              <label for="qualification" class="placeholder">Qualification *</label>
+            </div>
+          </div>
+          <div class="footer">
+            <button type="button" class="secondary prev-btn">Previous</button>
+            <button type="button" class="primary next-btn">
+              Save & Continue
+            </button>
+          </div>
+        </div>
+        <!-- Bank Details -->
+        <div class="step hidden">
+          <div class="header">
+            <h5>Bank Details</h5>
+            <p>Required fields *</p>
+          </div>
+          <div class="form-content">
+            <div class="form-group">
+              <input type="text" name="bank-name" id="bank-name" class="input" placeholder=" " autocapitalize="characters" required>
+              <label for="bank-name" class="placeholder">Bank Name *</label>
+            </div>
+            <div class="form-group">
+              <input type="number" name="account-number" id="account-number" class="input" placeholder=" " required>
+              <label for="account-number" class="placeholder">Account Number *</label>
+            </div>
+            <div class="form-group">
+              <input type="text" name="branch-name" id="branch-name" class="input" placeholder=" " autocapitalize="on" required>
+              <label for="branch-name" class="placeholder">Branch Name *</label>
+            </div>
+            <div class="form-group">
+              <input type="text" name="ifsc" id="ifsc" class="input" placeholder=" " autocapitalize="characters" required>
+              <label for="ifsc" class="placeholder">IFSC Code *</label>
+            </div>
+          </div>
+          <div class="footer">
+            <button type="button" class="secondary prev-btn">Previous</button>
+            <button type="button" class="primary next-btn">
+              Save & Continue
+            </button>
+          </div>
+        </div>
+        <!--       Upload Photo -->
+        <div class="step hidden">
+          <div class="header">
+            <h5>Upload Photo</h5>
+            <p>Required fields *</p>
+          </div>
+          <div class="form-content">
+            <div class="form-group full-width file-upload">
+              <input
+                type="file"
+                accept=".jpg, .jpeg, .png"
+                id="photo"
+                name="photo"
+                required
+              />
+              <div class="icon">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="icon icon-tabler icons-tabler-outline icon-tabler-photo-circle-plus"
+                >
+                  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                  <path d="M15 8h.01" />
+                  <path
+                    d="M20.964 12.806a9 9 0 0 0 -8.964 -9.806a9 9 0 0 0 -9 9a9 9 0 0 0 9.397 8.991"
+                  />
+                  <path d="M4 15l4 -4c.928 -.893 2.072 -.893 3 0l4 4" />
+                  <path d="M14 14l1 -1c.928 -.893 2.072 -.893 3 0" />
+                  <path d="M16 19.33h6" />
+                  <path d="M19 16.33v6" />
+                </svg>
+              </div>
+              <h3>Drag & drop a photo or <span> click</span> to browse.</h3>
+              <small
+                >File must be JPEG, JPG or PNG and in between 50KB -
+                150KB.</small
+              >
+            </div>
+          </div>
+          <div class="footer">
+            <button type="button" class="secondary prev-btn">Previous</button>
+            <button type="button" class="primary next-btn">
+              Save & Continue
+            </button>
+          </div>
+        </div>
+        <!--       Upload CV -->
+        <div class="step hidden">
+          <div class="header">
+            <h5>Upload CV/Resume</h5>
+            <p>Required fields *</p>
+          </div>
+          <div class="form-content">
+            <div class="form-group full-width file-upload">
+              <input
+                type="file"
+                accept=".pdf, .docx"
+                id="cv-resume"
+                name="cv-resume"
+                required
+              />
+              <div class="icon">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="icon icon-tabler icons-tabler-outline icon-tabler-file-plus"
+                >
+                  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                  <path d="M14 3v4a1 1 0 0 0 1 1h4" />
+                  <path
+                    d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2z"
+                  />
+                  <path d="M12 11l0 6" />
+                  <path d="M9 14l6 0" />
+                </svg>
+              </div>
+              <h3>Drag & drop a file or <span> click</span> to browse.</h3>
+              <small
+                >File must be PDF or DOCX and in between 50KB - 150KB.</small
+              >
+            </div>
+          </div>
+          <div class="footer">
+            <button type="button" class="secondary prev-btn">Previous</button>
+            <button type="submit" class="primary next-btn">Submit</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- JAVASCRIPT -->
+<script
+  src="{% static 'js/academics/add-teacher-form.js' %}"
+  type="text/javascript"
+></script>
+{% endblock %}
+
+<!-- CSS -->
+{% block extracss %}
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="{% static 'css/academics/add-teacher-form.css' %}"
+/>
+{% endblock %}
