@@ -30,9 +30,9 @@
   .modal-container .modal {
     position: relative;
     padding: 0.5rem;
-    width: 70%;
+    min-width: 70%;
     /* max-width: fit-content; */
-    height: 500px;
+    min-height: 500px;
     /* max-height: fit-content; */
     background: var(--border-clr);
     display: flex;

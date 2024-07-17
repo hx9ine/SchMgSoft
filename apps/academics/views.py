@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from apps.academics.models import Student
-from apps.home.models import Class, Session, Subject
+from apps.home.models import Class, Session
 from apps.users.models import CustomUser
 
 # Create your views here.
@@ -34,22 +34,18 @@ def students(request):
         student_photo = request.FILES.get("photo")
         dob_certificate = request.FILES.get("certificate")
 
-        if CustomUser.objects.filter(email=email).exists():
-            messages.warning(request, "Student with this email already registered!")
-            return redirect('students')
-        
-        if CustomUser.objects.filter(username=username).exists():
-            messages.warning(request, "This username is already taken!")
+        if CustomUser.objects.filter(email=email).exists() or CustomUser.objects.filter(username=username).exists():
+            messages.warning(request, "Student with this email or username already registered!")
             return redirect('students')
 
-        else:
-            user = CustomUser (
-                first_name = first_name,
-                last_name = last_name,
-                email = email,
-                username = username,
-                profile_pic = student_photo,
-                user_type = 3
+        try:
+            user = CustomUser(
+                first_name=first_name,
+                last_name=last_name,
+                email=email,
+                username=username,
+                profile_pic=student_photo,
+                user_type=3
             )
             user.set_password(password)
             user.save()
@@ -57,28 +53,31 @@ def students(request):
             class_admitted = Class.objects.get(id=class_id)
             session = Session.objects.get(id=session_id)
 
-            student = Student (
-                admin = user,
-                father_name = father_name,
-                mother_name = mother_name,
-                gender = gender,
-                dob = dob,
-                mobile_no = mobile_number,
-                vill_town = vill_town,
-                post_office = post_office,
-                police_station = police_station,
-                district = district,
-                permanent_address = permanent_address,
-                state = state,
-                pin = pin,
-                session_id = session,
-                class_id = class_admitted,
-                dob_certificate = dob_certificate
+            student = Student(
+                admin=user,
+                father_name=father_name,
+                mother_name=mother_name,
+                gender=gender,
+                dob=dob,
+                mobile_no=mobile_number,
+                vill_town=vill_town,
+                post_office=post_office,
+                police_station=police_station,
+                district=district,
+                permanent_address=permanent_address,
+                state=state,
+                pin=pin,
+                session_id=session,
+                class_id=class_admitted,
+                dob_certificate=dob_certificate
             )
             student.save()
-            messages.success(request, user.first_name + " " + user.last_name + " has been successfully registered!")
-            return redirect('students')
+            messages.success(request, f"{user.first_name} {user.last_name} has been successfully registered!")
+        except Exception as e:
+            messages.error(request, "An error occurred while registering the student: " + str(e))
         
+        return redirect('students')
+
     students = Student.objects.all()
     student_count = Student.objects.count()
 

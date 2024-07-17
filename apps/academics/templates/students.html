@@ -81,7 +81,7 @@
       <tbody>
         {% for i in students %}
         <tr>
-          <td>001</td>
+          <td>{{ forloop.counter }}</td>
           <td>{{ i.admin.first_name }}&nbsp;{{ i.admin.last_name }}</td>
           <td>{{ i.father_name }}</td>
           <td>{{ i.admin.email }}</td>
