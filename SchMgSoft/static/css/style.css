@@ -154,4 +154,5 @@ h6 {
   width: calc(100% - 185px);
   height: calc(100% - 50px);
   background-color: var(--bg-clr);
+  overflow: hidden;
 }

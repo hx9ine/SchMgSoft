@@ -6,18 +6,17 @@
   href="{% static 'css/users/profile.css' %}"
 />
 {% endblock htmlhead %} {% block content %}
-<!-- Profile Update -->
-<div id="profile">
-  <form
-    action="{% url 'profile-update' %}"
-    method="post"
-    enctype="multipart/form-data"
-  >
-    {% csrf_token %}
-    <h3>Edit Profile</h3>
-    <p>Required fields *</p>
-    <div id="profile-details">
-      <div id="image">
+<!-- My Profile -->
+<div id="my-profile">
+  <div class="image-section">
+    <div id="cover-photo">
+      <img
+        src="https://images.unsplash.com/photo-1642104704074-907c0698cbd9?crop=entropy&cs=srgb&fm=jpg&ixid=M3wzMjM4NDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE3MjEzMjI3NTF8&ixlib=rb-4.0.3&q=85"
+        alt="Cover Photo"
+      />
+    </div>
+    <div class="profile-details">
+      <div id="profile-photo">
         {% if not user.profile_pic %}
         <img
           src="https://images.unsplash.com/photo-1718002127646-0904604dfb8c?crop=entropy&cs=srgb&fm=jpg&ixid=M3wzMjM4NDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE3MjA5NDE3OTN8&ixlib=rb-4.0.3&q=85"
@@ -27,96 +26,61 @@
         <img src="{{ user.profile_pic.url }}" alt="Profile Photo." />
         {% endif %}
       </div>
-
-      <button>
-        <input type="file" accept=".jpg, .jpeg, .png" name="profile-pic" />
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="24"
-          height="24"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          class="icon icon-tabler icons-tabler-outline icon-tabler-photo-edit"
-        >
-          <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-          <path d="M15 8h.01" />
-          <path
-            d="M11 20h-4a3 3 0 0 1 -3 -3v-10a3 3 0 0 1 3 -3h10a3 3 0 0 1 3 3v4"
-          />
-          <path d="M4 15l4 -4c.928 -.893 2.072 -.893 3 0l3 3" />
-          <path d="M14 14l1 -1c.31 -.298 .644 -.497 .987 -.596" />
-          <path
-            d="M18.42 15.61a2.1 2.1 0 0 1 2.97 2.97l-3.39 3.42h-3v-3l3.42 -3.39z"
-          />
-        </svg>
-      </button>
-    </div>
-    <div id="form-content">
-      <div class="form-group">
-        <label for="fname">Firstname *</label>
-        <input
-          type="text"
-          name="fname"
-          id="fname"
-          value="{{ user.first_name }}"
-          required
-        />
-      </div>
-      <div class="form-group">
-        <label for="lname">Lastname *</label>
-        <input
-          type="text"
-          name="lname"
-          id="lname"
-          value="{{ user.last_name }}"
-          required
-        />
-      </div>
-      <div class="form-group full-width">
-        <label for="email">Email Address (Not Editable)</label>
-        <input
-          type="email"
-          name="email"
-          id="email"
-          value="{{ user.email }}"
-          readonly
-          tabindex="-1"
-        />
-      </div>
-      <!--       <div class="form-group">
-          <label for="username">Username</label>
-          <input type="text" name="username" id="username" readonly>
-        </div> -->
-      <div class="form-group">
-        <label for="city">City *</label>
-        <input
-          type="text"
-          name="city"
-          id="city"
-          value="{{ user.city }}"
-          required
-        />
-      </div>
-      <div class="form-group">
-        <label for="country">Country *</label>
-        <input
-          type="text"
-          name="country"
-          id="country"
-          value="{{ user.country }}"
-          required
-        />
+      <div class="profile-section">
+        <h3>{{ user.first_name }} {{ user.last_name }}</h3>
+        {% if user.user_type == '1' %}
+        <p>Admin</p>
+        {% elif user.user_type == '2' %}
+        <p>Teacher</p>
+        {% else %}
+        <p>Student</p>
+        {% endif %}
       </div>
     </div>
+  </div>
 
-    <button type="submit">Save Changes</button>
-  </form>
+  <div class="user-details">
+    <div class="group">
+      <div class="sub-group">
+        <h3>Username</h3>
+        <p>Username is unique. It cannot be edited.</p>
+      </div>
+      <p>{{ user.username }}</p>
+    </div>
+
+    <div class="group">
+      <div class="sub-group">
+        <h3>Email Address</h3>
+        <p>This is the registered email address. It cannot be changed.</p>
+      </div>
+      <p>{{ user.email }}</p>
+    </div>
+
+    <div class="group">
+      <div class="sub-group">
+        <h3>Password</h3>
+        <p>For security purpose, the password is not shown here.</p>
+      </div>
+      <p>●●●●●●●●●</p>
+    </div>
+
+    <div class="group">
+      <div class="sub-group">
+        <h3>City</h3>
+        <p>You can update it by visiting edit profile.</p>
+      </div>
+      <p>{{ user.city }}</p>
+    </div>
+
+    <div class="group">
+      <div class="sub-group">
+        <h3>Country</h3>
+        <p>You can update it by visiting edit profile.</p>
+      </div>
+      <p>{{ user.country }}</p>
+    </div>
+
+    <a href="{% url 'profile-edit' %}">Edit Profile</a>
+  </div>
 </div>
-
-{% if messages %}
-<!-- Toast Notification -->
-{% include "toast.html" %} {% endif %} {% endblock %}
+{% endblock %}

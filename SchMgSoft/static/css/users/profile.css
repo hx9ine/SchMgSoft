@@ -1,183 +1,148 @@
-/* Profile Update Styles */
-#profile {
+/* My Profile Styles */
+#my-profile {
   width: 100%;
   height: 100%;
   background-color: var(--bg-component);
   border-radius: var(--round-md);
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 
-#profile form {
-  padding: 11px;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  /* gap: 24px; */
-  align-items: start;
-}
-
-#profile form h3 {
-  font-size: 0.931rem;
-  font-weight: 500;
-  text-align: left;
-  color: var(--text-clr-950);
-}
-
-#profile form p {
-  font-size: 0.631rem;
-  font-weight: 400;
-  text-align: left;
-  color: #f00;
-}
-
-#profile form #profile-details {
-  position: relative;
-  margin-top: 24px;
-  width: 96px;
-  height: 90px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-#profile form #profile-details::after {
-  position: absolute;
-  top: 30%;
-  left: 50%;
-  transform: translateX(-50%);
-  content: '';
-  padding: 0.5rem 1.5rem;
-  width: 70px;
-  height: 70px;
-  background-color: var(--accent-clr-700);
-  border-radius: var(--round-full);
-  filter: blur(24px);
-  opacity: 0.45;
-  z-index: 0;
-}
-
-#profile form #profile-details #image {
+#my-profile .image-section {
   /* position: relative; */
-  width: 80px;
-  height: 80px;
+  width: 100%;
+  height: 350px;
+}
+
+#my-profile .image-section #cover-photo {
+  width: 100%;
+  height: 250px;
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: var(--round-full);
+  border-radius: var(--round-md) var(--round-md) 0 0;
   overflow: hidden;
-  z-index: 1;
+  /* border-bottom-left-radius: 90px; */
 }
 
-#profile form #profile-details #image img {
+#my-profile .image-section #cover-photo img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
-#profile form #profile-details button {
-  position: absolute;
-  right: 0;
-  bottom: 15%;
-  width: 28px;
-  height: 28px;
-  border-radius: var(--round-full);
-  outline: none;
-  border: none;
-  background: var(--accent-clr-400);
+#my-profile .image-section .profile-details {
+  /* position: relative; */
+  padding: 0 32px;
+  width: 100%;
+  height: 50px;
+  display: flex;
+  gap: 24px;
+  align-items: center;
+  justify-content: left;
+}
+
+#my-profile .image-section .profile-details #profile-photo {
+  width: 130px;
+  height: 130px;
   display: flex;
   align-items: center;
   justify-content: center;
-  cursor: pointer;
-  z-index: 1;
+  border: 5px solid var(--bg-component);
+  border-radius: var(--round-full);
+  box-shadow: var(--border-clr) 0px 6px 24px 0px,
+    var(--border-clr) 0px 0px 0px 1px;
+  overflow: hidden;
 }
 
-#profile form #profile-details button input[type='file'] {
-  position: absolute;
-  top: 0;
-  left: 0;
+#my-profile .image-section .profile-details #profile-photo img {
   width: 100%;
   height: 100%;
-  opacity: 0;
-  cursor: pointer;
-  /* z-index: 1; */
+  object-fit: cover;
 }
 
-#profile form #profile-details button input[type='file']::file-selector-button {
-  cursor: pointer;
+#my-profile .image-section .profile-details .profile-section {
+  margin-top: 24px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: end;
 }
 
-#profile form #profile-details button svg {
-  width: 16px;
-  height: 16px;
-  object-fit: contain;
-  color: #fff;
+#my-profile .image-section .profile-details .profile-section h3 {
+  font-size: 1.351rem;
+  font-weight: 700;
+  text-align: left;
+  letter-spacing: -1px;
+  color: var(--text-clr-950);
 }
 
-#profile form #form-content {
-    margin: 24px auto;
+#my-profile .image-section .profile-details .profile-section p {
+  font-size: 0.731rem;
+  font-weight: 600;
+  text-align: left;
+  color: var(--accent-clr-700);
+}
+
+#my-profile .user-details {
+  padding: 24px 32px;
   width: 100%;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 0.5rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  align-items: start;
+  justify-content: left;
 }
 
-#profile form #form-content .form-group {
+#my-profile .user-details .group {
   width: 100%;
+  display: flex;
+  align-items: center;
 }
 
-#profile form #form-content .form-group.full-width {
-  grid-column: span 2;
+#my-profile .user-details .group .sub-group {
+  width: 25%;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: left;
 }
-#profile form #form-content .form-group label {
-  padding: 0.5rem 0.25rem;
-  font-size: 0.631rem;
-  font-weight: 300;
+
+#my-profile .user-details .group .sub-group h3 {
+  font-size: 0.831rem;
+  font-weight: 600;
   text-align: left;
   color: var(--text-clr-700);
 }
 
-#profile form #form-content .form-group input {
-  padding: 10px;
-  width: 100%;
-  height: 32px;
-  border: 1px solid var(--text-clr-100);
-  border-radius: var(--round-md);
-  outline: none;
-  background: none;
+#my-profile .user-details .group .sub-group p {
+  font-size: 0.531rem;
+  font-weight: 500;
+  text-align: left;
+  color: var(--text-clr-500);
+}
+
+#my-profile .user-details .group p {
+  width: 75%;
   font-size: 0.731rem;
   font-weight: 500;
   text-align: left;
   color: var(--text-clr-950);
-  transition: 0.3s;
 }
 
-#profile form #form-content .form-group input:read-only {
-  color: var(--text-clr-700);
-  pointer-events: none;
-}
-
-#profile form #form-content .form-group input:focus {
-  border-color: var(--accent-clr-700);
-  caret-color: var(--accent-clr-700);
-}
-
-#profile form button[type='submit'] {
+#my-profile .user-details a {
   padding: 10px 20px;
-  outline: none;
-  border: none;
-  background: var(--accent-clr-700);
   font-size: 0.731rem;
   font-weight: 600;
   text-align: center;
   color: #fff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  background: var(--accent-clr-700);
   border-radius: var(--round-md);
-  transition: background var(--transition-time) ease;
-  cursor: pointer;
+  transition: background var(--transition-time) ease-out;
 }
 
-#profile form button[type='submit']:hover {
-  background: var(--accent-clr-600);
+#my-profile .user-details a:hover {
+  background: var(--accent-clr-800);
+  cursor: pointer;
 }

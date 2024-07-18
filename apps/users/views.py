@@ -17,9 +17,9 @@ def profile(request):
     return render(request, 'profile.html', context)
 
 
-# Update Profile
+# Edit Profile
 @login_required(login_url='/')
-def profile_update(request):
+def profile_edit(request):
     if request.method == "POST":
         profile_pic = request.FILES.get('profile-pic')
         first_name = request.POST.get('fname')
@@ -38,11 +38,11 @@ def profile_update(request):
 
             customuser.save()
             messages.success(request, "Your profile has been updated successfully!")
-            return redirect('profile')
+            return redirect('profile-edit')
 
         except CustomUser.DoesNotExist:
             messages.error(request, "User does not exist.")
         except Exception as e:
             messages.error(request, f"Failed to update your profile: {e}")
     
-    return render(request, 'profile.html')
+    return render(request, 'edit-profile.html')
