@@ -2,7 +2,8 @@
   padding: 16px;
   width: 60%;
   text-align: center;
-  box-shadow: var(--border-clr) 0px 6px 24px 0px, var(--border-clr) 0px 0px 0px 1px;
+  box-shadow: var(--border-clr) 0px 6px 24px 0px,
+    var(--border-clr) 0px 0px 0px 1px;
   /* border: 1px solid var(--border-clr); */
   border-radius: var(--round-md);
 }
@@ -81,40 +82,45 @@
   background: rgba(255, 0, 0, 0.09);
 }
 
-#calendar td:hover{
+#calendar td:hover {
   background: rgba(30, 168, 255, 0.09);
   color: var(--accent-clr-700);
   cursor: pointer;
+}
+
+#popup-form {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.01), rgba(0, 0, 0, 0.7));
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .hidden {
   display: none;
 }
 
-#popup-form {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background: white;
-  padding: 20px;
-  border: 1px solid #ddd;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+.inactive {
+  visibility: hidden;
 }
 
-#popup-form form {
+form {
+  width: 85%;
+  height: 85%;
   display: flex;
   flex-direction: column;
+  background: var(--bg-component);
+  border-radius: var(--round-xl);
 }
 
-#popup-form label {
+form label {
   margin-bottom: 10px;
 }
 
-#popup-form input {
+form input {
   margin-bottom: 20px;
-}
-
-.inactive {
-  visibility: hidden;
 }

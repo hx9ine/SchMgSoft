@@ -179,5 +179,10 @@ def teachers(request):
 
 
 @login_required(login_url='/')
-def take_attendance(request):
-    return render(request, 'take-attendance.html')
+def attendance(request):
+    teachers = Teacher.objects.all()
+
+    context = {
+        'teachers' : teachers
+    }
+    return render(request, 'attendance.html', context)

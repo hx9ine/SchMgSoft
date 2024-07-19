@@ -1,73 +1,92 @@
-/* Profile Styles */
-#profile {
+/* My Profile Styles */
+#my-profile {
   width: 100%;
   height: 100%;
   background-color: var(--bg-component);
   border-radius: var(--round-md);
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 
-#profile .image-section {
-  position: relative;
+#my-profile .image-section {
+  /* position: relative; */
   width: 100%;
-  height: 400px;
-  border: 1px solid red;
+  height: 350px;
 }
 
-#profile .image-section #cover-photo {
+#my-profile .image-section #cover-photo {
   width: 100%;
-  height: 300px;
+  height: 250px;
   display: flex;
   align-items: center;
   justify-content: center;
+  border-radius: var(--round-md) var(--round-md) 0 0;
   overflow: hidden;
+  /* border-bottom-left-radius: 90px; */
 }
 
-#profile .image-section #cover-photo img {
+#my-profile .image-section #cover-photo img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
-#profile .image-section .profile-details {
+#my-profile .image-section .profile-details {
+  /* position: relative; */
+  padding: 0 32px;
   width: 100%;
-  height: 100px;
+  height: 50px;
   display: flex;
-  align-items: baseline;
+  gap: 24px;
+  align-items: center;
   justify-content: left;
 }
 
-#profile .image-section .profile-details #profile-photo {
-  width: 100px;
-  height: 100px;
+#my-profile .image-section .profile-details #profile-photo {
+  width: 130px;
+  height: 130px;
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 2px solid var(--bg-component);
-  border-radius: 24px;
+  border: 5px solid var(--bg-component);
+  border-radius: var(--round-full);
+  box-shadow: var(--border-clr) 0px 6px 24px 0px,
+    var(--border-clr) 0px 0px 0px 1px;
   overflow: hidden;
 }
 
-#profile .image-section .profile-details #profile-photo img {
+#my-profile .image-section .profile-details #profile-photo img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
-#profile .image-section .profile-details .profile-section h3 {
+#my-profile .image-section .profile-details .profile-section {
+  margin-top: 24px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: end;
+}
+
+#my-profile .image-section .profile-details .profile-section h3 {
   font-size: 1.351rem;
-  font-weight: 500;
+  font-weight: 700;
   text-align: left;
+  letter-spacing: -1px;
   color: var(--text-clr-950);
 }
 
-#profile .image-section .profile-details .profile-section p {
+#my-profile .image-section .profile-details .profile-section p {
   font-size: 0.731rem;
-  font-weight: 500;
+  font-weight: 600;
   text-align: left;
   color: var(--accent-clr-700);
 }
 
-#profile .user-details {
+#my-profile .user-details {
+  padding: 24px 32px;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -76,24 +95,54 @@
   justify-content: left;
 }
 
-#profile .user-details .group {
+#my-profile .user-details .group {
   width: 100%;
   display: flex;
   align-items: center;
 }
 
-#profile .user-details .group h3 {
-  width: 35%;
-  font-size: 0.931rem;
+#my-profile .user-details .group .sub-group {
+  width: 25%;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: left;
+}
+
+#my-profile .user-details .group .sub-group h3 {
+  font-size: 0.831rem;
+  font-weight: 600;
+  text-align: left;
+  color: var(--text-clr-700);
+}
+
+#my-profile .user-details .group .sub-group p {
+  font-size: 0.531rem;
+  font-weight: 500;
+  text-align: left;
+  color: var(--text-clr-500);
+}
+
+#my-profile .user-details .group p {
+  width: 75%;
+  font-size: 0.731rem;
   font-weight: 500;
   text-align: left;
   color: var(--text-clr-950);
 }
 
-#profile .user-details .group p {
-  width: 65%;
+#my-profile .user-details a {
+  padding: 10px 20px;
   font-size: 0.731rem;
-  font-weight: 500;
-  text-align: left;
-  color: var(--text-clr-700);
+  font-weight: 600;
+  text-align: center;
+  color: #fff;
+  background: var(--accent-clr-700);
+  border-radius: var(--round-md);
+  transition: background var(--transition-time) ease-out;
+}
+
+#my-profile .user-details a:hover {
+  background: var(--accent-clr-800);
+  cursor: pointer;
 }

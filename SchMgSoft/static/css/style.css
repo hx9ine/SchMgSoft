@@ -92,8 +92,10 @@ body.light-mode {
   --bg-blur: rgba(255, 255, 255, 0.3);
 
   /* Border Color */
-  /* --border-clr: rgba(255, 255, 255, 0.45); */
   --border-clr: rgba(0, 0, 0, 0.05);
+
+  /* Overlay */
+  --overlay: linear-gradient(180deg, rgba(0, 0, 0, 0.01), rgba(0, 0, 0, 0.5));
 }
 
 body.dark-mode {
@@ -125,6 +127,13 @@ body.dark-mode {
 
   /* Border Color */
   --border-clr: rgba(255, 255, 255, 0.05);
+
+  /* Overlay */
+  --overlay: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.01),
+    rgba(255, 255, 255, 0.5)
+  );
 }
 
 a {
