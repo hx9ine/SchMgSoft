@@ -175,3 +175,9 @@ def teachers(request):
         'teacher_count': teacher_count
     }
     return render(request, 'teachers.html', context)
+
+
+
+@login_required(login_url='/')
+def take_attendance(request):
+    return render(request, 'take-attendance.html')

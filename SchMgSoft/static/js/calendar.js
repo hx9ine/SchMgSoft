@@ -1,15 +1,25 @@
 document.addEventListener('DOMContentLoaded', () => {
   const calendar = document.getElementById('calendar');
   const calendarHeader = document.getElementById('current-month-year');
-  const prevYearBtn = document.getElementById('prev-year');
-  const nextYearBtn = document.getElementById('next-year');
-  const prevMonthBtn = document.getElementById('prev-month');
-  const nextMonthBtn = document.getElementById('next-month');
+  const monthSelector = document.getElementById('month');
   const popupForm = document.getElementById('popup-form');
   const selectedDateInput = document.getElementById('selected-date');
   const closeFormBtn = document.getElementById('close-form');
 
   let currentDate = new Date();
+
+  const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+
+  // Populate month selector
+  months.forEach((month, index) => {
+    const option = document.createElement('option');
+    option.value = index;
+    option.textContent = month;
+    monthSelector.appendChild(option);
+  });
+
+  // Set the selector to the current month
+  monthSelector.value = currentDate.getMonth();
 
   function renderCalendar() {
     // Clear the existing table body
@@ -20,9 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const month = currentDate.getMonth();
     const year = currentDate.getFullYear();
-    calendarHeader.textContent = `${currentDate.toLocaleString('default', {
-      month: 'long',
-    })} ${year}`;
+    calendarHeader.textContent = `${months[month]} ${year}`;
 
     const firstDayOfMonth = new Date(year, month, 1).getDay();
     const lastDateOfMonth = new Date(year, month + 1, 0).getDate();
@@ -54,23 +62,9 @@ document.addEventListener('DOMContentLoaded', () => {
     calendar.appendChild(tbody);
   }
 
-  prevYearBtn.addEventListener('click', () => {
-    currentDate.setFullYear(currentDate.getFullYear() - 1);
-    renderCalendar();
-  });
-
-  nextYearBtn.addEventListener('click', () => {
-    currentDate.setFullYear(currentDate.getFullYear() + 1);
-    renderCalendar();
-  });
-
-  prevMonthBtn.addEventListener('click', () => {
-    currentDate.setMonth(currentDate.getMonth() - 1);
-    renderCalendar();
-  });
-
-  nextMonthBtn.addEventListener('click', () => {
-    currentDate.setMonth(currentDate.getMonth() + 1);
+  // Update the calendar when the month selector changes
+  monthSelector.addEventListener('change', () => {
+    currentDate.setMonth(monthSelector.value);
     renderCalendar();
   });
 

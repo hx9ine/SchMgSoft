@@ -59,3 +59,18 @@ class Teacher(models.Model):
 
     def __str__(self):
         return self.admin.first_name + " " + self.admin.last_name
+    
+
+
+
+class Teacher_Attendance(models.Model):
+    teacher_id = models.ForeignKey(Teacher, on_delete=models.CASCADE)
+    day = models.IntegerField()
+    month = models.IntegerField()
+    year = models.IntegerField()
+    attendance_type = models.CharField(max_length=100)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self) -> str:
+        return f"Attendance - {self.teacher_id.admin.first_name} {self.teacher_id.admin.last_name}"
