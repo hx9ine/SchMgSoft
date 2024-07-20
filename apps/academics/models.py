@@ -63,14 +63,22 @@ class Teacher(models.Model):
 
 
 
-class Teacher_Attendance(models.Model):
-    teacher_id = models.ForeignKey(Teacher, on_delete=models.CASCADE)
-    day = models.IntegerField()
-    month = models.IntegerField()
-    year = models.IntegerField()
-    attendance_type = models.CharField(max_length=100)
+class TeacherAttendance(models.Model):
+    ATTENDANCE_TYPES = [
+        ('PRESENT', 'Present'),
+        ('ABSENT', 'Absent'),
+        ('PAID LEAVE', 'Paid Leave'),
+        ('HOLIDAY', 'Holiday'),
+    ]
+
+    teacher = models.ForeignKey(Teacher, on_delete=models.CASCADE)
+    date = models.DateField()
+    attendance_type = models.CharField(max_length=20, choices=ATTENDANCE_TYPES)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self) -> str:
-        return f"Attendance - {self.teacher_id.admin.first_name} {self.teacher_id.admin.last_name}"
+        return f"Attendance - {self.date}"
+
+    class Meta:
+        unique_together = ('teacher', 'date')  # Ensures a teacher can have only one attendance record per day

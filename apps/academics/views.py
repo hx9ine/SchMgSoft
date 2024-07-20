@@ -1,7 +1,9 @@
+from collections import defaultdict
+from datetime import datetime
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
-from apps.academics.models import Student, Teacher
+from apps.academics.models import Student, Teacher, TeacherAttendance
 from apps.home.models import Class, Session
 from apps.users.models import CustomUser
 
@@ -185,4 +187,82 @@ def attendance(request):
     context = {
         'teachers' : teachers
     }
-    return render(request, 'attendance.html', context)
+    return render(request, 'update-attendance.html', context)
+
+
+@login_required(login_url='/')
+def teacher_attendance_update(request):
+    teachers = Teacher.objects.all()
+
+    if request.method == 'POST':
+        date_str = request.POST.get("selected-date")
+        selected_date = datetime.strptime(date_str, "%d-%m-%Y").date()
+        teacher_ids = request.POST.getlist("teacher_id[]")
+
+        for i, teacher_id in enumerate(teacher_ids):
+            teacher = Teacher.objects.get(id=teacher_id)
+            attendance_status = request.POST.get(f"attendance{i+1}")
+
+            # Create or update the attendance record
+            TeacherAttendance.objects.update_or_create(
+                teacher=teacher,
+                date=selected_date,
+                defaults={'attendance_type': attendance_status}
+            )
+
+        messages.success(request, f"Attendances for { selected_date } saved successfully!")
+        return redirect('attendance')
+
+    context = {
+        'teachers': teachers
+    }
+    return render(request, 'update-attendance.html', context)
+
+
+
+@login_required(login_url='/')
+def teacher_attendance_view(request):
+    current_date = datetime.now()
+    month = request.GET.get('month', current_date.month)
+    year = request.GET.get('year', current_date.year)
+
+    # Convert month and year to integers
+    try:
+        month = int(month)
+        year = int(year)
+    except ValueError:
+        month = current_date.month
+        year = current_date.year
+
+    # Filter attendances by the selected month and year
+    attendances = TeacherAttendance.objects.filter(date__month=month, date__year=year)
+
+    # Define the months list
+    months = [
+        'January', 'February', 'March', 'April', 'May', 'June', 
+        'July', 'August', 'September', 'October', 'November', 'December'
+    ]
+
+    # Aggregating attendance data
+    attendance_summary = defaultdict(lambda: {'total_days': 0, 'present_days': 0, 'absent_days': 0, 'paid_leave_days': 0})
+
+    for attendance in attendances:
+        teacher_id = attendance.teacher.id
+        attendance_summary[teacher_id]['teacher'] = attendance.teacher
+        attendance_summary[teacher_id]['total_days'] += 1
+
+        if attendance.attendance_type == 'PRESENT':
+            attendance_summary[teacher_id]['present_days'] += 1
+        elif attendance.attendance_type == 'ABSENT':
+            attendance_summary[teacher_id]['absent_days'] += 1
+        elif attendance.attendance_type == 'PAID LEAVE':
+            attendance_summary[teacher_id]['paid_leave_days'] += 1
+
+    context = {
+        'attendance_summary': attendance_summary.values(),
+        'selected_month': month,
+        'selected_year': year,
+        'months': list(enumerate(months, 1)),  # List of tuples (index, month name) for the template
+        'years': range(2000, current_date.year + 1),  # Year range for the template
+    }
+    return render(request, 'view-attendance.html', context)

@@ -7,7 +7,7 @@
       <input type="hidden" name="teacher_id[]" value="{{ teacher.id }}" />
       <div class="user-details">
         <div class="profile-photo">
-          {% if not user.profile_pic %}
+          {% if not teacher.admin.profile_pic %}
           <img
             src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?crop=entropy&cs=srgb&fm=jpg&ixid=M3wzMjM4NDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE3MjAxNzg5OTl8&ixlib=rb-4.0.3&q=85"
             alt="Profile Photo."
@@ -27,7 +27,7 @@
           id="present-{{ teacher.admin.id }}"
           name="attendance{{ forloop.counter }}"
           class="present"
-          value="present"
+          value="PRESENT"
         />
         <label for="present-{{ teacher.admin.id }}">Present</label>
 
@@ -36,25 +36,16 @@
           id="absent-{{ teacher.admin.id }}"
           name="attendance{{ forloop.counter }}"
           class="absent"
-          value="absent"
+          value="ABSENT"
         />
         <label for="absent-{{ teacher.admin.id }}">Absent</label>
-
-        <input
-          type="radio"
-          id="halfday-{{ teacher.admin.id }}"
-          name="attendance{{ forloop.counter }}"
-          class="half-day"
-          value="half-day"
-        />
-        <label for="halfday-{{ teacher.admin.id }}">Half Day</label>
 
         <input
           type="radio"
           id="paidleave-{{ teacher.admin.id }}"
           name="attendance{{ forloop.counter }}"
           class="paid-leave"
-          value="paid-leave"
+          value="PAID LEAVE"
         />
         <label for="paidleave-{{ teacher.admin.id }}">Paid Leave</label>
 
@@ -63,7 +54,7 @@
           id="holiday-{{ teacher.admin.id }}"
           name="attendance{{ forloop.counter }}"
           class="holiday"
-          value="holiday"
+          value="HOLIDAY"
         />
         <label for="holiday-{{ teacher.admin.id }}">Holiday</label>
       </div>

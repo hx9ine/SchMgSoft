@@ -3,11 +3,11 @@
 <link
   rel="stylesheet"
   type="text/css"
-  href="{% static 'css/academics/attendance.css' %}"
+  href="{% static 'css/academics/update-attendance.css' %}"
 />
 {% endblock htmlhead %} {% block content %}
 
-<div class="attendance-calendar">
+<div class="update-attendance">
   <!-- Attendance Calendar -->
   {% include "attendance-calendar.html" %}
   <!-- Attendance Status Legends -->
@@ -31,6 +31,10 @@
     </div>
   </div>
 </div>
+
+{% if messages %}
+<!-- Toast Notification -->
+{% include "toast.html" %} {% endif %}
 
 <!-- JAVASCRIPT -->
 <!-- <script

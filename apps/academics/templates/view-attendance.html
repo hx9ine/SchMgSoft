@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% load static %}
+{% block htmlhead %}
+<!-- CSS -->
+<link rel="stylesheet" type="text/css" href="{% static 'css/academics/view-attendance.css' %}" />
+{% endblock htmlhead %}
+{% block content %}
+<div class="page-content">
+  <div id="view-attendance">
+    <h3>View Attendance</h3>
+    <form method="get" action="">
+      <div class="form-group">
+        <select name="month" id="month">
+          {% for index, month in months %}
+          <option value="{{ index }}" {% if index == selected_month %}selected{% endif %}>{{ month }}</option>
+          {% endfor %}
+        </select>
+        <select name="year" id="year">
+          {% for year in years %}
+          <option value="{{ year }}" {% if year == selected_year %}selected{% endif %}>{{ year }}</option>
+          {% endfor %}
+        </select>
+      </div>
+      <button type="submit">Show Attendance</button>
+    </form>
+  </div>
+
+  <div id="table-container">
+    <table>
+      <thead>
+        <tr>
+          <th>REG. NO.</th>
+          <th>TEACHER'S NAME</th>
+          <th style="text-align: center">TOTAL ATTENDANCE DAYS</th>
+          <th style="text-align: center">PRESENT</th>
+          <th style="text-align: center">ABSENT</th>
+          <th style="text-align: center">PAID LEAVE</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for summary in attendance_summary %}
+        <tr>
+          <td>{{ forloop.counter }}</td>
+          <td>{{ summary.teacher.admin.first_name }} {{ summary.teacher.admin.last_name }}</td>
+          <td style="text-align: center">{{ summary.total_days }}</td>
+          <td style="text-align: center">{{ summary.present_days }}</td>
+          <td style="text-align: center">{{ summary.absent_days }}</td>
+          <td style="text-align: center">{{ summary.paid_leave_days }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- JAVASCRIPT -->
+<script src="{% static 'js/academics/view-attendance.js' %}" type="text/javascript"></script>
+{% endblock %}

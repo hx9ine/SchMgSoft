@@ -1,4 +1,4 @@
-.attendance-calendar {
+.update-attendance {
   padding: 11px;
   width: 100%;
   display: flex;
@@ -7,7 +7,7 @@
   border-radius: var(--round-md);
 }
 
-.attendance-calendar .attendance-status-legends {
+.update-attendance .attendance-status-legends {
   padding: 16px;
   width: 40%;
   display: flex;
@@ -21,46 +21,46 @@
   border-radius: var(--round-md);
 }
 
-.attendance-calendar .attendance-status-legends h3 {
+.update-attendance .attendance-status-legends h3 {
   font-size: 0.931rem;
   font-weight: 600;
   text-align: left;
   color: var(--text-clr-950);
 }
 
-.attendance-calendar .attendance-status-legends .group {
+.update-attendance .attendance-status-legends .group {
   width: 100%;
   display: flex;
   align-items: center;
   gap: 16px;
 }
 
-.attendance-calendar .attendance-status-legends .group span {
+.update-attendance .attendance-status-legends .group span {
   width: 40px;
   height: 16px;
 }
 
-.attendance-calendar .attendance-status-legends .group span#updated {
+.update-attendance .attendance-status-legends .group span#updated {
   background: rgba(2, 255, 150, 0.09);
   border: 1px solid rgb(2, 255, 150);
 }
 
-.attendance-calendar .attendance-status-legends .group span#not-updated {
+.update-attendance .attendance-status-legends .group span#not-updated {
   background: rgba(173, 166, 255, 0.09);
   border: 1px solid rgb(173, 166, 255);
 }
 
-.attendance-calendar .attendance-status-legends .group span#holiday {
+.update-attendance .attendance-status-legends .group span#holiday {
   background: rgba(255, 215, 145, 0.09);
   border: 1px solid rgb(255, 215, 145);
 }
 
-.attendance-calendar .attendance-status-legends .group span#sunday {
+.update-attendance .attendance-status-legends .group span#sunday {
   background: rgba(255, 0, 0, 0.09);
   border: 1px solid rgb(255, 0, 0);
 }
 
-.attendance-calendar .attendance-status-legends .group p {
+.update-attendance .attendance-status-legends .group p {
   font-size: 0.731rem;
   font-weight: 400;
   text-align: left;
