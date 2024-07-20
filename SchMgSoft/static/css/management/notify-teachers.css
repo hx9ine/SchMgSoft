@@ -43,8 +43,11 @@ form .input-group {
   transition: border-color var(--transition-time) ease-out;
 }
 
-form .input-group select,
+
 form .input-group #message {
+  min-width: 100%;
+  max-width: 100%;
+  min-height: 200px;
   padding: 8px 6px;
   width: 100%;
   border: none;
@@ -52,24 +55,14 @@ form .input-group #message {
   background: none;
   font-size: 0.731rem;
   text-align: left;
-}
-
-form .input-group select {
-  /*   height: 32px; */
-  cursor: pointer;
-}
-
-form .input-group #message {
-  min-width: 100%;
-  max-width: 100%;
-  min-height: 200px;
-  border-bottom: 1px solid var(--text-clr-100);
+  color: var(--text-clr-950);
   /*   resize: none; */
   font-family: 'Poppins', sans-serif;
   font-synthesis: none;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
+  border-bottom: 1px solid var(--text-clr-100);
   transition: border-color var(--transition-time) ease-out;
 }
 

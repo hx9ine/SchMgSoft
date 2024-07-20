@@ -103,7 +103,7 @@
       <p class="title">MANAGEMENT</p>
 
       <div class="menu">
-        <div class="menu-item">
+        <div class="menu-item {% active_link 'notify-teachers || notify-students' 'active' %}">
           <span class="left">
             <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-notification"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M10 6h-3a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-3" /><path d="M17 7m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0" /></svg>
             <p>Notify</p>
@@ -118,7 +118,7 @@
         <div class="submenu">
           <ul>
             <li><a href="{% url "notify-teachers" %}">Teacher</a></li>
-            <li><a href="#">Student</a></li>
+            <li><a href="{% url "notify-students" %}">Student</a></li>
           </ul>
         </div>
       </div>
