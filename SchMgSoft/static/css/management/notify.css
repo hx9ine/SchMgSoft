@@ -1,0 +1,378 @@
+.container {
+  padding: 11px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: start;
+  background: var(--bg-component);
+  border-radius: var(--round-md);
+}
+
+.container h3 {
+  font-size: 0.931rem;
+  font-weight: 600;
+  text-align: left;
+  color: var(--text-clr-950);
+}
+
+/* Send Notification */
+.send-notification {
+  width: 100%;
+  height: fit-content;
+}
+
+form {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: start;
+  justify-content: space-between;
+}
+
+form .input-group {
+  position: relative;
+  /*   padding: 5px; */
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  border-radius: var(--round-md);
+  border: 1px solid var(--text-clr-100);
+  transition: border-color var(--transition-time) ease-out;
+}
+
+form .input-group select,
+form .input-group #message {
+  padding: 8px 6px;
+  width: 100%;
+  border: none;
+  outline: none;
+  background: none;
+  font-size: 0.731rem;
+  text-align: left;
+}
+
+form .input-group select {
+  /*   height: 32px; */
+  cursor: pointer;
+}
+
+form .input-group #message {
+  min-width: 100%;
+  max-width: 100%;
+  min-height: 200px;
+  border-bottom: 1px solid var(--text-clr-100);
+  /*   resize: none; */
+  font-family: 'Poppins', sans-serif;
+  font-synthesis: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  transition: border-color var(--transition-time) ease-out;
+}
+
+form .input-group .placeholder {
+  position: absolute;
+  top: 8px;
+  left: 6px;
+  padding: 0 5px;
+  width: fit-content;
+  height: fit-content;
+  font-size: 0.731rem;
+  color: var(--text-clr-300);
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition-time);
+  pointer-events: none;
+}
+
+form .input-group #message:focus + .placeholder,
+form .input-group #message:not(:placeholder-shown) + .placeholder {
+  top: 0px;
+  background: var(--bg-component);
+  font-size: 0.631rem;
+  color: var(--accent-clr-700);
+  transform: translateY(-50%);
+}
+
+form .input-group:focus-within {
+  border-color: var(--accent-clr-700);
+}
+
+form .input-group #message:focus {
+  border-color: var(--accent-clr-700);
+}
+
+form .input-group .toolbar {
+  padding: 2px 8px;
+  width: 100%;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+form .input-group .toolbar .left,
+form .input-group .toolbar .right {
+  /* width: calc(100% - 32px); */
+  height: 100%;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+form .input-group .toolbar .left {
+  justify-content: left;
+}
+
+form .input-group .toolbar .right {
+  /* width: 32px; */
+  justify-content: right;
+}
+
+form .input-group .toolbar .left button,
+form .input-group .toolbar .right button {
+  position: relative;
+  width: 30px;
+  height: 30px;
+  border: none;
+  outline: none;
+  background: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+form .input-group .toolbar .left button svg,
+form .input-group .toolbar .right button svg {
+  width: 16px;
+  height: 16px;
+  object-fit: contain;
+  color: var(--text-clr-300);
+  transition: color var(--transition-time) ease-out;
+}
+
+form .input-group .toolbar .left button:hover svg {
+  color: var(--accent-clr-700);
+}
+
+form .input-group .toolbar .right button#delete:hover svg {
+  color: #f00;
+}
+
+form .input-group .toolbar .right button[type='submit'] {
+  padding: 7px 15px;
+  width: fit-content;
+  height: 30px;
+  gap: 6px;
+  border: none;
+  outline: none;
+  background-color: var(--accent-clr-700);
+  border-radius: var(--round-norm);
+  transition: background-color var(--transition-time) ease-out;
+}
+
+form .input-group .toolbar .right button[type='submit']:hover {
+  background-color: var(--accent-clr-800);
+  cursor: pointer;
+}
+
+form .input-group .toolbar .right button[type='submit'] svg {
+  color: #fff;
+}
+
+form .input-group .toolbar .right button[type='submit'] p {
+  color: #fff;
+  font-size: 0.751rem;
+  font-weight: 600;
+  text-align: center;
+  line-height: 24px;
+}
+
+form .input-group .toolbar .left button .tooltip,
+form .input-group .toolbar .right button .tooltip {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  padding: 5px 11px;
+  min-width: 70px;
+  height: 24px;
+  background: var(--text-clr-700);
+  border-radius: 24px;
+  transform: translate(-50%, -100%);
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity var(--transition-time) ease-out;
+  z-index: 1;
+}
+
+form .input-group .toolbar .left button:hover .tooltip,
+form .input-group .toolbar .right button:hover .tooltip {
+  opacity: 1;
+  visibility: visible;
+}
+
+form .input-group .toolbar .left button .tooltip::after,
+form .input-group .toolbar .right button .tooltip::after {
+  position: inherit;
+  top: 100%;
+  left: 50%;
+  content: '';
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 5px solid var(--text-clr-700);
+  transform: translateX(-50%);
+}
+
+form .input-group .toolbar .left button .tooltip p,
+form .input-group .toolbar .right button .tooltip p {
+  font-size: 0.631rem;
+  font-weight: 500;
+  text-align: center;
+  vertical-align: middle;
+  color: var(--text-clr-50);
+}
+
+form .input-group .toolbar .left span {
+  width: 1px;
+  height: 24px;
+  background: var(--text-clr-100);
+}
+
+/* Recepients List Styles */
+.recipient-container {
+  position: relative;
+  width: 100%;
+  /* margin: 50px auto; */
+}
+
+.recipient-input-container {
+  display: flex;
+  flex-wrap: wrap;
+  border: 1px solid var(--text-clr-100);
+  /* padding: 5px; */
+  border-radius: var(--round-md);
+}
+
+#recipient-input {
+  padding: 8px 6px;
+  width: 100%;
+  border: none;
+  outline: none;
+  background: none;
+  font-size: 0.731rem;
+  text-align: left;
+  flex: 1;
+}
+
+.recepient-list-dropdown {
+  position: absolute;
+  top: calc(100% + 9px);
+  left: 0;
+  right: 0;
+  padding: 16px;
+  max-height: 300px;
+  background: var(--bg-component);
+  display: none;
+  border-radius: var(--round-xl);
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+    rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+  overflow-y: auto;
+  z-index: 1;
+}
+
+.recepient-list-dropdown span#add-all {
+  width: fit-content;
+  padding: 7px 20px;
+  background: var(--accent-clr-700);
+  font-size: 0.631rem;
+  color: var(--text-clr-950);
+  font-weight: 600;
+  text-align: center;
+  color: #fff;
+  border: none;
+  border-radius: var(--round-norm);
+}
+
+.recepient-list-dropdown span#add-all:hover {
+  background: var(--accent-clr-800);
+  cursor: pointer;
+}
+
+.recepient-list-dropdown ul {
+  margin-top: 15px;
+  width: 100%;
+  list-style: none;
+}
+
+.recepient-list-dropdown li {
+  padding: 9px 15px;
+  font-size: 0.731rem;
+  color: var(--text-clr-950);
+  font-weight: 500;
+  text-align: left;
+  border-radius: var(--round-md);
+  transition: color var(--transition-time) ease-out;
+}
+
+.recepient-list-dropdown li:hover {
+  background-color: var(--text-clr-50);
+  color: var(--accent-clr-700);
+  cursor: pointer;
+}
+
+.badge {
+  position: relative;
+  padding: 4px 11px 4px 9px;
+  font-size: 0.631rem;
+  font-weight: 600;
+  text-align: center;
+  color: var(--text-clr-950);
+  background-color: var(--text-clr-100);
+  border-radius: var(--round-norm);
+  margin: 5px 6px;
+  display: inline-flex;
+  align-items: center;
+}
+
+.badge span {
+  position: absolute;
+  top: -3px;
+  right: -8px;
+  width: 16px;
+  height: 16px;
+  background: var(--text-clr-200);
+  border-radius: var(--round-norm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.531rem;
+  text-align: center;
+  font-weight: 800;
+  line-height: 16px;
+  color: var(--text-clr-950);
+  transition: background var(--transition-time) ease-out;
+}
+
+.badge span:hover {
+  background: var(--accent-clr-700);
+  color: #fff;
+  cursor: pointer;
+}
+
+/* For WebKit browsers */
+.recepient-list-dropdown {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+.recepient-list-dropdown::-webkit-scrollbar {
+  display: none; /* Safari and Chrome */
+}

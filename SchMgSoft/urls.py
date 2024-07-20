@@ -40,6 +40,9 @@ urlpatterns = [
     # Academics App Paths
     path('academics/', include('apps.academics.urls')),
 
+    # Management App Paths
+    path('management/', include('apps.management.urls')),
+
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 if settings.DEBUG:
