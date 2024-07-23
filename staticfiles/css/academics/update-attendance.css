@@ -1,0 +1,68 @@
+.update-attendance {
+  padding: 11px;
+  width: 100%;
+  display: flex;
+  gap: 11px;
+  background: var(--bg-component);
+  border-radius: var(--round-md);
+}
+
+.update-attendance .attendance-status-legends {
+  padding: 16px;
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: start;
+  justify-content: left;
+  box-shadow: var(--border-clr) 0px 6px 24px 0px,
+    var(--border-clr) 0px 0px 0px 1px;
+  /* border: 1px solid var(--border-clr); */
+  border-radius: var(--round-md);
+}
+
+.update-attendance .attendance-status-legends h3 {
+  font-size: 0.931rem;
+  font-weight: 600;
+  text-align: left;
+  color: var(--text-clr-950);
+}
+
+.update-attendance .attendance-status-legends .group {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.update-attendance .attendance-status-legends .group span {
+  width: 40px;
+  height: 16px;
+}
+
+.update-attendance .attendance-status-legends .group span#updated {
+  background: rgba(2, 255, 150, 0.09);
+  border: 1px solid rgb(2, 255, 150);
+}
+
+.update-attendance .attendance-status-legends .group span#not-updated {
+  background: rgba(173, 166, 255, 0.09);
+  border: 1px solid rgb(173, 166, 255);
+}
+
+.update-attendance .attendance-status-legends .group span#holiday {
+  background: rgba(255, 215, 145, 0.09);
+  border: 1px solid rgb(255, 215, 145);
+}
+
+.update-attendance .attendance-status-legends .group span#sunday {
+  background: rgba(255, 0, 0, 0.09);
+  border: 1px solid rgb(255, 0, 0);
+}
+
+.update-attendance .attendance-status-legends .group p {
+  font-size: 0.731rem;
+  font-weight: 400;
+  text-align: left;
+  color: var(--text-clr-700);
+}

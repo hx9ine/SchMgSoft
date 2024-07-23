@@ -1,0 +1,78 @@
+{% extends "base.html" %} {% load static %} {% block htmlhead %}
+<!-- CSS -->
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="{% static 'css/management/leave-requests.css' %}"
+/>
+{% endblock htmlhead %} {% block content %}
+<div class="container">
+  <h3>Leave Requests</h3>
+  <!-- Leave Requests Table -->
+  <div id="table-container">
+    <table id="leave-request-teacher-table">
+      <thead>
+        <tr>
+          <th>LEAVE TYPE</th>
+          <th>TEACHER'S NAME</th>
+          <th>DATE FROM</th>
+          <th>DATE TO</th>
+          <th>DURATION</th>
+          <th style="text-align: center">STATUS</th>
+          <th style="text-align: center">ACTION</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for i in teachers %}
+        <tr>
+          <td>Sick Leave</td>
+          <td>{{ i.admin.first_name }} {{ i.admin.last_name }}</td>
+          <td>22/07/2024</td>
+          <td>23/07/2024</td>
+          <td>1 day</td>
+          <td style="position: relative;">
+            <span class="badge declined">
+              <p>Declined</p>
+            </span>
+          </td>
+          <td
+            style="
+              text-align: center;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+            "
+          >
+            <a href="#" class="action-link">
+              <p>View</p>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="icon icon-tabler icons-tabler-outline icon-tabler-arrow-up-right"
+              >
+                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                <path d="M17 7l-10 10" />
+                <path d="M8 7l9 0l0 9" />
+              </svg>
+            </a>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- JAVASCRIPT -->
+<script
+  src="{% static 'js/management/leave-requests.js' %}"
+  type="text/javascript"
+></script>
+{% endblock %}

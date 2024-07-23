@@ -17,7 +17,18 @@
     {% include "bar-chart.html" %}
   </div>
   {% elif user.user_type == '2' %}
-  <h1>This is Teacher's Home page.</h1>
+  <div id="dynamic">
+    <!-- Cards Container -->
+    {% include "cards.html" %}
+    <!-- Line Chart -->
+    {% include "line-chart.html" %}
+  </div>
+  <div id="static">
+    <!-- Mini-Calendar -->
+    {% include "mini-calendar.html" %}
+    <!-- Bar Chart -->
+    {% include "bar-chart.html" %}
+  </div>
   {% else %}
   <h1>This is Student's Home page.</h1>
   {% endif %}

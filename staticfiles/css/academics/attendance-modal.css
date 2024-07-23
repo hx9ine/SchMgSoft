@@ -20,20 +20,15 @@
 .attendance-card {
   padding: 16px;
   width: calc(100% / 4.08);
-  /* width: 25%; */
-  /* width: fit-content; */
-  /*   border-radius: 8px; */
-  background-color: var(--bg-component);
-  border-radius: var(--round-md);
-  /* box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px 0px; */
   text-align: center;
   display: flex;
   flex-direction: column;
   gap: 8px;
   align-items: center;
   justify-content: center;
-  box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px,
-    rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+  background-color: var(--bg-component);
+  border: 1px solid var(--text-clr-100);
+  border-radius: var(--round-lg);
 }
 
 .user-details {
@@ -52,7 +47,7 @@
   align-items: center;
   justify-content: center;
   /* border: 2px dashed var(--accent-clr-700); */
-  border-radius: var(--round-xl);
+  border-radius: var(--round-full);
   box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
   overflow: hidden;
 }

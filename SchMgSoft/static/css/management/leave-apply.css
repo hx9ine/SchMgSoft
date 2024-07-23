@@ -1,0 +1,539 @@
+.container {
+  padding: 11px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: start;
+  background: var(--bg-component);
+  border-radius: var(--round-md);
+}
+
+.container h3 {
+  font-size: 0.931rem;
+  font-weight: 600;
+  text-align: left;
+  color: var(--text-clr-950);
+}
+
+/* Leave Apply Form */
+.leave-apply-form {
+  width: 100%;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 64px;
+}
+
+form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  align-items: start;
+  /* background: var(--accent-clr-900);
+  border-radius: var(--round-md); */
+}
+
+.date-selector-container {
+  padding: 24px;
+  position: relative;
+  width: 100%;
+  height: 120px;
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--text-clr-500);
+  border-radius: var(--round-xl);
+  /* overflow: hidden; */
+}
+
+.date-selector-container button[type='button'] {
+  padding: 7px 15px;
+  width: calc(100% / 3);
+  height: 100%;
+  background: var(--bg-component);
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  align-items: start;
+  justify-content: center;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+.date-selector-container button[type='button']#from-btn {
+  border-top-left-radius: var(--round-lg);
+  border-bottom-left-radius: var(--round-lg);
+}
+
+.date-selector-container button[type='button']#duration {
+  border-top-right-radius: var(--round-lg);
+  border-bottom-right-radius: var(--round-lg);
+}
+
+.date-selector-container button[type='button']:hover {
+  cursor: pointer;
+}
+
+.date-selector-container button[type='button'] p {
+  font-size: 0.731rem;
+  font-weight: 500;
+  text-align: left;
+  color: var(--text-clr-700);
+}
+
+.date-selector-container button[type='button'] span {
+  width: 100%;
+  /* height: 60%; */
+  display: flex;
+  align-items: center;
+  color: var(--text-clr-900);
+  font-size: 0.831rem;
+  font-weight: 600;
+  text-align: left;
+}
+
+.date-selector-container button[type='button'] input[type='date'] {
+  display: none;
+}
+
+form .form-group {
+  position: relative;
+  width: 100%;
+  height: 36px;
+}
+
+form .form-group .input {
+  padding: 7px;
+  width: 100%;
+  height: 100%;
+  border: 1px solid var(--text-clr-100);
+  border-radius: var(--round-md);
+  outline: none;
+  background: none;
+  font-size: 0.731rem;
+  font-weight: 500;
+  text-align: left;
+  color: var(--text-clr-950);
+  transition: 0.15s;
+}
+
+form .form-group .input:focus {
+  border-color: var(--accent-clr-700);
+  caret-color: var(--accent-clr-700);
+}
+
+form .form-group .placeholder {
+  position: absolute;
+  top: 50%;
+  left: 7px;
+  padding: 2px 5px;
+  width: fit-content;
+  height: fit-content;
+  font-size: 0.731rem;
+  color: var(--text-clr-500);
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: translateY(-50%);
+  transition: var(--transition-time) ease-out;
+  pointer-events: none;
+}
+
+form .form-group .input:focus + .placeholder,
+form .form-group .input:not(:placeholder-shown) + .placeholder {
+  top: 0%;
+  background: var(--bg-component);
+  font-size: 0.631rem;
+  color: var(--accent-clr-700);
+}
+/* ----------- */
+form .file-input {
+  position: relative;
+  padding: 48px 24px;
+  width: 100%;
+  height: fit-content;
+  border-radius: var(--round-xl);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  align-items: center;
+  justify-content: center;
+  border: 2px dashed var(--text-clr-100);
+  overflow: hidden;
+}
+
+form .file-input input[type='file'] {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 0.5rem 1rem;
+  width: 100%;
+  height: 100%;
+  background: var(--accent-clr-500);
+  opacity: 0;
+  cursor: pointer;
+}
+
+form .file-input .icon {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--accent-clr-50);
+  border-radius: var(--round-full);
+}
+
+form .file-input .icon svg {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+  color: var(--accent-clr-700);
+}
+
+form .file-input h3 {
+  font-size: 0.971rem;
+  font-weight: 400;
+  text-align: center;
+  line-height: 22px;
+}
+
+form .file-input h3 span {
+  color: var(--accent-clr-700);
+  /*   text-decoration: var(--accent-clr-700) wavy underline; */
+}
+
+form .file-input small {
+  font-size: 0.631rem;
+  font-weight: 300;
+  text-align: center;
+  color: var(--text-clr-700);
+}
+
+/* ----------- */
+form .input-group {
+  position: relative;
+  /*   padding: 5px; */
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  border-radius: var(--round-md);
+  border: 1px solid var(--text-clr-100);
+  transition: border-color var(--transition-time) ease-out;
+}
+
+form .input-group #message {
+  min-width: 100%;
+  max-width: 100%;
+  min-height: 200px;
+  padding: 8px 6px;
+  width: 100%;
+  border: none;
+  outline: none;
+  background: none;
+  font-size: 0.731rem;
+  text-align: left;
+  color: var(--text-clr-950);
+  /*   resize: none; */
+  font-family: 'Poppins', sans-serif;
+  font-synthesis: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  border-bottom: 1px solid var(--text-clr-100);
+  transition: border-color var(--transition-time) ease-out;
+}
+
+form .input-group .placeholder {
+  position: absolute;
+  top: 8px;
+  left: 6px;
+  padding: 0 5px;
+  width: fit-content;
+  height: fit-content;
+  font-size: 0.731rem;
+  color: var(--text-clr-300);
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition-time);
+  pointer-events: none;
+}
+
+form .input-group #message:focus + .placeholder,
+form .input-group #message:not(:placeholder-shown) + .placeholder {
+  top: 0px;
+  background: var(--bg-component);
+  font-size: 0.631rem;
+  color: var(--accent-clr-700);
+  transform: translateY(-50%);
+}
+
+form .input-group:focus-within {
+  border-color: var(--accent-clr-700);
+}
+
+form .input-group #message:focus {
+  border-color: var(--accent-clr-700);
+}
+
+form .input-group .toolbar {
+  padding: 2px 8px;
+  width: 100%;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+form .input-group .toolbar .left,
+form .input-group .toolbar .right {
+  /* width: calc(100% - 32px); */
+  height: 100%;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+form .input-group .toolbar .left {
+  justify-content: left;
+}
+
+form .input-group .toolbar .right {
+  /* width: 32px; */
+  justify-content: right;
+}
+
+form .input-group .toolbar .left button,
+form .input-group .toolbar .right button {
+  position: relative;
+  width: 30px;
+  height: 30px;
+  border: none;
+  outline: none;
+  background: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all var(--transition-time);
+}
+
+form .input-group .toolbar .left button svg,
+form .input-group .toolbar .right button svg {
+  width: 16px;
+  height: 16px;
+  object-fit: contain;
+  color: var(--text-clr-300);
+  transition: color var(--transition-time) ease-out;
+}
+
+form .input-group .toolbar .left button:hover svg {
+  color: var(--accent-clr-700);
+}
+
+form .input-group .toolbar .right button#delete:hover svg {
+  color: #f00;
+}
+
+form .input-group .toolbar .right button[type='submit'] {
+  padding: 7px 15px;
+  width: fit-content;
+  height: 30px;
+  gap: 6px;
+  border: none;
+  outline: none;
+  background-color: var(--accent-clr-700);
+  border-radius: var(--round-norm);
+  transition: background-color var(--transition-time) ease-out;
+}
+
+form .input-group .toolbar .right button[type='submit']:hover {
+  background-color: var(--accent-clr-800);
+  cursor: pointer;
+}
+
+form .input-group .toolbar .right button[type='submit'] svg {
+  color: #fff;
+}
+
+form .input-group .toolbar .right button[type='submit'] p {
+  color: #fff;
+  font-size: 0.751rem;
+  font-weight: 600;
+  text-align: center;
+  line-height: 24px;
+}
+
+form .input-group .toolbar .left button .tooltip,
+form .input-group .toolbar .right button .tooltip {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  padding: 5px 11px;
+  /* min-width: 70px; */
+  height: 24px;
+  background: var(--text-clr-700);
+  border-radius: 24px;
+  transform: translateX(-50%);
+  pointer-events: none;
+  transition: top var(--transition-time);
+  visibility: hidden;
+  opacity: 0;
+  z-index: 1;
+}
+
+form .input-group .toolbar .left button:hover .tooltip,
+form .input-group .toolbar .right button:hover .tooltip {
+  top: -100%;
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+form .input-group .toolbar .left button .tooltip::after,
+form .input-group .toolbar .right button .tooltip::after {
+  position: inherit;
+  left: 50%;
+  content: '';
+  width: 10px;
+  height: 10px;
+  background: var(--text-clr-700);
+  border-bottom-right-radius: var(--round-sm);
+  transform: translate(-50%, -5%) rotate(45deg);
+}
+
+form .input-group .toolbar .left button .tooltip p,
+form .input-group .toolbar .right button .tooltip p {
+  font-size: 0.631rem;
+  font-weight: 500;
+  text-align: center;
+  vertical-align: middle;
+  color: var(--text-clr-50);
+}
+
+form .input-group .toolbar .left span {
+  width: 1px;
+  height: 24px;
+  background: var(--text-clr-100);
+}
+
+/* Dynamic Calendar Styles */
+.calendar-container {
+  position: absolute;
+  top: 110%;
+  left: 0;
+  width: 100%;
+  margin: 0 auto;
+  padding: 24px;
+  text-align: center;
+  background: var(--bg-component);
+  border-radius: var(--round-xl);
+  box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
+  z-index: 1;
+  display: none; /* Initially hidden */
+}
+
+.calendar-header {
+  margin-bottom: 20px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.calendar-header select {
+  padding: 5px 15px;
+  outline: none;
+  color: var(--text-clr-950);
+  font-size: 0.731rem;
+  font-weight: 500;
+  text-align: center;
+  background: var(--text-clr-50);
+  border: 1px solid var(--text-clr-100);
+  border-radius: var(--round-md);
+  transition: border-color var(--transition-time) ease-out;
+}
+
+.calendar-header select:focus {
+  border-color: var(--accent-clr-700);
+}
+
+table.calendar {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+table.calendar th,
+table.calendar td {
+  width: calc(100% / 7);
+  text-align: center;
+  vertical-align: middle;
+  position: relative; /* Needed for positioning the cell content */
+}
+
+table.calendar th {
+  height: 48px;
+  font-size: 0.831rem;
+  font-weight: 500;
+  color: var(--text-clr-500);
+}
+
+table.calendar td {
+  height: 64px;
+  font-size: 0.931rem;
+  font-weight: 500;
+  color: var(--text-clr-950);
+  cursor: pointer;
+}
+
+table.calendar th:first-child,
+table.calendar td:first-child {
+  color: #f00;
+}
+
+.date-range {
+  margin-top: 20px;
+}
+
+.cell-span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  margin: auto;
+  z-index: 1; /* Ensure it's above the cell content */
+}
+
+.cell-span:hover {
+  background-color: var(--accent-clr-500);
+}
+
+.start-date,
+.end-date {
+  background-color: var(--accent-clr-700);
+  color: white;
+}
+
+.empty-cell {
+  cursor: default;
+  pointer-events: none;
+}
+
+.empty-cell:hover {
+  background-color: transparent;
+}

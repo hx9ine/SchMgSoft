@@ -1,0 +1,478 @@
+{% extends "base.html" %} {% load static %} {% block htmlhead %}
+<!-- CSS -->
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="{% static 'css/management/leave-apply.css' %}"
+/>
+{% endblock htmlhead %} {% block content %}
+<div class="container">
+  <h3>Leave Apply</h3>
+  <!-- Leave Apply -->
+  <div class="leave-apply-form">
+    <form id="leave-application-form" action="" method="post" enctype="multipart/form-data">
+      {% csrf_token %}
+      <div class="date-selector-container">
+        <!-- Dynamic Calendar for Date Selection -->
+        <div class="calendar-container" id="calendar-container">
+          <div class="calendar-header">
+            <select id="year-selector"></select>
+            <select id="month-selector">
+              <option value="0">January</option>
+              <option value="1">February</option>
+              <option value="2">March</option>
+              <option value="3">April</option>
+              <option value="4">May</option>
+              <option value="5">June</option>
+              <option value="6">July</option>
+              <option value="7">August</option>
+              <option value="8">September</option>
+              <option value="9">October</option>
+              <option value="10">November</option>
+              <option value="11">December</option>
+            </select>
+          </div>
+          <table class="calendar" id="calendar">
+            <thead>
+              <tr>
+                <th>Sun</th>
+                <th>Mon</th>
+                <th>Tue</th>
+                <th>Wed</th>
+                <th>Thu</th>
+                <th>Fri</th>
+                <th>Sat</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- Calendar dates will be generated here -->
+            </tbody>
+          </table>
+        </div>
+        <button type="button" id="from-btn">
+          <p>From</p>
+          <input type="date" name="from" id="from">
+          <span>None</span>
+        </button>
+
+        <button type="button" id="to-btn">
+          <p>To</p>
+          <input type="date" name="to" id="to">
+          <span>None</span>
+        </button>
+
+        <button type="button" id="duration">
+          <p>Total Duration</p>
+          <span>0 day</span>
+        </button>
+      </div>
+      <div class="form-group">
+        <input
+          type="text"
+          name="title"
+          id="title"
+          class="input"
+          autocapitalize="on"
+          autocomplete="off"
+          placeholder=" "
+          required
+        />
+        <label for="title" class="placeholder">Short Title *</label>
+      </div>
+      <!-- <div class="file-input">
+        <input type="file" name="file" id="file" />
+        <div class="icon">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="icon icon-tabler icons-tabler-outline icon-tabler-file-plus"
+          >
+            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+            <path d="M14 3v4a1 1 0 0 0 1 1h4" />
+            <path
+              d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2z"
+            />
+            <path d="M12 11l0 6" />
+            <path d="M9 14l6 0" />
+          </svg>
+        </div>
+        <h3>Drag & drop a file or <span> click</span> to browse.</h3>
+        <small>File size must be in between 50KB - 150KB.</small>
+      </div> -->
+      <div class="input-group">
+        <!--       <textarea id="message" name="message" rows="10" cols="30" placeholder=" " autocapitalize autocorrect spellcheck required></textarea> -->
+        <div id="message" contenteditable="true" placeholder=" ">
+          <!-- <input type="hidden" name="message_type" value="text" /> -->
+          <input type="hidden" name="message" id="hidden-message" />
+          <!-- Adjust based on selected message type -->
+          <input
+            type="file"
+            name="file-input"
+            id="file-input"
+            style="display: none"
+          />
+          <input
+            type="file"
+            name="image-input"
+            id="image-input"
+            accept=".jpg, .jpeg, .png"
+            style="display: none"
+          />
+        </div>
+        <label for="message" class="placeholder">Message</label>
+
+        <!--       Toolbar -->
+        <div class="toolbar">
+          <div class="left">
+            <button type="button" id="bold">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="icon icon-tabler icons-tabler-outline icon-tabler-bold"
+              >
+                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                <path d="M7 5h6a3.5 3.5 0 0 1 0 7h-6z" />
+                <path d="M13 12h1a3.5 3.5 0 0 1 0 7h-7v-7" />
+              </svg>
+              <div class="tooltip">
+                <p>Bold</p>
+              </div>
+            </button>
+            <button type="button" id="italic">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="icon icon-tabler icons-tabler-outline icon-tabler-italic"
+              >
+                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                <path d="M11 5l6 0" />
+                <path d="M7 19l6 0" />
+                <path d="M14 5l-4 14" />
+              </svg>
+              <div class="tooltip">
+                <p>Italic</p>
+              </div>
+            </button>
+            <button type="button" id="underline">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="icon icon-tabler icons-tabler-outline icon-tabler-underline"
+              >
+                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                <path d="M7 5v5a5 5 0 0 0 10 0v-5" />
+                <path d="M5 19h14" />
+              </svg>
+              <div class="tooltip">
+                <p>Underline</p>
+              </div>
+            </button>
+            <button type="button" id="color">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="icon icon-tabler icons-tabler-outline icon-tabler-palette"
+              >
+                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                <path
+                  d="M12 21a9 9 0 0 1 0 -18c4.97 0 9 3.582 9 8c0 1.06 -.474 2.078 -1.318 2.828c-.844 .75 -1.989 1.172 -3.182 1.172h-2.5a2 2 0 0 0 -1 3.75a1.3 1.3 0 0 1 -1 2.25"
+                />
+                <path d="M8.5 10.5m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" />
+                <path d="M12.5 7.5m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" />
+                <path d="M16.5 10.5m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" />
+              </svg>
+              <div class="tooltip">
+                <p>Color</p>
+              </div>
+            </button>
+            <button type="button" id="file">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="icon icon-tabler icons-tabler-outline icon-tabler-paperclip"
+              >
+                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                <path
+                  d="M15 7l-6.5 6.5a1.5 1.5 0 0 0 3 3l6.5 -6.5a3 3 0 0 0 -6 -6l-6.5 6.5a4.5 4.5 0 0 0 9 9l6.5 -6.5"
+                />
+              </svg>
+              <div class="tooltip">
+                <p>File</p>
+              </div>
+            </button>
+            <button type="button" id="image">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="icon icon-tabler icons-tabler-outline icon-tabler-photo-plus"
+              >
+                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                <path d="M15 8h.01" />
+                <path
+                  d="M12.5 21h-6.5a3 3 0 0 1 -3 -3v-12a3 3 0 0 1 3 -3h12a3 3 0 0 1 3 3v6.5"
+                />
+                <path d="M3 16l5 -5c.928 -.893 2.072 -.893 3 0l4 4" />
+                <path d="M14 14l1 -1c.67 -.644 1.45 -.824 2.182 -.54" />
+                <path d="M16 19h6" />
+                <path d="M19 16v6" />
+              </svg>
+              <div class="tooltip">
+                <p>Image</p>
+              </div>
+            </button>
+            <button type="button" id="link">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="icon icon-tabler icons-tabler-outline icon-tabler-link-plus"
+              >
+                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                <path d="M9 15l6 -6" />
+                <path
+                  d="M11 6l.463 -.536a5 5 0 0 1 7.072 0a4.993 4.993 0 0 1 -.001 7.072"
+                />
+                <path
+                  d="M12.603 18.534a5.07 5.07 0 0 1 -7.127 0a4.972 4.972 0 0 1 0 -7.071l.524 -.463"
+                />
+                <path d="M16 19h6" />
+                <path d="M19 16v6" />
+              </svg>
+              <div class="tooltip">
+                <p>Link</p>
+              </div>
+            </button>
+            <button type="button" id="confidential">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="icon icon-tabler icons-tabler-outline icon-tabler-lock-star"
+              >
+                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                <path d="M11 21h-4a2 2 0 0 1 -2 -2v-6a2 2 0 0 1 2 -2h9" />
+                <path d="M8 11v-4a4 4 0 1 1 8 0v4" />
+                <path
+                  d="M17.8 20.817l-2.172 1.138a.392 .392 0 0 1 -.568 -.41l.415 -2.411l-1.757 -1.707a.389 .389 0 0 1 .217 -.665l2.428 -.352l1.086 -2.193a.392 .392 0 0 1 .702 0l1.086 2.193l2.428 .352a.39 .39 0 0 1 .217 .665l-1.757 1.707l.414 2.41a.39 .39 0 0 1 -.567 .411l-2.172 -1.138z"
+                />
+              </svg>
+              <div class="tooltip">
+                <p>Confidential</p>
+              </div>
+            </button>
+            <span></span>
+            <button type="button" id="left">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="icon icon-tabler icons-tabler-outline icon-tabler-align-left"
+              >
+                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                <path d="M4 6l16 0" />
+                <path d="M4 12l10 0" />
+                <path d="M4 18l14 0" />
+              </svg>
+              <div class="tooltip">
+                <p>Left</p>
+              </div>
+            </button>
+            <button type="button" id="center">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="icon icon-tabler icons-tabler-outline icon-tabler-align-center"
+              >
+                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                <path d="M4 6l16 0" />
+                <path d="M8 12l8 0" />
+                <path d="M6 18l12 0" />
+              </svg>
+              <div class="tooltip">
+                <p>Center</p>
+              </div>
+            </button>
+            <button type="button" id="right">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="icon icon-tabler icons-tabler-outline icon-tabler-align-right"
+              >
+                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                <path d="M4 6l16 0" />
+                <path d="M10 12l10 0" />
+                <path d="M6 18l14 0" />
+              </svg>
+              <div class="tooltip">
+                <p>Right</p>
+              </div>
+            </button>
+            <button type="button" id="justify">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="icon icon-tabler icons-tabler-outline icon-tabler-align-justified"
+              >
+                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                <path d="M4 6l16 0" />
+                <path d="M4 12l16 0" />
+                <path d="M4 18l12 0" />
+              </svg>
+              <div class="tooltip">
+                <p>Justify</p>
+              </div>
+            </button>
+          </div>
+          <div class="right">
+            <button type="button" id="delete">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="icon icon-tabler icons-tabler-outline icon-tabler-trash"
+              >
+                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                <path d="M4 7l16 0" />
+                <path d="M10 11l0 6" />
+                <path d="M14 11l0 6" />
+                <path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12" />
+                <path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3" />
+              </svg>
+              <div class="tooltip">
+                <p>Delete</p>
+              </div>
+            </button>
+            <button type="submit">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="icon icon-tabler icons-tabler-outline icon-tabler-mail-share"
+              >
+                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                <path
+                  d="M13 19h-8a2 2 0 0 1 -2 -2v-10a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v6"
+                />
+                <path d="M3 7l9 6l9 -6" />
+                <path d="M16 22l5 -5" />
+                <path d="M21 21.5v-4.5h-4.5" />
+              </svg>
+              <p>Apply</p>
+            </button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+{% if messages %}
+<!-- Toast Notification -->
+{% include "toast.html" %} {% endif %}
+
+<!-- JAVASCRIPT -->
+<script
+  src="{% static 'js/management/leave-apply.js' %}"
+  type="text/javascript"
+></script>
+{% endblock %}

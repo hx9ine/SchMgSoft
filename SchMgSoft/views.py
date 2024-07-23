@@ -24,7 +24,7 @@ def logged_in(request):
                 return redirect('home')
             elif user_type == '2':
                 # return redirect('teacher_home')
-                return HttpResponse("This is Teacher's Dashboard")
+                return redirect('home')
             elif user_type == '3':
                 # return redirect('student_home')
                 return HttpResponse("This is Student's Dashboard")

@@ -481,7 +481,7 @@
     .file-upload
     h3
     span {
-    color: var(--accent-clr-500);
+    color: var(--accent-clr-700);
     /*   text-decoration: var(--accent-clr-700) wavy underline; */
   }
   
@@ -489,6 +489,6 @@
     font-size: 0.631rem;
     font-weight: 300;
     text-align: center;
-    color: var(--text-clr-500);
+    color: var(--text-clr-700);
   }
   
