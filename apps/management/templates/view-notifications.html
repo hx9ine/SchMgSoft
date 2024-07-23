@@ -1,0 +1,57 @@
+{% extends "base.html" %} {% load static %} {% block htmlhead %}
+<!-- CSS -->
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="{% static 'css/management/view-notifications.css' %}"
+/>
+{% endblock htmlhead %} {% block content %}
+<div class="container">
+  <h3>Notifications</h3>
+  <!-- View Notifications -->
+  <div class="notifications-container">
+    <div class="tab-container">
+      <button class="tabs active">
+        <p>All</p>
+        <span>{{ total_notifications }}</span>
+      </button>
+      <button class="tabs">
+        <p>Read</p>
+        <span>5</span>
+      </button>
+    </div>
+    <ul>
+      {% for item in notifications_with_sender %}
+      <li>
+        <a href="">
+          <div class="left">
+            <div class="fig">
+              <img
+                src="https://images.unsplash.com/photo-1721048166150-3b2bb2ca3431?crop=entropy&cs=srgb&fm=jpg&ixid=M3wzMjM4NDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE3MjE3NTI5MTh8&ixlib=rb-4.0.3&q=85"
+                alt="Photo."
+              />
+            </div>
+          </div>
+          <div class="right">
+            {% if item.sender.user_type == '1' %}
+                <h3 style="color: #f00;">Admin, <span style="color: var(--text-clr-950);">{{ item.sender.first_name }} {{ item.sender.last_name }}</span></h3>
+            {% elif item.sender.user_type == '2' %}
+                <h3 style="color: rgb(255, 187, 0);">Teacher, <span style="color: var(--text-clr-950);">{{ item.sender.first_name }} {{ item.sender.last_name }}</span></h3>
+            {% else %}
+                <h3 style="color: rgb(0, 255, 149);">Student, <span style="color: var(--text-clr-950);">{{ item.sender.first_name }} {{ item.sender.last_name }}</span></h3>
+            {% endif %}
+            <p>{{ item.notification.message }}</p>
+          </div>
+        </a>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+</div>
+
+<!-- JAVASCRIPT -->
+<!-- <script
+  src="{% static 'js/management/leave-apply.js' %}"
+  type="text/javascript"
+></script> -->
+{% endblock %}

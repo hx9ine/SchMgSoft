@@ -18,11 +18,11 @@ def notify_teachers(request):
 
         # Ensure message is not None or empty
         if not message:
-            # Handle the case where the message is missing
-            # For example, you can return an error response or a message to the user
+            messages.error(request, "Message cannot be empty.")
             return redirect('notify-teachers')  # Redirect back or handle accordingly
 
         notification = TeacherNotification(
+            sender=request.user,
             message=message,
             message_type=message_type,
             file=file,
@@ -30,12 +30,12 @@ def notify_teachers(request):
             confidential=confidential
         )
         notification.save()
-        messages.success(request, "Notification sent successfully!")
 
         if recipient_ids:
             recipients = Teacher.objects.filter(id__in=recipient_ids)
             notification.recipients.set(recipients)
 
+        messages.success(request, "Notification sent successfully!")
         return redirect('notify-teachers')
 
     teachers = Teacher.objects.all()
@@ -43,6 +43,7 @@ def notify_teachers(request):
         'teachers': teachers
     }
     return render(request, 'notify-teachers.html', context)
+
 
 
 
@@ -63,6 +64,7 @@ def notify_students(request):
             return redirect('notify-students')  # Redirect back or handle accordingly
 
         notification = StudentNotification(
+            sender=request.user,
             message=message,
             message_type=message_type,
             file=file,
@@ -136,6 +138,29 @@ def leave_apply(request):
     #     'user': request.user
     # }
     return render(request, 'leave-apply.html')
+
+
+
+@login_required(login_url='/')
+def view_notifications(request):
+    recipient = request.user.teacher
+    notifications = TeacherNotification.objects.filter(recipients=recipient)
+
+    # Create a list of notifications with sender details
+    notifications_with_sender = []
+    for notification in notifications:
+        notifications_with_sender.append({
+            'notification': notification,
+            'sender': notification.sender
+        })
+
+    total_notifications = notifications.count()
+
+    context = {
+        'notifications_with_sender': notifications_with_sender,
+        'total_notifications': total_notifications,
+    }
+    return render(request, 'view-notifications.html', context)
 
 
 

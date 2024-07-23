@@ -10,6 +10,7 @@ class TeacherNotification(models.Model):
         ('image', 'Image'),
     ]
 
+    sender = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     recipients = models.ManyToManyField(Teacher)
     message = models.TextField()
     message_type = models.CharField(max_length=10, choices=MESSAGE_TYPE_CHOICES, default='text')
@@ -29,6 +30,7 @@ class StudentNotification(models.Model):
         ('image', 'Image'),
     ]
 
+    sender = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     recipients = models.ManyToManyField(Student)
     message = models.TextField()
     message_type = models.CharField(max_length=10, choices=MESSAGE_TYPE_CHOICES, default='text')
