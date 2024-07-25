@@ -43,6 +43,9 @@ urlpatterns = [
     # Management App Paths
     path('management/', include('apps.management.urls')),
 
+    # Examination App Paths
+    path('examination/', include('apps.examination.urls')),
+
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 if settings.DEBUG:

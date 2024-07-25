@@ -10,4 +10,4 @@ class Result(models.Model):
     uploaded_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return f"Marksheet for {self.student.first_name} {self.student.last_name} ({self.session.start_session} - {self.session.end_session})"
+        return f"Marksheet for {self.student.admin.first_name} {self.student.admin.last_name} ({self.session.start_session} - {self.session.end_session})"

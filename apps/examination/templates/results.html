@@ -1,0 +1,113 @@
+{% extends "base.html" %} {% load static %} {% block htmlhead %}
+<!-- CSS -->
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="{% static 'css/examination/results.css' %}"
+/>
+{% endblock htmlhead %} {% block content %}
+<div class="container">
+  <h3>Results</h3>
+  <div class="action-bar">
+    <div class="filter">
+      <select name="session" id="session">
+        {% for session in sessions %}
+        <option value="{{ session.id }}">
+          {{ session.start_session }} - {{ session.end_session }}
+        </option>
+        {% endfor %}
+      </select>
+      <select name="class" id="class">
+        {% for class in classes %}
+        <option value="{{ class.id }}">{{ class.class_name }}</option>
+        {% endfor %}
+      </select>
+    </div>
+    <a href="{% url "upload-marksheets" %}">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="icon icon-tabler icons-tabler-outline icon-tabler-cloud-upload"
+      >
+        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+        <path
+          d="M7 18a4.6 4.4 0 0 1 0 -9a5 4.5 0 0 1 11 2h1a3.5 3.5 0 0 1 0 7h-1"
+        />
+        <path d="M9 15l3 -3l3 3" />
+        <path d="M12 12l0 9" />
+      </svg>
+      <p>Upload Marksheets</p>
+    </a>
+  </div>
+  <!-- Results -->
+  <div id="table-container">
+    <table id="results-table">
+      <thead>
+        <tr>
+          <th>Admission No.</th>
+          <th>Student's Name</th>
+          <th style="text-align: center">Session</th>
+          <th style="text-align: center">Class</th>
+          <th style="text-align: center">Marksheet</th>
+        </tr>
+      </thead>
+      <tbody id="results-table-body">
+        {% for student in students %}
+        <tr
+          data-session="{{ student.session_id.id }}"
+          data-class="{{ student.class_id.id }}"
+        >
+          <td>{{ forloop.counter }}</td>
+          <td>{{ student.admin.first_name }} {{ student.admin.last_name }}</td>
+          <td style="text-align: center">
+            {{ student.session_id.start_session }} - {{ student.session_id.end_session }}
+          </td>
+          <td style="text-align: center">{{ student.class_id.class_name }}</td>
+          <td
+            style="
+              text-align: center;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+            "
+          >
+            <a href="#" class="action-link">
+              <p>View</p>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="icon icon-tabler icons-tabler-outline icon-tabler-arrow-up-right"
+              >
+                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                <path d="M17 7l-10 10" />
+                <path d="M8 7l9 0l0 9" />
+              </svg>
+            </a>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- JAVASCRIPT -->
+<script
+  src="{% static 'js/examination/results.js' %}"
+  type="text/javascript"
+></script>
+{% endblock %}

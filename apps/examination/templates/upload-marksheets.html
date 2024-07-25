@@ -1,0 +1,98 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block htmlhead %}
+<!-- CSS -->
+<link rel="stylesheet" type="text/css" href="{% static 'css/examination/upload-marksheets.css' %}" />
+{% endblock htmlhead %}
+
+{% block content %}
+<div class="container">
+  <h3>Upload Marksheets</h3>
+  <p>
+    Please choose appropriate session & class to upload marksheets of students.
+  </p>
+
+  <form id="upload-marksheets-form" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="form-content">
+      <div class="form-group">
+        <select name="session" id="filter-session" class="input" placeholder=" " required>
+          {% for session in sessions %}
+          <option value="{{ session.id }}">{{ session.start_session }} - {{ session.end_session }}</option>
+          {% endfor %}
+        </select>
+        <label for="session" class="placeholder">Choose session *</label>
+      </div>
+      <div class="form-group">
+        <select name="class" id="filter-class" class="input" placeholder=" " required>
+          {% for class in classes %}
+          <option value="{{ class.id }}">{{ class.class_name }}</option>
+          {% endfor %}
+        </select>
+        <label for="class" class="placeholder">Choose class *</label>
+      </div>
+    </div>
+
+    <!-- Table -->
+    <div id="table-container">
+      <table id="student-list-table">
+        <thead>
+          <tr>
+            <th>Admission No.</th>
+            <th>Student's Name</th>
+            <th style="text-align: center">Session</th>
+            <th style="text-align: center">Class</th>
+            <th style="width: 350px; text-align: center">Upload Marksheet</th>
+          </tr>
+        </thead>
+        <tbody id="student-list-table-body">
+          {% for student in students %}
+          <tr data-session="{{ student.session_id.id }}" data-class="{{ student.class_id.id }}">
+            <td>{{ forloop.counter }}</td>
+            <td>{{ student.admin.first_name }} {{ student.admin.last_name }}</td>
+            <td style="text-align: center">{{ student.session_id.start_session }} - {{ student.session_id.end_session }}</td>
+            <td style="text-align: center">{{ student.class_id.class_name }}</td>
+            <td style="text-align: center; display: flex; align-items: center; justify-content: center;">
+              <input type="file" name="marksheet_{{ student.id }}" accept=".pdf, .docx" required />
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+
+    <div class="footer">
+      <button type="submit" class="primary">Upload</button>
+    </div>
+  </form>
+</div>
+
+{% if messages %}
+<!-- Toast Notification -->
+{% include "toast.html" %} {% endif %}
+
+<!-- JAVASCRIPT -->
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const form = document.getElementById('upload-marksheets-form');
+    const sessionSelect = document.getElementById('filter-session');
+    const classSelect = document.getElementById('filter-class');
+
+    function updateFormAction() {
+      const sessionId = sessionSelect.value;
+      const classId = classSelect.value;
+      if (sessionId && classId) {
+        form.action = `{% url 'upload-students-marksheets' '0' '0' %}`.replace('0', sessionId).replace('0', classId);
+      }
+    }
+
+    sessionSelect.addEventListener('change', updateFormAction);
+    classSelect.addEventListener('change', updateFormAction);
+
+    // Initialize form action on page load
+    updateFormAction();
+  });
+</script>
+<script src="{% static 'js/examination/upload-marksheets.js' %}" type="text/javascript"></script>
+{% endblock %}
