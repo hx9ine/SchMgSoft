@@ -1,6 +1,7 @@
 from django.db import models
 from django.conf import settings
 from apps.academics.models import Teacher, Student
+from apps.home.models import Session
 
 # Create your models here.
 class TeacherNotification(models.Model):
