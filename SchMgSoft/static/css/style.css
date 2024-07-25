@@ -95,7 +95,8 @@ body.light-mode {
   --border-clr: rgba(0, 0, 0, 0.05);
 
   /* Overlay */
-  --overlay: linear-gradient(180deg, rgba(0, 0, 0, 0.01), rgba(0, 0, 0, 0.5));
+  /* --overlay: linear-gradient(180deg, rgba(0, 0, 0, 0.01), rgba(0, 0, 0, 0.5)); */
+  --overlay: rgba(0, 0, 0, 0.5);
 }
 
 body.dark-mode {
@@ -129,11 +130,12 @@ body.dark-mode {
   --border-clr: rgba(255, 255, 255, 0.05);
 
   /* Overlay */
-  --overlay: linear-gradient(
+  /* --overlay: linear-gradient(
     180deg,
     rgba(255, 255, 255, 0.01),
     rgba(255, 255, 255, 0.5)
-  );
+  ); */
+  --overlay: rgba(0, 0, 0, 0.5);
 }
 
 a {

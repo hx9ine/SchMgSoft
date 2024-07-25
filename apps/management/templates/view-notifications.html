@@ -34,11 +34,11 @@
           </div>
           <div class="right">
             {% if item.sender.user_type == '1' %}
-                <h3 style="color: #f00;">Admin, <span style="color: var(--text-clr-950);">{{ item.sender.first_name }} {{ item.sender.last_name }}</span></h3>
+                <h3 style="color: rgb(227, 0, 76);">Admin, <span style="color: var(--text-clr-950);">{{ item.sender.first_name }} {{ item.sender.last_name }}</span></h3>
             {% elif item.sender.user_type == '2' %}
-                <h3 style="color: rgb(255, 187, 0);">Teacher, <span style="color: var(--text-clr-950);">{{ item.sender.first_name }} {{ item.sender.last_name }}</span></h3>
+                <h3 style="color: rgb(228, 167, 0);">Teacher, <span style="color: var(--text-clr-950);">{{ item.sender.first_name }} {{ item.sender.last_name }}</span></h3>
             {% else %}
-                <h3 style="color: rgb(0, 255, 149);">Student, <span style="color: var(--text-clr-950);">{{ item.sender.first_name }} {{ item.sender.last_name }}</span></h3>
+                <h3 style="color: rgb(0, 215, 90);">Student, <span style="color: var(--text-clr-950);">{{ item.sender.first_name }} {{ item.sender.last_name }}</span></h3>
             {% endif %}
             <p>{{ item.notification.message }}</p>
           </div>

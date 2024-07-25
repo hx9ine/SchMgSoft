@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+{% load static %}
+{% block htmlhead %}
+<!-- CSS -->
+<link rel="stylesheet" type="text/css" href="{% static 'css/management/view-leave-request.css' %}" />
+{% endblock htmlhead %}
+{% block content %}
+<div class="container">
+    <h3>Leave Requests</h3>
+    <!-- View Leave Request -->
+    <div class="view-leave-request">
+        <div class="header">
+            <h3>{{ leave_request.title }}</h3>
+            <div class="badge {{ leave_request.status|lower }}">
+                <p>{{ leave_request.status }}</p>
+            </div>
+        </div>
+        <div class="leave-details">
+            <div>
+                <h3>Applied By:</h3>
+                <p>{{ leave_request.applicant_id.first_name }} {{ leave_request.applicant_id.last_name }}</p>
+            </div>
+
+            <div>
+                <h3>Start Date:</h3>
+                <p>{{ leave_request.date_from }}</p>
+            </div>
+
+            <div>
+                <h3>End Date:</h3>
+                <p>{{ leave_request.date_to }}</p>
+            </div>
+
+            <div>
+                <h3>Duration:</h3>
+                {% if leave_request.duration <= 1 %}
+                <p>{{ leave_request.duration }} day</p>
+                {% else %}
+                <p>{{ leave_request.duration }} days</p>
+                {% endif %}
+            </div>
+
+            <div>
+                <h3>Message:</h3>
+                <p>{{ leave_request.message }}</p>
+            </div>
+        </div>
+        <div class="action">
+            {% if leave_request.status == "Requested" %}
+            <button type="button" class="secondary" id="decline-button">Decline</button>
+            <button type="button" class="primary" id="approve-button">Approve</button>
+            {% elif leave_request.status == "Approved" %}
+            <button type="button" disabled>Decline</button>
+            {% else %}
+            <button type="button" disabled>Approve</button>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+<!-- Hidden Forms for Submission -->
+<form id="decline-form" method="post" action="{% url 'update-leave-request-status' leave_request.id %}" style="display:none;">
+    {% csrf_token %}
+    <input type="hidden" name="status" value="Declined">
+</form>
+<form id="approve-form" method="post" action="{% url 'update-leave-request-status' leave_request.id %}" style="display:none;">
+    {% csrf_token %}
+    <input type="hidden" name="status" value="Approved">
+</form>
+
+<!-- Confirmation -->
+{% include "confirmation.html" %}
+
+<!-- JAVASCRIPT -->
+<script src="{% static 'js/management/view-leave-request.js' %}" type="text/javascript"></script>
+{% endblock %}

@@ -51,6 +51,12 @@ class LeaveApplication(models.Model):
         ('image', 'Image'),
     ]
 
+    STATUS_CHOICES = [
+        ('Declined', 'Declined'),
+        ('Approved', 'Approved'),
+        ('Requested', 'Requested'),
+    ]
+
     applicant_id = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     date_from = models.DateField()
     date_to = models.DateField()
@@ -59,6 +65,7 @@ class LeaveApplication(models.Model):
     image = models.ImageField(upload_to='leave_applications/images/', null=True, blank=True)
     message = models.TextField(null=True, blank=True)
     message_type = models.CharField(max_length=10, choices=MESSAGE_TYPE_CHOICES, default='text')
+    status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='Requested')
     created_at = models.DateTimeField(auto_now_add=True)
 
     @property
@@ -67,4 +74,3 @@ class LeaveApplication(models.Model):
 
     def __str__(self):
         return f"Leave applied by {self.applicant_id.first_name} {self.applicant_id.last_name} on {self.created_at}"
-

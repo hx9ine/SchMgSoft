@@ -57,8 +57,8 @@ table th {
   padding: 0.5rem;
   font-size: 0.613rem;
   font-weight: 700;
-  color: var(--accent-clr-800);
-  background-color: var(--accent-clr-50);
+  color: var(--text-clr-950);
+  background-color: var(--text-clr-200);
 }
 
 table td {

@@ -90,12 +90,37 @@ def notify_students(request):
 
 @login_required(login_url='/')
 def teachers_leave_requests(request):
-    teachers = Teacher.objects.all()
+    leave_requests = LeaveApplication.objects.all().order_by('-created_at')
 
     context = {
-        'teachers':teachers
+        'leave_requests': leave_requests
     }
     return render(request, 'leave-requests.html', context)
+
+
+@login_required(login_url='/')
+def view_teachers_leave_requests(request, id):
+    leave_request = LeaveApplication.objects.get(id=id)
+
+    context = {
+        'leave_request' : leave_request
+    }
+    return render(request, 'view-leave-request.html', context)
+
+
+@login_required(login_url='/')
+def update_leave_status(request, id):
+    try:
+        leave_request = LeaveApplication.objects.get(id=id)
+        if leave_request.status == 'Requested':  # Ensure status can only be updated from 'Requested'
+            new_status = request.POST.get('status')
+            if new_status in ['Declined', 'Approved']:
+                leave_request.status = new_status
+                leave_request.save()
+                return redirect('view-leave-request', id=id)
+        return redirect('view-leave-request', id=id)
+    except LeaveApplication.DoesNotExist:
+        return redirect('view-leave-request', id=id)
 
 
 # ---------*****---------

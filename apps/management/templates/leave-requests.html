@@ -13,26 +13,34 @@
     <table id="leave-request-teacher-table">
       <thead>
         <tr>
-          <th>LEAVE TYPE</th>
-          <th>TEACHER'S NAME</th>
-          <th>DATE FROM</th>
-          <th>DATE TO</th>
-          <th>DURATION</th>
-          <th style="text-align: center">STATUS</th>
-          <th style="text-align: center">ACTION</th>
+          <th>Title</th>
+          <th>Applicant's Name</th>
+          <th>Date From</th>
+          <th>Date To</th>
+          <th>Duration</th>
+          <th>Applied On</th>
+          <th style="text-align: center">Status</th>
+          <th style="text-align: center">Action</th>
         </tr>
       </thead>
       <tbody>
-        {% for i in teachers %}
+        {% for leave_request in leave_requests %}
         <tr>
-          <td>Sick Leave</td>
-          <td>{{ i.admin.first_name }} {{ i.admin.last_name }}</td>
-          <td>22/07/2024</td>
-          <td>23/07/2024</td>
-          <td>1 day</td>
-          <td style="position: relative;">
-            <span class="badge declined">
-              <p>Declined</p>
+          <td>{{ leave_request.title }}</td>
+          <td>
+            {{ leave_request.applicant_id.first_name }} {{ leave_request.applicant_id.last_name }}
+          </td>
+          <td>{{ leave_request.date_from }}</td>
+          <td>{{ leave_request.date_to }}</td>
+          {% if leave_request.duration <= 1 %}
+          <td>{{ leave_request.duration }} day</td>
+          {% else %}
+          <td>{{ leave_request.duration }} days</td>
+          {% endif %}
+          <td>{{ leave_request.created_at }}</td>
+          <td style="position: relative">
+            <span class="badge {{ leave_request.status|lower }}">
+              <p>{{ leave_request.status }}</p>
             </span>
           </td>
           <td
@@ -43,7 +51,7 @@
               justify-content: center;
             "
           >
-            <a href="#" class="action-link">
+            <a href="{% url "view-leave-request" leave_request.id %}" class="action-link">
               <p>View</p>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
