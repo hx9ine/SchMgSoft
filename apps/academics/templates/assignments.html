@@ -10,21 +10,36 @@
   <h3>Assignments</h3>
   <div class="action-bar">
     <div class="tab-bar">
-        <button class="active">
-            <p>All</p>
-            <span>5</span>
-        </button>
-        <button>
-            <p>Checked</p>
-            <span>3</span>
-        </button>
-        <button>
-            <p>Unchecked</p>
-            <span>2</span>
-        </button>
+      <button class="active">
+        <p>All</p>
+        <span>5</span>
+      </button>
+      <button>
+        <p>Checked</p>
+        <span>3</span>
+      </button>
+      <button>
+        <p>Unchecked</p>
+        <span>2</span>
+      </button>
     </div>
-    <button type="button">
-      <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-plus"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M12 5l0 14" /><path d="M5 12l14 0" /></svg>
+    <button type="button" id="add-assignment-btn">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="icon icon-tabler icons-tabler-outline icon-tabler-plus"
+      >
+        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+        <path d="M12 5l0 14" />
+        <path d="M5 12l14 0" />
+      </svg>
       <p>New Assignment</p>
     </button>
   </div>
@@ -86,7 +101,19 @@
   </div>
 </div>
 
+<!-- Add Assignment Form -->
+{% include "add-assignment-form.html" %} {% if messages %}
+<!-- Toast Notification -->
+{% include "toast.html" %} {% endif %}
+
 <!-- JAVASCRIPT -->
+<script>
+  const addAssignmentBtn = document.getElementById('add-assignment-btn');
+  addAssignmentBtn.addEventListener('click', () => {
+    document.querySelector('.modal-container').classList.add('active');
+  });
+</script>
+
 <script
   src="{% static 'js/academics/assignments.js' %}"
   type="text/javascript"
