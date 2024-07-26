@@ -266,3 +266,11 @@ def teacher_attendance_view(request):
         'years': range(2000, current_date.year + 1),  # Year range for the template
     }
     return render(request, 'view-attendance.html', context)
+
+
+# ----------------
+# Teacher's Views
+def assignments(request):
+    return render(request, 'assignments.html')
+
+# ----------------
