@@ -6,5 +6,6 @@ urlpatterns = [
     path('add-session/', views.add_session, name='add-session'),
     path('add-class/', views.add_class, name='add-class'),
     path('add-subject/', views.add_subject, name='add-subject'),
+    path('assign-teachers/', views.assign_teachers, name='assign-teachers'),
 ]
 

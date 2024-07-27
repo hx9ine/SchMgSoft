@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from apps.home.models import Session, Class, Subject
+from apps.academics.models import Teacher
 
 # Create your views here.
 @login_required(login_url='/')
@@ -92,3 +93,16 @@ def add_subject(request):
         'classes':classes
     }
     return render(request, 'add-subject.html', context)
+
+
+
+@login_required(login_url='/')
+def assign_teachers(request):
+    teachers = Teacher.objects.all()
+    subjects = Subject.objects.all()
+
+    context = {
+        'teachers': teachers,
+        'subjects': subjects
+    }
+    return render(request, 'assign-teachers.html', context)

@@ -1,0 +1,218 @@
+{% extends "base.html" %} {% load static %} {% block htmlhead %}
+<!-- CSS -->
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="{% static 'css/home/assign-teachers.css' %}"
+/>
+{% endblock htmlhead %} {% block content %}
+<div class="container">
+  <h3>Assign Teachers</h3>
+  <div class="action-bar">
+    <div class="search-filter">
+      <input
+        type="text"
+        name="search-input"
+        id="search-input"
+        placeholder="Type something..."
+      />
+      <button>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="icon icon-tabler icons-tabler-outline icon-tabler-adjustments-horizontal"
+        >
+          <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+          <path d="M14 6m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" />
+          <path d="M4 6l8 0" />
+          <path d="M16 6l4 0" />
+          <path d="M8 12m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" />
+          <path d="M4 12l2 0" />
+          <path d="M10 12l10 0" />
+          <path d="M17 18m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" />
+          <path d="M4 18l11 0" />
+          <path d="M19 18l1 0" />
+        </svg>
+      </button>
+    </div>
+
+    <a href="#" id="add-new-btn">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="icon icon-tabler icons-tabler-outline icon-tabler-plus"
+      >
+        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+        <path d="M12 5l0 14" />
+        <path d="M5 12l14 0" />
+      </svg>
+      <p>Add New</p>
+    </a>
+  </div>
+  <!-- Teachers Assignments -->
+  <div id="table-container">
+    <table id="teacher-assign-table">
+      <thead>
+        <tr>
+          <th>Teacher's Name</th>
+          <th style="text-align: center">Session</th>
+          <th style="text-align: center">Class</th>
+          <th style="text-align: center">Subject</th>
+          <th style="text-align: center">Action</th>
+        </tr>
+      </thead>
+      <tbody id="results-table-body">
+        <tr>
+          <td>Hasan Al Saeed</td>
+          <td style="text-align: center">2024-2025</td>
+          <td style="text-align: center">Class 1</td>
+          <td style="text-align: center">Mathematics</td>
+          <td
+            style="
+              text-align: center;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+            "
+          >
+            <button class="action-btn">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="icon icon-tabler icons-tabler-outline icon-tabler-dots-vertical"
+              >
+                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                <path d="M12 12m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" />
+                <path d="M12 19m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" />
+                <path d="M12 5m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" />
+              </svg>
+              <!-- Dialog -->
+              <div class="dialog">
+                <ul>
+                  <li>
+                    <a href=""
+                      ><svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        class="icon icon-tabler icons-tabler-outline icon-tabler-user-square-rounded"
+                      >
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                        <path d="M12 13a3 3 0 1 0 0 -6a3 3 0 0 0 0 6z" />
+                        <path
+                          d="M12 3c7.2 0 9 1.8 9 9s-1.8 9 -9 9s-9 -1.8 -9 -9s1.8 -9 9 -9z"
+                        />
+                        <path
+                          d="M6 20.05v-.05a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v.05"
+                        />
+                      </svg>
+                      <p>View Assignment</p></a
+                    >
+                  </li>
+                  <li>
+                    <a href=""
+                      ><svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        class="icon icon-tabler icons-tabler-outline icon-tabler-pencil-minus"
+                      >
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                        <path
+                          d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4"
+                        />
+                        <path d="M13.5 6.5l4 4" />
+                        <path d="M16 19h6" />
+                      </svg>
+                      <p>Modify Assignment</p></a
+                    >
+                  </li>
+                  <span></span>
+                  <li>
+                    <a href=""
+                      ><svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        class="icon icon-tabler icons-tabler-outline icon-tabler-trash"
+                      >
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                        <path d="M4 7l16 0" />
+                        <path d="M10 11l0 6" />
+                        <path d="M14 11l0 6" />
+                        <path
+                          d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12"
+                        />
+                        <path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3" />
+                      </svg>
+                      <p>Delete Assignment</p></a
+                    >
+                  </li>
+                </ul>
+              </div>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- Add Assign Teachers Form -->
+{% include "add-assign-teachers-form.html" %} {% if messages %}
+<!-- Toast Notification -->
+{% include "toast.html" %} {% endif %}
+
+<!-- JAVASCRIPT -->
+<script>
+  const addNewBtn = document.getElementById('add-new-btn');
+
+  addNewBtn.addEventListener('click', () => {
+    document.querySelector('.modal-container').classList.add('active');
+  });
+</script>
+
+<script
+  src="{% static 'js/home/assign-teachers.js' %}"
+  type="text/javascript"
+></script>
+{% endblock %}

@@ -33,6 +33,16 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  /* NEw */
+  background:
+      radial-gradient(35.36% 35.36% at 100% 25%,#0000 66%,var(--accent-clr-700) 68% 70%,#0000 72%) 32px 32px/calc(2*32px) calc(2*32px),
+      radial-gradient(35.36% 35.36% at 0    75%,#0000 66%,var(--accent-clr-700) 68% 70%,#0000 72%) 32px 32px/calc(2*32px) calc(2*32px),
+      radial-gradient(35.36% 35.36% at 100% 25%,#0000 66%,var(--accent-clr-700) 68% 70%,#0000 72%) 0 0/calc(2*32px) calc(2*32px),
+      radial-gradient(35.36% 35.36% at 0    75%,#0000 66%,var(--accent-clr-700) 68% 70%,#0000 72%) 0 0/calc(2*32px) calc(2*32px),
+      repeating-conic-gradient(var(--bg-component) 0 25%,#0000 0 50%) 0 0/calc(2*32px) calc(2*32px),
+      radial-gradient(#0000 66%,var(--accent-clr-700) 68% 70%,#0000 72%) 0 calc(32px/2)/32px 32px
+      var(--bg-component);
+
 }
 
 #login-signup-container .wrapper .image-section img {

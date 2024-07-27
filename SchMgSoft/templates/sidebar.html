@@ -197,7 +197,7 @@
       <p class="title">OTHERS</p>
 
       <div class="menu">
-        <div class="menu-item {% active_link 'add-session || add-class || add-subject' 'active' %}">
+        <div class="menu-item {% active_link 'add-session || add-class || add-subject || assign-teachers' 'active' %}">
           <span class="left">
             <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-adjustments-horizontal"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M14 6m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" /><path d="M4 6l8 0" /><path d="M16 6l4 0" /><path d="M8 12m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" /><path d="M4 12l2 0" /><path d="M10 12l10 0" /><path d="M17 18m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" /><path d="M4 18l11 0" /><path d="M19 18l1 0" /></svg>
             <p>Initial Setup</p>
@@ -214,6 +214,7 @@
             <li><a href="{% url 'add-session' %}">Add Session</a></li>
             <li><a href="{% url 'add-class' %}">Add Classes</a></li>
             <li><a href="{% url 'add-subject' %}">Add Subjects</a></li>
+            <li><a href="{% url "assign-teachers" %}">Assign Teachers</a></li>
           </ul>
         </div>
       </div>
@@ -307,7 +308,7 @@
         </div>
         <div class="submenu">
           <ul>
-            <li><a href="#">Student</a></li>
+            <li><a href="{% url "teachers-notify-students" %}">Student</a></li>
           </ul>
         </div>
       </div>

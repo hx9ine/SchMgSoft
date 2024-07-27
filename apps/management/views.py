@@ -189,4 +189,12 @@ def view_notifications(request):
 
 
 
+def teachers_notify_students(request):
+    students = Student.objects.all()
+
+    context = {
+        'students':students
+    }
+    return render(request, 'notify-students.html', context)
+
 # ---------*****---------

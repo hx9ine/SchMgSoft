@@ -11,7 +11,11 @@
   <div class="send-notification">
     <form
     id="notification-form"
+    {% if request.user.user_type == '1' %}
       action="{% url 'notify-students' %}"
+      {% elif request.user.user_type == '2' %}
+      action="{% url 'teachers-notify-students' %}"
+      {% endif %}
       method="post"
       enctype="multipart/form-data"
     >
