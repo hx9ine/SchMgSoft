@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
-from apps.home.models import Session, Class, Subject
+from apps.home.models import Session, Class, Subject, TeacherAllotment
 from apps.academics.models import Teacher
 
 # Create your views here.
@@ -98,11 +98,45 @@ def add_subject(request):
 
 @login_required(login_url='/')
 def assign_teachers(request):
+    if request.method == 'POST':
+        session_id = request.POST.get("session")
+        class_id = request.POST.get("class")
+        subject_id = request.POST.get("subject")
+        teacher_id = request.POST.get("teacher")
+
+        try:
+            # Fetch related objects
+            session = Session.objects.get(id=session_id)
+            class_obj = Class.objects.get(id=class_id, session=session)
+            subject = Subject.objects.get(id=subject_id, class_id=class_obj)
+            teacher = Teacher.objects.get(id=teacher_id)
+            
+            # Create TeacherAllotment
+            new_allotment = TeacherAllotment(
+                teacher=teacher,
+                subject=subject
+            )
+            new_allotment.save()
+            
+            messages.success(request, f"{subject.subject_name} of {class_obj.class_name} is allotted to {teacher.admin.first_name} {teacher.admin.last_name} successfully!")
+        except (Session.DoesNotExist, Class.DoesNotExist, Subject.DoesNotExist, Teacher.DoesNotExist) as e:
+            messages.error(request, "There was an error assigning the teacher. Please ensure all selections are valid.")
+        except Exception as e:
+            messages.error(request, f"An unexpected error occurred: {str(e)}")
+        return redirect('assign-teachers')
+
     teachers = Teacher.objects.all()
     subjects = Subject.objects.all()
+    sessions = Session.objects.all()
+    classes = Class.objects.all()
+    teacher_allotments = TeacherAllotment.objects.all()
 
     context = {
         'teachers': teachers,
-        'subjects': subjects
+        'subjects': subjects,
+        'sessions': sessions,
+        'classes': classes,
+        'teacher_allotments': teacher_allotments
     }
     return render(request, 'assign-teachers.html', context)
+

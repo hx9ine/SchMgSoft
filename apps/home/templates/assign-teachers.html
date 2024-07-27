@@ -72,15 +72,20 @@
           <th style="text-align: center">Session</th>
           <th style="text-align: center">Class</th>
           <th style="text-align: center">Subject</th>
+          <th style="text-align: center">Created at</th>
+          <th style="text-align: center">Updated at</th>
           <th style="text-align: center">Action</th>
         </tr>
       </thead>
       <tbody id="results-table-body">
+        {% for i in teacher_allotments %}
         <tr>
-          <td>Hasan Al Saeed</td>
-          <td style="text-align: center">2024-2025</td>
-          <td style="text-align: center">Class 1</td>
-          <td style="text-align: center">Mathematics</td>
+          <td>{{ i.teacher.admin.first_name }} {{ i.teacher.admin.last_name }}</td>
+          <td style="text-align: center">{{ i.subject.class_id.session.start_session }}-{{ i.subject.class_id.session.end_session }}</td>
+          <td style="text-align: center">{{ i.subject.class_id.class_name }}</td>
+          <td style="text-align: center">{{ i.subject.subject_name }}</td>
+          <td style="text-align: center">{{ i.created_at }}</td>
+          <td style="text-align: center">{{ i.updated_at }}</td>
           <td
             style="
               text-align: center;
@@ -192,6 +197,7 @@
             </button>
           </td>
         </tr>
+        {% endfor %}
       </tbody>
     </table>
   </div>

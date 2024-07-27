@@ -20,7 +20,7 @@
       </svg>
     </span>
 
-    <form id="add-assign-teachers-form" action="#" method="post">
+    <form id="add-assign-teachers-form" action="{% url "assign-teachers" %}" method="post">
       {% csrf_token %}
 
       <h5>Assign New Teacher</h5>
@@ -41,8 +41,8 @@
             <option value="hidden" selected disabled hidden>
               Choose session
             </option>
-            {% for i in subjects %}
-            <option value="{{ i.class_id.session.id }}">{{ i.class_id.session.start_session }} - {{ i.class_id.session.end_session }}</option>
+            {% for i in sessions %}
+            <option value="{{ i.id }}">{{ i.start_session }} - {{ i.end_session }}</option>
             {% endfor %}
           </select>
           <label for="session" class="placeholder">Session *</label>
@@ -58,8 +58,8 @@
             <option value="hidden" selected disabled hidden>
               Choose class
             </option>
-            {% for i in subjects %}
-            <option value="{{ i.class_id.id }}">{{ i.class_id.class_name }}</option>
+            {% for i in classes %}
+            <option value="{{ i.id }}">{{ i.class_name }}</option>
             {% endfor %}
           </select>
           <label for="session" class="placeholder">Class *</label>

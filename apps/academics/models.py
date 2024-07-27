@@ -1,6 +1,6 @@
 from django.db import models
 from apps.users.models import CustomUser
-from apps.home.models import *
+from apps.home.models import Session, Class
 
 # Create your models here.
 class Student(models.Model):
