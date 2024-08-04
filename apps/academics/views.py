@@ -3,8 +3,8 @@ from datetime import datetime
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
-from apps.academics.models import Student, Teacher, TeacherAttendance
-from apps.home.models import Class, Session
+from apps.academics.models import Student, Teacher, TeacherAttendance, Assignment
+from apps.home.models import Class, Session, TeacherAllotment
 from apps.users.models import CustomUser
 
 # Create your views here.
@@ -271,6 +271,68 @@ def teacher_attendance_view(request):
 # ----------------
 # Teacher's Views
 def assignments(request):
-    return render(request, 'assignments.html')
+    user = request.user
+    teacher = Teacher.objects.get(admin=user)
+    teacher_allotments = TeacherAllotment.objects.filter(teacher=teacher)
+
+    sessions = list({allotment.subject.class_id.session for allotment in teacher_allotments})
+    classes = list({allotment.subject.class_id for allotment in teacher_allotments})
+    subjects = list({allotment.subject for allotment in teacher_allotments})
+
+    assignments = Assignment.objects.filter(teacher_id__in=teacher_allotments)
+
+    context = {
+        'teacher_allotments': teacher_allotments,
+        'sessions': sessions,
+        'classes': classes,
+        'subjects': subjects,
+        'assignments': assignments
+    }
+    return render(request, 'assignments.html', context)
+
+
+
+
+
+
+def add_assignment(request):
+    if request.method == 'POST':
+        session_id = request.POST.get('session')
+        class_id = request.POST.get('class')
+        subject_id = request.POST.get('subject')
+        deadline = request.POST.get('deadline') == 'on'
+        deadline_date = request.POST.get('deadline-date')
+        deadline_time = request.POST.get('deadline-time')
+
+        try:
+            teacher = Teacher.objects.get(admin=request.user)
+            teacher_allotment = TeacherAllotment.objects.get(
+                teacher=teacher,
+                subject_id=subject_id
+            )
+
+            assignment = Assignment(
+                teacher_id=teacher_allotment,
+                deadline=deadline
+            )
+
+            if deadline:
+                deadline_date_time = f"{deadline_date} {deadline_time}"
+                assignment.deadline_date_time = deadline_date_time
+
+            assignment.save()
+            messages.success(request, "Assignment added successfully!")
+            return redirect('assignments')
+
+        except Teacher.DoesNotExist:
+            messages.error(request, "You are not assigned as a teacher.")
+            return redirect('assignments')
+
+        except TeacherAllotment.DoesNotExist:
+            messages.error(request, "You are not allotted to this subject.")
+            return redirect('assignments')
+
+    return render(request, 'add-assignment-form.html')
+
 
 # ----------------

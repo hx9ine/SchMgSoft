@@ -49,7 +49,6 @@
       <thead>
         <tr>
           <th>Sl. No.</th>
-          <th>Title</th>
           <th style="text-align: center">Session</th>
           <th style="text-align: center">Class</th>
           <th style="text-align: center">Subject</th>
@@ -59,43 +58,44 @@
         </tr>
       </thead>
       <tbody id="results-table-body">
-        <tr>
-          <td>1</td>
-          <td>Thermodynamics</td>
-          <td style="text-align: center">2023-2024</td>
-          <td style="text-align: center">Class 1</td>
-          <td style="text-align: center">Mathematics</td>
-          <td style="text-align: center">26 July 2024</td>
-          <td style="text-align: center">1 August 2024</td>
-          <td
-            style="
-              text-align: center;
-              display: flex;
-              align-items: center;
-              justify-content: center;
-            "
-          >
-            <a href="#" class="action-link">
-              <p>View</p>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                class="icon icon-tabler icons-tabler-outline icon-tabler-arrow-up-right"
-              >
-                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                <path d="M17 7l-10 10" />
-                <path d="M8 7l9 0l0 9" />
-              </svg>
-            </a>
-          </td>
-        </tr>
+        {% for i in assignments %}
+      <tr>
+        <td>{{ forloop.counter }}</td>
+        <td style="text-align: center">{{ i.teacher_id.subject.class_id.session.start_session }}-{{ i.teacher_id.subject.class_id.session.end_session }}</td>
+        <td style="text-align: center">{{ i.teacher_id.subject.class_id.class_name }}</td>
+        <td style="text-align: center">{{ i.teacher_id.subject.subject_name }}</td>
+        <td style="text-align: center">{{ i.uploaded_on }}</td>
+        <td style="text-align: center">{{ i.deadline_date_time }}</td>
+        <td
+          style="
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          "
+        >
+          <a href="#" class="action-link">
+            <p>View</p>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="icon icon-tabler icons-tabler-outline icon-tabler-arrow-up-right"
+            >
+              <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+              <path d="M17 7l-10 10" />
+              <path d="M8 7l9 0l0 9" />
+            </svg>
+          </a>
+        </td>
+      </tr>
+    {% endfor %}
       </tbody>
     </table>
   </div>

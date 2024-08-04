@@ -20,7 +20,7 @@
       </svg>
     </span>
 
-    <form id="add-assignment-form" action="" method="post">
+    <form id="add-assignment-form" action="{% url 'add-assignment' %}" method="post">
       {% csrf_token %}
 
       <h5>Add New Assignment</h5>
@@ -30,60 +30,44 @@
 
       <div class="form-content">
         <div class="form-group">
-          <select
-            name="session"
-            id="session"
-            class="input"
-            placeholder=" "
-            required
-          >
-            <option value="hidden" selected disabled hidden>
-              Choose session
-            </option>
+          <select name="session" id="session" class="input" placeholder=" " required>
+            <option value="" selected disabled hidden>Choose session</option>
             {% for session in sessions %}
-            <option value="{{ session.id }}">
-              {{ session.start_session }} - {{ session.end_session }}
-            </option>
+              <option value="{{ session.id }}">
+                {{ session.start_session }} - {{ session.end_session }}
+              </option>
             {% endfor %}
           </select>
           <label for="session" class="placeholder">Session *</label>
         </div>
+        
+        
 
         <div class="form-group">
-          <select
-            name="class"
-            id="class"
-            class="input"
-            placeholder=" "
-            required
-          >
-            <option value="hidden" selected disabled hidden>
-              Choose class
-            </option>
+          <select name="class" id="class" class="input" placeholder=" " required>
+            <option value="" selected disabled hidden>Choose class</option>
             {% for class in classes %}
-            <option value="{{ class.id }}">{{ class.class_name }}</option>
+              <option value="{{ class.id }}">
+                {{ class.class_name }}
+              </option>
             {% endfor %}
           </select>
           <label for="class" class="placeholder">Class *</label>
         </div>
+        
 
         <div class="form-group">
-          <select
-            name="subject"
-            id="subject"
-            class="input"
-            placeholder=" "
-            required
-          >
-            <option value="hidden" selected disabled hidden>
-              Choose subject
-            </option>
+          <select name="subject" id="subject" class="input" placeholder=" " required>
+            <option value="" selected disabled hidden>Choose subject</option>
             {% for subject in subjects %}
-            <option value="{{ subject.id }}">{{ subject.subject_name }}</option>
+              <option value="{{ subject.id }}">
+                {{ subject.subject_name }}
+              </option>
             {% endfor %}
           </select>
           <label for="subject" class="placeholder">Subject *</label>
         </div>
+        
 
         <div class="form-group">
           <div class="checkbox-wrapper">

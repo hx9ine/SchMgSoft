@@ -1,6 +1,6 @@
 from django.db import models
 from apps.users.models import CustomUser
-from apps.home.models import Session, Class
+from apps.home.models import Session, Class, Subject, TeacherAllotment
 
 # Create your models here.
 class Student(models.Model):
@@ -82,3 +82,27 @@ class TeacherAttendance(models.Model):
 
     class Meta:
         unique_together = ('teacher', 'date')  # Ensures a teacher can have only one attendance record per day
+
+
+
+
+# Teacher's Models
+class Assignment(models.Model):
+    MESSAGE_TYPE_CHOICES = [
+        ('text', 'Text'),
+        ('file', 'File'),
+        ('image', 'Image'),
+    ]
+
+    teacher_id = models.ForeignKey(TeacherAllotment, on_delete=models.CASCADE)
+    uploaded_on = models.DateTimeField(auto_now_add=True)
+    deadline = models.BooleanField(default=False)
+    deadline_date_time = models.DateTimeField()
+    message = models.TextField()
+    message_type = models.CharField(max_length=10, choices=MESSAGE_TYPE_CHOICES, default='text')
+    file = models.FileField(upload_to='assignments/files/', null=True, blank=True)
+    image = models.ImageField(upload_to='assignments/images/', null=True, blank=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"Assignment - {self.teacher_id.teacher.admin.first_name} {self.teacher_id.teacher.admin.last_name}, {self.uploaded_on}"

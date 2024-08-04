@@ -26,10 +26,15 @@
         <a href="">
           <div class="left">
             <div class="fig">
+              {% if not item.sender %}
               <img
                 src="https://images.unsplash.com/photo-1721048166150-3b2bb2ca3431?crop=entropy&cs=srgb&fm=jpg&ixid=M3wzMjM4NDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE3MjE3NTI5MTh8&ixlib=rb-4.0.3&q=85"
                 alt="Photo."
               />
+              {% else %}
+              <img
+                src="{{ item.sender.profile_pic.url }}" alt="Photo."/>
+              {% endif %}
             </div>
           </div>
           <div class="right">
